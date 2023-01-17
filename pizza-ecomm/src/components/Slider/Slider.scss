@@ -1,0 +1,35 @@
+.slider {
+    width: calc(69vw - 10px);
+    height: 55vh;
+    overflow: hidden;
+
+    margin: 10px auto 10px ;
+    border-radius: 25px;
+
+    .slider-container {
+        display: flex;
+        height: 50.3vh;
+        margin-bottom: 18px;
+        
+        border-radius: 25px;
+
+        overflow: hidden;
+        
+
+        img {
+            width: 100vw;
+            height: 100vh;
+            object-fit: fill;
+        }
+    }
+
+    .icons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+
+        .icon {
+            font-size: 15px;
+        }
+    }
+}

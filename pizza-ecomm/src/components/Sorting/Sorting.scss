@@ -1,0 +1,40 @@
+.sort {
+    width: 246px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 676px;
+    right: 310px;
+
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(88, 88, 88);
+
+    background-color: white;
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 25px;
+
+    cursor: pointer;
+    span {
+        width: 220px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .icon {
+
+        font-size: 22px;
+        color: rgb(151, 151, 151);
+    }
+
+    &:hover > .icon {
+        color: #777;
+    }
+
+    &:hover {
+        border: 1px solid #888;
+    }
+}

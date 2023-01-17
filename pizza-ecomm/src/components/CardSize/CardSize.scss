@@ -1,0 +1,114 @@
+.card-size {
+    display: grid;
+    gap: 10px;
+    margin-top: 30px;
+
+    .card-block-size {
+        display: flex;
+        width: fit-content;
+        height: fit-content;
+        justify-content: center;
+        align-items: center;
+        text-transform: capitalize;
+        font-size: 12px;
+        background-color: #f8f8f8;
+        border: 1px solid rgb(202, 202, 202);
+        border-radius: 20px;
+        
+        cursor: pointer;
+
+        .card-size-btn {
+            display: flex;
+            height: 30px;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 5px 5px;
+            color: black;
+            background-color: #f8f8f8;
+            border: none;
+            border-radius: 20px;
+            transition: all .3s ease;
+            cursor: pointer;
+
+        }
+
+        .card-size-btn-active {
+            display: flex;
+            height: 30px;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 5px 5px;
+            color: white;
+            background-color: #4f4f4f;
+            border: none;
+            border-radius: 20px;
+            transition: all .3s ease;
+            cursor: pointer;
+
+            &:hover {
+                transition: all 0.3s ease;
+                background-color: #333;
+            }
+        }
+
+        
+
+        .span {
+            width: 6.4px;
+        }
+
+       
+    }
+
+    .card-block-size-crust {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        text-transform: capitalize;
+        font-size: 12px;
+        background-color: white;
+        border-radius: 20px;
+        
+        .card-size-btn {
+            display: flex;
+            height: 30px;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 5px 8px;
+            color: black;
+            background-color: f8f8f8;
+            border: none;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+        }
+
+        .card-size-btn-active {
+            display: flex;
+            height: 30px;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            padding: 5px 8px;
+            color: white;
+            background-color: #4f4f4f;
+            border: none;
+            border-radius: 20px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+
+
+            &:hover {
+                transition: all 0.3s ease;
+                background-color: #333;
+            }
+
+        }
+    }
+}

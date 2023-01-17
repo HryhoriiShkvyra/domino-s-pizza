@@ -1,0 +1,35 @@
+.footer {
+    display: flex;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: black;
+    padding: 45px 30px 30px 30px;
+
+    color: white;
+
+
+    .section {
+        display: grid;
+        padding-left: 45px;
+        overflow: hidden;
+    
+        h2 {
+            font-weight: 900;
+        }
+
+        .link {
+            padding-top: 15px;
+            font-size: 14px;
+            color: #8d8d8d;
+            text-decoration: none;
+        }
+
+        .link-creators {
+            margin-top: 65px;
+            font-size: 13px;
+            color: #8d8d8d;
+            text-decoration: none;
+            text-transform:uppercase;
+        }
+    }    
+}
