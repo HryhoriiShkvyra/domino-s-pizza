@@ -1,7 +1,6 @@
 .footer {
     display: flex;
-    gap: 20px;
-    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
     background-color: black;
     padding: 45px 30px 30px 30px;
 
@@ -9,23 +8,55 @@
 
 
     .section {
-        display: grid;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
         padding-left: 45px;
         overflow: hidden;
     
         h2 {
-            font-weight: 900;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .link {
-            padding-top: 15px;
-            font-size: 14px;
+            padding-top: 16px;
+            font-size: 15px;
             color: #8d8d8d;
             text-decoration: none;
+            line-height: 15px;
+        }
+
+        .link-tracker {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                position: absolute;
+                top: 12px;
+                left: -35px;
+                color: #8d8d8d;
+
+                .icon {
+                    color: #d51a1e;
+                    transform: scaleX(-1);
+            }
+            }
+            
+
+            
         }
 
         .link-creators {
-            margin-top: 65px;
+            margin-top: 52px;
             font-size: 13px;
             color: #8d8d8d;
             text-decoration: none;

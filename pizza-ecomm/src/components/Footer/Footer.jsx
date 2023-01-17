@@ -1,3 +1,4 @@
+import { SmsOutlined } from '@mui/icons-material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
@@ -17,9 +18,15 @@ export default function Footer() {
       </div>
       <div className='section'>
         <h2>Services</h2>
+        <Link className='link-tracker'> 
+          <div><SmsOutlined className='icon'/> Pizza Tracker</div>
+        </Link>
       </div>
       <div className='section'>
         <h2>Contacts</h2>
+        <Link className='link'>info@dominos.ua</Link>
+        <Link className='link'>Send complaint</Link>
+        <Link className='link'>044 222 11 11</Link>
       </div>
       <div className='section'>
         <h2>
