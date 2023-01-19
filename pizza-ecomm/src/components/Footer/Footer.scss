@@ -176,6 +176,8 @@
                 overflow: hidden;
                 border-radius: 0px;
 
+                
+
                 .application {
                     display: flex;
                     justify-content: center;
@@ -185,41 +187,56 @@
                     gap: 5px;
                     padding: 0 17px;
                     background-color: #333;
+
+                    cursor: pointer;
+
+                    
                     
                     &:first-child {
                         border-radius: 10px 0 0 10px;
+
+                        
                     }
 
                     &:last-child {
                         border-radius: 0 10px 10px 0;
                     }
 
-                .icon {
+                    .icon {
+                            color: #8d8d8d;
+                            width: 25px;
+                            height: 25px;
+
+                            
+                    }
+
+                    div {
+
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        // margin-top: 10px;
+                        // line-height: 7px;
+                        text-transform: capitalize;
+                        color: white;
+                        transition: all .4s ease;
+                        
+                        
+                        .application-place {
+                            font-size: 8px;
+                        }
+                        .application-direction {
+                            font-size: 12px;
+                            font-weight: 700;
+                        }
+                    }
+
+                    &:hover > div{
                         color: #8d8d8d;
-                        width: 25px;
-                        height: 25px;
-                }
-
-                div {
-
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    // margin-top: 10px;
-                    // line-height: 7px;
-                    text-transform: capitalize;
+                        transition: all .4s ease;
+                    }
                     
-                    color: white;
-                    .application-place {
-                        font-size: 8px;
-                    }
-                    .application-direction {
-                        font-size: 12px;
-                        font-weight: 700;
-                    }
                 }
-
-               }
             }
 
             .section-payment {

@@ -1,3 +1,20 @@
 .drinks {
     
+
+    .card-ingredients-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        .card-ingredients {
+            display: flex;
+            flex-direction: column;
+
+            img {
+                width: 100px;
+                object-fit: fill;
+                aspect-ratio: 1/1;
+
+            }
+        }
+    }
 }

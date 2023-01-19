@@ -1,5 +1,6 @@
 import { ShoppingCart } from '@mui/icons-material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CardQuantity from '../CardQuantity/CardQuantity';
 import CardSize from '../CardSize/CardSize';
 import './Card.scss';
@@ -19,7 +20,7 @@ export default function Card() {
               </div>
           </div>
           <div className='product-about'>
-            <h2>Pizza Name</h2>
+            <Link className='product-title' to='/product/:id'>Pizza Name</Link>
             <h5>(double serving of mushrooms), Mushrooms, Mozarella, Peperoni, Al'fredo sauce</h5>
             <div className='ingredients'>replace ingredients</div>
           </div>

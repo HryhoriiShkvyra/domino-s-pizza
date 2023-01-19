@@ -68,12 +68,12 @@
                 align-items: center;
 
                 .language {
-                    // display: flex;
+                    display: flex;
                     width: 135px;
                     height: 28px;
-                    padding-left: 10px;
-                    text-align: start;
-                    justify-content: center;
+                    padding: 6px 6px 6px 8px;
+                    justify-content: space-between;
+                    align-items: center;
                     border-radius: 15px;
                     border: 1px solid #222;
                     background-color: rgb(75, 75, 75);
@@ -90,7 +90,6 @@
                         background-color: #222;
                     }
                     .lang {
-                        
                         text-align: center;
                         justify-content: center;
 

@@ -1,5 +1,4 @@
 import { Facebook, Instagram, SmsOutlined, Telegram, YouTube } from '@mui/icons-material';
-import { height } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
@@ -50,7 +49,7 @@ export default function Footer() {
           <span>download application</span>
           <div className='section-app'>
             <div className='application'>
-              <img src="https://www.svgrepo.com/show/473543/apple.svg" alt="" className="icon" />
+              <img src="https://www.svgrepo.com/show/473543/apple.svg" style={{filter: 'invert(1)'}} alt="" className="icon" />
               <div>
                 <span className='application-place'>Download on the</span>
                 <span className='application-direction'>App Store</span>  
