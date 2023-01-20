@@ -75,7 +75,7 @@ export default function Navbar() {
               <span>00</span>
               <ShoppingCart className='icon'/>
             </div>
-            <div className='checkout'>checkout</div>
+            <Link className='checkout' onClick={() => setNavBarActive('checkout')} to='/checkout/'>checkout</Link>
           </div>
           <div className='bar-menu'><Dehaze/></div>
         </div>
