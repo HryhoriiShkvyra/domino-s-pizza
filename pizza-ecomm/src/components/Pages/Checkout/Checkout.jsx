@@ -1,16 +1,17 @@
-import { DeliveryDiningOutlined, KeyboardArrowDownOutlined, LocationOn, StorefrontOutlined } from '@mui/icons-material';
+import { Add, DeliveryDiningOutlined, KeyboardArrowDownOutlined, LocationOn, Remove, StorefrontOutlined } from '@mui/icons-material';
 import React from 'react';
 import './Checkout.scss';
 
 export default function Checkout() {
 
   const [activeBtn, setActiveBtn] = React.useState('delivery')
+  const [count, setCount] = React.useState('00')
 
   return (
     <div className='checkout-wrapper'>
       <div className='checkout-order'>
         <div className='first-block'>
-          <h1 className='first-block-title'>Checkout order</h1>
+          <h1 className='block-title'>Checkout order</h1>
           <div className='first-block-btns-wrapper'>
             {/* for btn which one clicked in moment need add border
               do this late, cuz right now I have not idea how to do this  */}
@@ -76,8 +77,33 @@ export default function Checkout() {
 
         </div>
       </div>      
-      <div className='your-order'>
-        <span className='your-order-title'>Your order</span>
+      <div className='right'>
+        <span className='block-title'>Your order</span>
+        <div className='right-wrapper'>
+          <div className='right-product'>
+              <img className='right-product-image' src="https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg" alt="#" />
+              <div className="right-product-text">
+                <span className='right-product-title'>Pizza title</span>
+                <span className='right-product-ingredients'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, placeat?</span>
+                <span className='right-product-crust'>XXLarge</span>
+                <span className='right-product-price'>231.00 <h5 className='right-price-currency'>uah</h5></span>
+                <span className='right-product-quantity'>
+                  <button className='quantity-btn' onClick={() => (setCount(count - 1))} style={{marginLeft: '-1px'}} >
+                    <Remove/>
+                  </button> 
+                  <div className='count'>
+                    {count} 
+                  </div>
+                  <button className='quantity-btn' onClick={() => (setCount(count + 1))} style={{margin: '-1px'}}>
+                    <Add/>
+                  </button>
+                </span>
+              </div>
+          </div>
+          <div className="right-price-wrapper">
+            <span className='right-price'>231.00 <h5 className='right-price-currency'>uah</h5></span>
+          </div>
+        </div>
       </div>      
     </div>
   )
