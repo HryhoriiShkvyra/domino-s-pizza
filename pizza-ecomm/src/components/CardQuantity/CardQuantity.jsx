@@ -2,7 +2,7 @@ import { Add, Remove } from '@mui/icons-material';
 import React from 'react';
 import './CardQuantity.scss';
 
-export default function CardQuantity() {
+export default function CardQuantity({item}) {
 
     const [count, setCount] = React.useState('00')
   
@@ -11,7 +11,7 @@ export default function CardQuantity() {
     return (
         <div className='card-quantity'>
             <div className='card-price'>
-                231 
+                {item?.attributes.price}
                 <span>uah</span>
             </div>
             {   count === 0 ?

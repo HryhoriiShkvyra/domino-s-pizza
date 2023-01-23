@@ -5,27 +5,31 @@ import CardQuantity from '../CardQuantity/CardQuantity';
 import CardSize from '../CardSize/CardSize';
 import './Card.scss';
 
-export default function Card() {
+export default function Card({item}) {
   return (
     <div className='card'>
         <div className="card-block">
           <div className="img-container">
-              <img className='img-product' src='https://images.pexels.com/photos/1049626/pexels-photo-1049626.jpeg' alt=''/>
+              <img className='img-product' src={item.img} alt=''/>
+              {item?.attributes.isNew &&
               <div className='type'>
-                  <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/new.svg' alt='new'/>
+                <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/new.svg' alt='new'/>
               </div>
-              <div className='weight'>587 g</div>
+              }
+
+              
+              <div className='weight'>{item?.attributes.weight} g</div>
               <div className='bag-status'>
                 <ShoppingCart style={{fontSize: '20px'}}/>
               </div>
           </div>
           <div className='product-about'>
-            <Link className='product-title' to='/product/:id'>Pizza Name</Link>
-            <h5>(double serving of mushrooms), Mushrooms, Mozarella, Peperoni, Al'fredo sauce</h5>
-            <div className='ingredients'>replace ingredients</div>
+            <Link className='product-title' to='/product/:id'>{item.attributes.title}</Link>
+            <h5>{item.attributes.description}</h5>
+            <Link className='ingredients'>replace ingredients</Link>
           </div>
-          <CardSize/>
-          <CardQuantity/>
+          <CardSize item={item}/>
+          <CardQuantity item={item}/>
         </div>
     </div>
 
