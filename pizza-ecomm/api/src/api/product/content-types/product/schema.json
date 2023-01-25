@@ -52,6 +52,15 @@
       "relation": "manyToOne",
       "target": "api::cathegory.cathegory",
       "inversedBy": "products"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "pizza",
+        "sides",
+        "drinks",
+        "dessert"
+      ]
     }
   }
 }

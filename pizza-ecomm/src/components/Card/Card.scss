@@ -109,7 +109,8 @@
                 cursor: pointer;
             }
     
-            h5 {
+            .product-description {
+                height: 25px;
                 font-size: 12px;
                 font-weight: 300;
                 color: #666;
@@ -117,6 +118,7 @@
     
             .ingredients {
                 font-size: 11px;
+                color: #444;
                 text-transform: capitalize;
                 text-decoration: underline;
             }     

@@ -10,7 +10,8 @@ export default function Home() {
     <div className='home'>
       <Slider/>
       <Sort/>
-      <CardList/>
+      <CardList type='sides'/>
+      <CardList type='pizza'/>
     </div>
   )
 }

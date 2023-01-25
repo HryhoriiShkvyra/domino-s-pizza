@@ -6,14 +6,18 @@
     .list-title {
         display: flex;
         gap: 10px;
-        margin-top: 30px;
+        margin-top: 45px;
         justify-content: center;
         align-items: center;
         text-align: center;
         font-size: 22px;
         font-weight: 700;
 
-        span {
+
+       
+
+        .list-icon-wrapper {
+        position: relative;
             width: 16px;
             height: 16px;
             display: flex;
@@ -24,11 +28,54 @@
             border: 1px solid black;
             border-radius: 10px;
 
+            cursor: pointer;
+
+            .list-about {
+                // position: absolute;
+                // display: none;
+                transition: all .5s ease;
+                visibility: hidden;
+            }
+
             .icon {
                 font-size: 16px;
                 filter: invert(1);
 
                 transform: rotate(10deg);
+
+               
+            }
+
+            .list-about {
+                position: absolute;
+                height: fit-content;
+                width: fit-content;
+                padding: 5px 10px;
+                font-size: 14px;
+                font-weight: 500;
+                color: #fff;
+                background-color: #2f3237;
+                border-radius: 5px;
+                transition: all .5 ease;
+                visibility: hidden;
+                right: 500px;
+                bottom: 30px;
+            }
+
+            &:hover > .list-about {
+                visibility: visible;
+                display: block;
+                height: fit-content;
+                width: 230px;
+                padding: 5px 10px;
+                font-size: 14px;
+                font-weight: 500;
+                color: #fff;
+                background-color: #2f3237;
+                border-radius: 5px;
+                transition: all .5s ease;
+                left: -110px;
+                bottom: 30px;
             }
         }
     }
