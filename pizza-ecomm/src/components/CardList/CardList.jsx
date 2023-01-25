@@ -3,11 +3,13 @@ import React from 'react';
 import Card from '../Card/Card';
 import './CardList.scss';
 import axios from 'axios'
-import useFetch from '../Hooks/useFetch/useFetch';
+import useFetch from '../Hooks/useFetch';
 
 export default function CardList({type}) {
 
-  const {data, loading, error} = useFetch(`product?populate=*&[filters][type][$eq]=${type}`)
+  const {data, loading, error} = useFetch(
+    `products?populate=*&[filters][type][$eq]=${type}`
+  );
 
 
 
@@ -22,7 +24,7 @@ export default function CardList({type}) {
               </div>
             </div>
             <div className='card-list-block'>
-                {data.map(item => 
+                {data?.map(item => 
                   <Card key={item.id} item={item}/>
                 )}
             </div>
