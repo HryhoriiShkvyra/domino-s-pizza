@@ -2,7 +2,6 @@ import { Info } from '@mui/icons-material';
 import React from 'react';
 import Card from '../Card/Card';
 import './CardList.scss';
-import axios from 'axios'
 import useFetch from '../Hooks/useFetch';
 
 export default function CardList({type}) {
@@ -24,9 +23,14 @@ export default function CardList({type}) {
               </div>
             </div>
             <div className='card-list-block'>
-                {data?.map(item => 
-                  <Card key={item.id} item={item}/>
-                )}
+
+                { error 
+                  ? 'something went wrong' :
+                    loading
+                  ? 'loading'
+                    :
+                  data?.map(item => <Card key={item.id} item={item}/>)
+                }
             </div>
 
             
