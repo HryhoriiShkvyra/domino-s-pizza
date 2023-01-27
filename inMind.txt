@@ -1,0 +1,7 @@
+I have product. 
+
+It can have one `category` and one type
+For every product will be in in page this `category` type and title list will be this `type`
+
+
+

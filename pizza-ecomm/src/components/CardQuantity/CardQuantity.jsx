@@ -4,9 +4,9 @@ import './CardQuantity.scss';
 
 export default function CardQuantity({item}) {
 
-    const [count, setCount] = React.useState('00')
+    const [count, setCount] = React.useState(0)
   
-
+    
 
     return (
         <div className='card-quantity'>

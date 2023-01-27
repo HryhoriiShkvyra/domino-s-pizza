@@ -6,6 +6,8 @@ import CardSize from '../CardSize/CardSize';
 import './Card.scss';
 
 export default function Card({item}) {
+
+  // const [cartStatus, setCartStatus] = React.useState(false)
   
 
   return (
@@ -24,6 +26,8 @@ export default function Card({item}) {
               <div className='bag-status'>
                 <ShoppingCart style={{fontSize: '20px'}}/>
               </div>
+
+
           </div>
           <div className='product-about'>
             <Link className='product-title' to='/product/:id'>{item.attributes.title}</Link>

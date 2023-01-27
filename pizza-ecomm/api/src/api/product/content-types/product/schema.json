@@ -56,10 +56,13 @@
     "type": {
       "type": "enumeration",
       "enum": [
-        "pizza",
-        "sides",
-        "drinks",
-        "dessert"
+        "Pizza: Best Price",
+        "Pizza: Heroes",
+        "Water ",
+        "Tea",
+        "Combo-boxes",
+        "Sides",
+        "Dessert"
       ]
     }
   }

@@ -16,7 +16,7 @@ export default function CardList({type}) {
     <div className='card-list'>
         <div className='container'>
             <div className='list-title'>
-              {type} List 
+              {type} 
               <div className='list-icon-wrapper'>
                 <div className='list-about'>Here are the most affordable pizzas</div>
                 <Info className='icon'/>
