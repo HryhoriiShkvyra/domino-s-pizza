@@ -11,7 +11,6 @@ export default function CardList({type}) {
   );
 
 
-
   return (
     <div className='card-list'>
         <div className='container'>
@@ -29,7 +28,7 @@ export default function CardList({type}) {
                     loading
                   ? 'loading'
                     :
-                  data?.map(item => <Card key={item.id} item={item}/>)
+                  data?.map(item => <Card key={item.id} item={item} type={type}/>)
                 }
             </div>
 

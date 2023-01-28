@@ -18,10 +18,10 @@
     "description": {
       "type": "string"
     },
-    "weight": {
+    "weight_1": {
       "type": "string"
     },
-    "price": {
+    "price_1": {
       "type": "decimal"
     },
     "isNew": {
@@ -41,10 +41,10 @@
         "audios"
       ]
     },
-    "Size": {
+    "size_1": {
       "type": "string"
     },
-    "Crust": {
+    "crust_1": {
       "type": "string"
     },
     "cathegory": {
@@ -52,6 +52,102 @@
       "relation": "manyToOne",
       "target": "api::cathegory.cathegory",
       "inversedBy": "products"
+    },
+    "price_2": {
+      "type": "decimal"
+    },
+    "price_3": {
+      "type": "decimal"
+    },
+    "price_4": {
+      "type": "decimal"
+    },
+    "price_5": {
+      "type": "decimal"
+    },
+    "price_6": {
+      "type": "decimal"
+    },
+    "price_7": {
+      "type": "decimal"
+    },
+    "price_8": {
+      "type": "decimal"
+    },
+    "price_9": {
+      "type": "decimal"
+    },
+    "price_10": {
+      "type": "decimal"
+    },
+    "price_11": {
+      "type": "decimal"
+    },
+    "price_12": {
+      "type": "decimal"
+    },
+    "size_2": {
+      "type": "string"
+    },
+    "size_3": {
+      "type": "string"
+    },
+    "size_4": {
+      "type": "string"
+    },
+    "crust_2": {
+      "type": "string"
+    },
+    "crust_3": {
+      "type": "string"
+    },
+    "crust_4": {
+      "type": "string"
+    },
+    "weight_2": {
+      "type": "string"
+    },
+    "weight_3": {
+      "type": "string"
+    },
+    "weight_4": {
+      "type": "string"
+    },
+    "weight_5": {
+      "type": "string"
+    },
+    "weight_6": {
+      "type": "string"
+    },
+    "weight_7": {
+      "type": "string"
+    },
+    "weight_8": {
+      "type": "string"
+    },
+    "weight_9": {
+      "type": "string"
+    },
+    "weight_10": {
+      "type": "string"
+    },
+    "weight_11": {
+      "type": "string"
+    },
+    "weight_12": {
+      "type": "string"
+    },
+    "weight_13": {
+      "type": "string"
+    },
+    "weight_14": {
+      "type": "string"
+    },
+    "weight_15": {
+      "type": "string"
+    },
+    "weight_16": {
+      "type": "string"
     },
     "type": {
       "type": "enumeration",
@@ -61,7 +157,7 @@
         "Water ",
         "Tea",
         "Combo-boxes",
-        "Sides",
+        "Bread",
         "Dessert"
       ]
     }

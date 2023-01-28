@@ -6,7 +6,7 @@ export default function Sides() {
   return (
     <div className='sides'>
       <CardList type='Combo-boxes'/>
-      <CardList type='Sides'/>
+      <CardList type='Bread'/>
 
     </div>
   )

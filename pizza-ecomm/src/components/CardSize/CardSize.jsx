@@ -2,10 +2,10 @@ import React from 'react';
 import './CardSize.scss';
 
 
-export default function CardSize() {
+export default function CardSize({item}) {
 
 
-    const [isSize, setIsSize] = React.useState('standard')
+    const [isSize, setIsSize] = React.useState('standard-size')
     const [isCrust, setIsCrust] = React.useState('thick')
     // const SizeValue = [isSize, isCrust] 
     // let isPrice = '0'
@@ -18,12 +18,19 @@ export default function CardSize() {
 
     // const [count, setCount] = React.useState(0)
 
+    // console.log(item)
+    // const price_1 = item.attributes.price_1
+    // const price_2 = item.attributes.price_2
+
   return (
     <div>
         <div className='card-size'>
             <div className='card-block-size'>
-                <button onClick={() => setIsSize('standard')} 
-                className={isSize === 'standard' ? 'card-size-btn-active' : 'card-size-btn'}>Standard  size</button>
+                {
+
+                }
+                <button onClick={() => setIsSize('standard-size')} 
+                className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}>Standard  size</button>
                 <div className='span'></div>
                 <button onClick={() => setIsSize('large')} 
                 className={isSize === 'large' ? 'card-size-btn-active' : 'card-size-btn'}>Large</button>

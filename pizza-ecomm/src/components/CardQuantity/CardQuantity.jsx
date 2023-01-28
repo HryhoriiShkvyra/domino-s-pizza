@@ -11,7 +11,7 @@ export default function CardQuantity({item}) {
     return (
         <div className='card-quantity'>
             <div className='card-price'>
-                {item?.attributes.price}
+                {item?.attributes.price_1}
                 <span>uah</span>
             </div>
             {   count === 0 ?
