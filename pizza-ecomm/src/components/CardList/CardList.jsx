@@ -4,7 +4,7 @@ import Card from '../Card/Card';
 import './CardList.scss';
 import useFetch from '../Hooks/useFetch';
 
-export default function CardList({type}) {
+export default function CardList({type, cathegory}) {
 
   const {data, loading, error} = useFetch(
     `products?populate=*&[filters][type][$eq]=${type}`
@@ -28,7 +28,7 @@ export default function CardList({type}) {
                     loading
                   ? 'loading'
                     :
-                  data?.map(item => <Card key={item.id} item={item} type={type}/>)
+                  data?.map(item => <Card key={item.id} item={item} type={type} cathegory = {cathegory}/>)
                 }
             </div>
 

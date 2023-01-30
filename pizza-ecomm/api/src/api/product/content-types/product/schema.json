@@ -24,12 +24,6 @@
     "price_1": {
       "type": "decimal"
     },
-    "isNew": {
-      "type": "boolean"
-    },
-    "inCart": {
-      "type": "boolean"
-    },
     "img": {
       "type": "media",
       "multiple": false,
@@ -160,6 +154,34 @@
         "Bread",
         "Dessert"
       ]
+    },
+    "isAdult": {
+      "type": "boolean",
+      "default": false
+    },
+    "isChili": {
+      "type": "boolean",
+      "default": false
+    },
+    "isNew": {
+      "type": "boolean",
+      "default": false
+    },
+    "inCart": {
+      "type": "boolean",
+      "default": false
+    },
+    "price_13": {
+      "type": "decimal"
+    },
+    "price_14": {
+      "type": "decimal"
+    },
+    "price_15": {
+      "type": "decimal"
+    },
+    "price_16": {
+      "type": "decimal"
     }
   }
 }

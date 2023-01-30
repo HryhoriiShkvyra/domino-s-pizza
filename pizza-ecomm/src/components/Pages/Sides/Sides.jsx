@@ -5,8 +5,8 @@ import './Sides.scss';
 export default function Sides() {
   return (
     <div className='sides'>
-      <CardList type='Combo-boxes'/>
-      <CardList type='Bread'/>
+      <CardList cathegory = 'sides' type= 'Combo-boxes'/>
+      <CardList cathegory = 'sides' type= 'Bread'/>
 
     </div>
   )

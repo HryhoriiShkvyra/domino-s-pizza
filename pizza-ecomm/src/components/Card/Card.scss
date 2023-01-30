@@ -1,5 +1,6 @@
 .card {
-    width: fit-content;
+    min-width: 268px;
+    // width: fit-content;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -85,7 +86,7 @@
                 font-weight: 400;
             }
 
-            .bag-status{
+            .cart-status{
                 position: absolute;
                 bottom: 12px;
                 left: 12px;

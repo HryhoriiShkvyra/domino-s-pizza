@@ -3,14 +3,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CardQuantity from '../CardQuantity/CardQuantity';
 import CardSize from '../CardSize/CardSize';
-import useFetch from '../Hooks/useFetch';
+// import useFetch from '../Hooks/useFetch';
 import './Card.scss';
 
-export default function Card({item, type}) {
+export default function Card({item, type, cathegory}) {
 
-  // const [cartStatus, setCartStatus] = React.useState(false)
-  const typesOfProducts =  useFetch(`products?populate=*&[filters][type][$eq]=${type}`)
-  console.log(typeof(type))
+  const inCart = true;
+  // const [isPrice, setIsPrice] = React.useState(item.attributes.price_1)
+  const [isSize, setIsSize] = React.useState('standard-size')
+  const [isCrust, setIsCrust] = React.useState('thick')
+  const priceValue = [isSize, isCrust]
+
 
 
   return (
@@ -18,38 +21,59 @@ export default function Card({item, type}) {
         <div className="card-block">
           <div className="img-container">
               <img className='img-product' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>
-              {item?.attributes.isNew &&
-              <div className='type'>
-                <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/new.svg' alt='new'/>
-                <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/03/27/plus-18.svg' alt='new'/>
-                <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/chili.svg' alt='new'/>
-              </div>
-              }
+              {(() => {
+                if (item.attributes.isAdult === true) {
+                  return(
+                    <div className='type'>
+                      <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/03/27/plus-18.svg' alt='new'/>  
+                    </div>
+                  )
+                } else if (item.attributes.isNew === true) {
+                  return (
+                    <div className='type'>
+                      <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/new.svg' alt='new'/>  
+                    </div>
+                    ) 
+                } else if (item.attributes.isChili === true) {
+                  return (
+                    <div className='type'>
+                      <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/chili.svg' alt='new'/>  
+                    </div>     
+                  )
+                }
+              })()}
 
               
               <div className='weight'>{item?.attributes.weight_1} g</div>
-              <div className='bag-status'>
-                <ShoppingCart style={{fontSize: '20px'}}/>
-              </div>
+              
+              {inCart === true ? 
+                null
+                :
+                <div className='cart-status'>
+                  <ShoppingCart style={{fontSize: '20px'}}/>
+                </div>
+              }
 
 
           </div>
           <div className='product-about'>
             <Link className='product-title' to='/product/:id'>{item.attributes.title}</Link>
-            { typesOfProducts === 'Pizza: Best Price' 
+            { cathegory === 'pizza' 
               ?
-              null
-              :
               <div>
                 <h5 className='product-description'>{item.attributes.description}</h5>
                 <Link className='ingredients' to='/pizza-constructor/:id'>replace ingredients</Link>
               </div>
+              :
+              null
               
             }
           
           </div>
-          <CardSize item={item}/>
-          <CardQuantity item={item}/>
+          <CardSize type={type} item={item} cathegory = {cathegory} priceValue = {priceValue} 
+          isSize = {isSize} setIsSize = {setIsSize} isCrust = {isCrust} setIsCrust = {setIsCrust}
+          />
+          <CardQuantity item={item} priceValue = {priceValue}/>
         </div>
     </div>
 
