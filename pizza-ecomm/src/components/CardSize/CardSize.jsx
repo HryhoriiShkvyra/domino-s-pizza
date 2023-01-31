@@ -4,12 +4,7 @@ import './CardSize.scss';
 
 
 export default function CardSize({item, type, cathegory, isCrust, setIsCrust, isSize, setIsSize}) {
-
-
-    // const [isSize, setIsSize] = React.useState('standard-size')
-    // const [isCrust, setIsCrust] = React.useState('thick')
-
-    const [isStandard, setIsStandard] = React.useState('standard')
+    
 
   return (
     <div>
@@ -51,14 +46,14 @@ export default function CardSize({item, type, cathegory, isCrust, setIsCrust, is
                 if (item.attributes.size_2 === 'Double') {
                     return (
                     <div className='card-else-btn'>
-                        <button onClick={() => setIsStandard('standard')} 
-                            className={isStandard === 'standard' ? 'card-size-btn-active' : 'card-size-btn'}
+                        <button onClick={() => setIsSize('standard')} 
+                            className={isSize === 'standard' ? 'card-size-btn-active' : 'card-size-btn'}
                         >
                             {item.attributes.size_1}
                         </button>
                         
-                        <button onClick={() => setIsStandard('double')} 
-                            className={isStandard === 'double' ? 'card-size-btn-active' : 'card-size-btn'}
+                        <button onClick={() => setIsSize('double')} 
+                            className={isSize === 'double' ? 'card-size-btn-active' : 'card-size-btn'}
                         >
                             {item.attributes.size_2}
                         </button>
