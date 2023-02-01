@@ -37,7 +37,19 @@
             overflow: hidden;
             border-radius: 20px;
 
+            .img-product-drinks-wrapper {
 
+
+                .img-product-drinks {
+                
+                    width: 60%;
+                    aspect-ratio: 3/4;
+                    margin: 0 auto;
+                    transition: all 1s ease;
+    
+                    border-radius: 20px;
+                }
+            }
 
             .img-product {
                 width: 100%;
@@ -45,7 +57,7 @@
                 transition: all 1s ease;
     
                 border-radius: 20px;
-                background-color: #f1f3f9;
+                // background-color: #f1f3f9;
             }
     
             .type {

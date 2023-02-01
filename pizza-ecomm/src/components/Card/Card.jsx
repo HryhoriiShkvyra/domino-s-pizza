@@ -9,44 +9,60 @@ import './Card.scss';
 export default function Card({item, type, cathegory}) {
 
   const inCart = true;
-  // const [isPrice, setIsPrice] = React.useState(item.attributes.price_1)
   const [isSize, setIsSize] = React.useState('standard-size')
   const [isCrust, setIsCrust] = React.useState('thick')
   const priceValue = [isSize, isCrust]
-  // console.log('priceValue ====> ' + priceValue)
-  console.log(item)
 
+  console.log(type)
 
 
   return (
     <div className='card'>
         <div className="card-block">
           <div className="img-container">
-              <img className='img-product' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>
-              {(() => {
-                if (item.attributes.isAdult === true) {
-                  return(
-                    <div className='type'>
-                      <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/03/27/plus-18.svg' alt='new'/>  
-                    </div>
-                  )
-                } else if (item.attributes.isNew === true) {
-                  return (
-                    <div className='type'>
-                      <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/new.svg' alt='new'/>  
-                    </div>
-                    ) 
-                } else if (item.attributes.isChili === true) {
-                  return (
-                    <div className='type'>
-                      <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/chili.svg' alt='new'/>  
-                    </div>     
-                  )
-                }
-              })()}
+            { cathegory === 'drinks' ? 
+              <div className='img-product-drinks-wrapper'>
+                <img className='img-product-drinks' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>
+              </div>
+              :
+             <img className='img-product' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>
+            }
+            {/* {(() => {
+              if (cathegory === 'drinks') {
+                return(
+                  <div>hello</div>
+                )
+              } else if () {
+                <img className='img-product' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt='nothing'/>
+              }
+            })()} */}
+            {(() => {
+              if (item.attributes.isAdult === true) {
+                return(
+                  <div className='type'>
+                    <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/03/27/plus-18.svg' alt='new'/>  
+                  </div>
+                )
+              } else if (item.attributes.isNew === true) {
+                return (
+                  <div className='type'>
+                    <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/new.svg' alt='new'/>  
+                  </div>
+                  ) 
+              } else if (item.attributes.isChili === true) {
+                return (
+                  <div className='type'>
+                    <img className='icon' src='https://media.dominos.ua/icon/svg_file/2018/02/23/chili.svg' alt='new'/>  
+                  </div>     
+                )
+              }
+            })()}
 
-              
-              <div className='weight'>{item?.attributes.weight_1} g</div>
+              { cathegory === 'drinks' ?
+                null
+                :
+                <div className='weight'>{item?.attributes.weight_1} g</div>
+              }
               
               {inCart === true ? 
                 null

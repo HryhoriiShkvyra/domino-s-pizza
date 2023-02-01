@@ -6,7 +6,6 @@ export default function CardQuantity({item, priceValue, cathegory, isSize}) {
 
     const [count, setCount] = React.useState(0)
   
-    console.log(item)    
 
     return (
         <div className='card-quantity'>
@@ -96,6 +95,12 @@ export default function CardQuantity({item, priceValue, cathegory, isSize}) {
                             )
                         }
                     }   
+
+                    if (cathegory === 'drinks') {
+                        return (
+                            (item.attributes.price_1)
+                        )
+                    }
                 })()}
 
                 <span>uah</span>
