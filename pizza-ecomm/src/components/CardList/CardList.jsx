@@ -10,8 +10,8 @@ export default function CardList({type, cathegory}) {
     `products?populate=*&[filters][type][$eq]=${type}`
   );
   
-  console.log(data)
-  console.log(useFetch(`products`).data)
+  // console.log(data)
+  // console.log(useFetch(`products`).data)
 
   return (
     <div className='card-list'>

@@ -37,18 +37,39 @@
             overflow: hidden;
             border-radius: 20px;
 
-            .img-product-drinks-wrapper {
 
 
-                .img-product-drinks {
-                
-                    width: 60%;
-                    aspect-ratio: 3/4;
-                    margin: 0 auto;
-                    transition: all 1s ease;
+            .img-product-drinks-water {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: -60px auto 0;
+                transition: all 1s ease;
     
-                    border-radius: 20px;
-                }
+                border-radius: 20px;
+            }
+
+            .img-product-drinks-tea {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 60%;
+                margin: 0px auto 0;
+                transition: all 1s ease;
+    
+                border-radius: 20px;
+            }
+            
+            .img-product-sweet-sauce {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin: -130px auto 0;
+                transition: all 1s ease;
+    
+                border-radius: 20px;
             }
 
             .img-product {

@@ -13,29 +13,44 @@ export default function Card({item, type, cathegory}) {
   const [isCrust, setIsCrust] = React.useState('thick')
   const priceValue = [isSize, isCrust]
 
-  console.log(type)
+  console.log(item)
 
 
   return (
     <div className='card'>
         <div className="card-block">
           <div className="img-container">
-            { cathegory === 'drinks' ? 
-              <div className='img-product-drinks-wrapper'>
-                <img className='img-product-drinks' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>
-              </div>
-              :
-             <img className='img-product' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>
-            }
-            {/* {(() => {
+
+            {(() => {
               if (cathegory === 'drinks') {
-                return(
-                  <div>hello</div>
+                if (item.attributes.type === 'Water') {
+                  return(
+                    (
+                      <img className='img-product-drinks-water' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>
+                    )
+                  )
+                } if (type === 'Tea') {
+                    return(
+                      (
+                        <img className='img-product-drinks-tea' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>
+                      )
+                    )
+                }
+              } else if (item.attributes.title === 'Sweet sauce 50g') {
+                return (
+                  (
+                    <img className='img-product-sweet-sauce' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>  
+                  )
                 )
-              } else if () {
-                <img className='img-product' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt='nothing'/>
+              } else {
+                return (
+                  (
+                    <img className='img-product' src={process.env.REACT_APP_UPLOAD_URL + item?.attributes?.img?.data?.attributes?.url} alt=''/>  
+                  )
+                )
               }
-            })()} */}
+              
+            })()}
             {(() => {
               if (item.attributes.isAdult === true) {
                 return(
@@ -58,7 +73,7 @@ export default function Card({item, type, cathegory}) {
               }
             })()}
 
-              { cathegory === 'drinks' ?
+              { item.attributes.weight_1 === null ?
                 null
                 :
                 <div className='weight'>{item?.attributes.weight_1} g</div>

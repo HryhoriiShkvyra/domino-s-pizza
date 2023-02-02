@@ -81,7 +81,7 @@ export default function CardQuantity({item, priceValue, cathegory, isSize}) {
                         }
 
                     if (cathegory === 'sides') {
-                        if (`${isSize}` === 'standard') {
+                        if (`${isSize}` === 'standard-size') {
                             return (
                                 (item.attributes.price_1)
                             )
@@ -97,9 +97,31 @@ export default function CardQuantity({item, priceValue, cathegory, isSize}) {
                     }   
 
                     if (cathegory === 'drinks') {
+                        if (`${isSize}` === 'standard-size') {
                         return (
                             (item.attributes.price_1)
                         )
+                        } else if (`${isSize}` === 'medium') {
+                            return (
+                                (item.attributes.price_2)
+                            )
+                        } else if (item.attributes.size_3 === 'big') {
+                            return (
+                                (item.attributes.price_3)
+                            )
+                        }
+                    }
+
+                    if (cathegory === 'dessert') {
+                        if (`${isSize}` === 'double') {
+                            return(
+                                (item.attributes.price_2)
+                            )
+                        } else {
+                            return(
+                                (item.attributes.price_1)
+                            )
+                        }
                     }
                 })()}
 
@@ -111,20 +133,16 @@ export default function CardQuantity({item, priceValue, cathegory, isSize}) {
                 </div>
             :
                 <div className='increase-decrease-quantity'>
-                    {/* <div className='decrease-quantity'> */}
                         <button className='quantity-btn' onClick={() => (setCount(count - 1))} style={{marginLeft: '-1px'}} >
                             <Remove className='quantity'/>
                         </button>
-                    {/* </div> */}
                     
                     <div className='count'>
                         {count} 
                     </div>
-                    {/* <div className='increase-quantity'> */}
                         <button className='quantity-btn' onClick={() => (setCount(count + 1))} style={{margin: '-1px'}}>
                             <Add/>
                         </button>
-                    {/* </div> */}
                 </div> 
             }
         

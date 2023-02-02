@@ -46,8 +46,8 @@ export default function CardSize({item, type, cathegory, isCrust, setIsCrust, is
                 if (item.attributes.size_2 === 'Double') {
                     return (
                     <div className='card-else-btn'>
-                        <button onClick={() => setIsSize('standard')} 
-                            className={isSize === 'standard' ? 'card-size-btn-active' : 'card-size-btn'}
+                        <button onClick={() => setIsSize('standard-size')} 
+                            className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}
                         >
                             {item.attributes.size_1}
                         </button>
@@ -73,6 +73,101 @@ export default function CardSize({item, type, cathegory, isCrust, setIsCrust, is
             }
         })()}
        
+       {(() => {
+            if (cathegory === 'drinks') {
+                if (item.attributes.size_2 === 'Medium') {
+                    return (
+                    <div className='card-else-btn'>
+                        <button onClick={() => setIsSize('standard-size')} 
+                            className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}
+                        >
+                            {item.attributes.size_1}
+                        </button>
+                        
+                        <button onClick={() => setIsSize('medium')} 
+                            className={isSize === 'medium' ? 'card-size-btn-active' : 'card-size-btn'}
+                        >
+                            {item.attributes.size_2}
+                        </button>
+                        <button onClick={() => setIsSize('big')} 
+                            className={isSize === 'big' ? 'card-size-btn-active' : 'card-size-btn'}
+                        >
+                            {item.attributes.size_3}
+                        </button>
+                    </div>
+                    )
+                } else {
+                    return(
+                        <div  className='card-else-btn'>
+                            <button className='card-size-btn-active'>
+                                {item.attributes.size_1}
+                            </button>
+                        </div>
+                    )
+                    
+                }
+            } else {
+            }
+        })()}
+        {/* { item.attributes.size_2 === 'Double' ? 
+         <div className='card-else-btn'>
+            <button onClick={() => setIsSize('standard-size')} 
+                className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}
+            >
+                {item.attributes.size_1}
+            </button>
+            
+            <button onClick={() => setIsSize('double')} 
+                className={isSize === 'double' ? 'card-size-btn-active' : 'card-size-btn'}
+            >
+                {item.attributes.size_2}
+            </button>
+        </div>
+        :
+        <div className='card-else-btn'>
+            <button onClick={() => setIsSize('standard-size')} 
+                className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}
+            >
+                {item.attributes.size_1}
+            </button>
+        </div>
+        } */}
+
+        {(() => {
+            if (cathegory === 'dessert') {
+                if (item.attributes.size_2 === 'Double') {
+                    return(
+                        (
+                            <div className='card-else-btn'>
+                                <button onClick={() => setIsSize('standard-size')} 
+                                    className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}
+                                >
+                                    {item.attributes.size_1}
+                                </button>       
+                                <button onClick={() => setIsSize('double')} 
+                                    className={isSize === 'double' ? 'card-size-btn-active' : 'card-size-btn'}
+                                >
+                                    {item.attributes.size_2}
+                                </button>
+                            </div>
+                        )
+                    )
+                } else {
+                    return(
+                        (
+                            <div className='card-else-btn'>
+                                <button onClick={() => setIsSize('standard-size')} 
+                                    className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}
+                                >
+                                    {item.attributes.size_1}
+                                </button>
+                            </div>
+                            
+                        )
+                    )
+                }
+            }
+        })()}
             
                                  
     </div>
