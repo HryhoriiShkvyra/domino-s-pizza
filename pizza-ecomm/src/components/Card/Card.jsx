@@ -16,6 +16,12 @@ export default function Card({item, type, cathegory}) {
   console.log(item)
 
 
+  // const {data, loading, error} = useFetch(
+  //   `products?populate=*&[filters][price_1][$eq]=${type}$`
+  // );
+  
+  // console.log(useFetch)
+
   return (
     <div className='card'>
         <div className="card-block">
