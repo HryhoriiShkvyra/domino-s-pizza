@@ -1,17 +1,15 @@
 import React from 'react';
-// import Card from '../../Card/Card';
-import CardList from '../../CardList/CardList';
 import Slider from '../../Slider/Slider';
-import Sort from '../../Sorting/Sorting';
+import Pizza from '../Pizza/Pizza';
 import './Home.scss';
 
 export default function Home() {
+
+
   return (
     <div className='home'>
       <Slider/>
-      <Sort/>
-      <CardList cathegory='pizza' type='Pizza: Best Price' />
-      <CardList cathegory='pizza' type='Pizza: Heroes'/>
+      <Pizza/>
     </div>
   )
 }

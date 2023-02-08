@@ -13,8 +13,22 @@ export default function Card({item, type, cathegory}) {
   const [isCrust, setIsCrust] = React.useState('thick')
   const priceValue = [isSize, isCrust]
 
-  console.log(item)
 
+  
+
+  // const forEach = (arr, cb) => {
+  //   for(let i = 0; i < + arr.length; i++) {
+  //     const element = arr
+  //     cb(element)
+  //   }
+  // }
+
+  // setTimeout(() =>
+  //   forEach(datas, (data) => {
+  //     console.log(data)
+  //   })
+  //   , 5000)
+ 
 
   // const {data, loading, error} = useFetch(
   //   `products?populate=*&[filters][price_1][$eq]=${type}$`

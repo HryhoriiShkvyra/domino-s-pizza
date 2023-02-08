@@ -1,19 +1,14 @@
-.sort-container {
+.filter-container {
     width: 70%;
     display: flex;
-    justify-content: right;
-    margin: 50px auto 0;
-    // display: flex;
-    // justify-content: right;
-    // align-items: right;
-    .sort {
+    justify-content: left;
+    margin:0px auto 0;
+    .filter {
         display: flex;
         flex-direction: column;
         justify-content: right;
         align-items: right;
         position: absolute;
-        // top: 676px;
-        // right: 310px;
     
         font-size: 15px;
         font-weight: 600;
@@ -22,7 +17,7 @@
     
         cursor: pointer;
        
-        .sort-wrapper {
+        .filter-wrapper {
             display: flex;
             width: 246px;
             height: 28px;
@@ -31,7 +26,8 @@
             background-color: white;
             border: 1px solid rgb(187, 187, 187);
             border-radius: 25px;
-            .sorting {
+
+            .filter-btn {
     
                 width: 220px;
                 display: flex;
@@ -55,34 +51,38 @@
         
         }
     
-      .labels {
+      .checkbox-wrapper {
         width: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        justify-content: left;
         align-items: center;
         
+        // padding: 3px 0;
         margin-top: 1px;
-        padding: 5px 0;
         
         font-weight: 400;
         background-color: #f8f9fc;
         border: 1px solid #dee3ed;
         border-radius: 20px;
         z-index: 100;
+
+        .checkbox[type="checkbox"] {
+            width: 100px;
+            height: 100px;
+            transform: scale(1.5);
+            border: 4px 4px 44px 8px;
+            border-radius: 20px;
+        }
     
         .label {
-                padding: 12px 0;
+                // padding: 20px 0;
                 // display: none;
                 // visibility: hidden;
     
     
             }
         
-        // .label-border{
-        //     width: 100%;
-        //     border: 1px solid;
-        // }
+     
       }
     
     

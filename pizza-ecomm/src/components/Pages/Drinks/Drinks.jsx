@@ -1,14 +1,19 @@
 import React from 'react';
 import CardList from '../../CardList/CardList'
+import Sorting from '../../Sorting/Sorting';
+import Filter from '../../Filter/Filter';
 import './Drinks.scss';
 
 export default function Drinks() {
 
+  const [isSorting, setIsSorting] = React.useState('#')
 
   return (
     <div className='drinks'>
-      <CardList cathegory='drinks' type='Water'/>
-      <CardList cathegory='drinks' type='Tea'/>
+      <Sorting setIsSorting={setIsSorting}/> 
+      <Filter/>
+      <CardList cathegory='drinks' type='Water' isSorting={isSorting}/>
+      <CardList cathegory='drinks' type='Tea' isSorting={isSorting}/>
       {/* <CardList type='Tea' cathegory='drinks'/> */}
     </div>
   )

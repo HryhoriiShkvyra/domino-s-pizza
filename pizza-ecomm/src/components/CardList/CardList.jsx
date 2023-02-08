@@ -5,18 +5,17 @@ import './CardList.scss';
 import useFetch from '../Hooks/useFetch';
 // import { useParams } from 'react-router-dom';
 
-export default function CardList({type, cathegory}) {
+export default function CardList({type, cathegory, isSorting}) {
 
-  // const catId = parseInt(useParams().id);
-  // const [selectedSort, setSelectedSort] = React.useState([]);
   const {data, loading, error} = useFetch(
     `products?populate=*&[filters][type][$eq]=${type}`
-  );
-  
-  // console.log(data)
-  // console.log(useFetch(`products`).data)
+  ); 
 
-  return (
+  
+
+
+
+    return (
     <div className='card-list'>
         <div className='container'>
             <div className='list-title'>
@@ -33,7 +32,14 @@ export default function CardList({type, cathegory}) {
                     loading
                   ? 'loading'
                     :
-                  data?.map(item => <Card key={item.id} item={item} type={type} cathegory = {cathegory}/>)
+                    isSorting === '#' 
+                  ? data?.map(item => <Card key={item.id} item={item} type={type} cathegory = {cathegory}/>)
+                    :
+                    isSorting === 'high' 
+                  ?
+                    data?.sort((a, b) => (a.attributes.price_1 > b.attributes.price_1) ? -1 : 1).map(item => <Card key={item.id} item={item} type={type} cathegory = {cathegory}/>)
+                    :
+                    data?.sort((a, b) => (a.attributes.price_1 > b.attributes.price_1) ? 1 : -1).map(item => <Card key={item.id} item={item} type={type} cathegory = {cathegory}/>)
                 }
             </div>
 

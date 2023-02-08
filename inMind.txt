@@ -1,7 +1,5 @@
-I have product. 
-
-It can have one `category` and one type
-For every product will be in in page this `category` type and title list will be this `type`
 
 
+
+firstly, need add event.stopPropagation to sort block or something what work like that. 
 

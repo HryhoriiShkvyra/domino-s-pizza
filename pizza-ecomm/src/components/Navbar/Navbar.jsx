@@ -35,7 +35,7 @@ export default function Navbar() {
       {/* <div className={scrollPosition > 50 ? 'second-sticky' : 'second'}> */}
       <div className='second'>
         <div className='secondIn'>
-          <Link className='logo' to='/'>
+          <Link onClick={() => setNavBarActive('pizza')} className='logo' to='/'>
             <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Domino%27s_pizza_logo.svg/2036px-Domino%27s_pizza_logo.svg.png' alt=''/>
             <span>Domino's Pizza</span>
           </Link>
