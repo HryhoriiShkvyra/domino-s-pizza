@@ -155,22 +155,6 @@
         "Dessert"
       ]
     },
-    "isAdult": {
-      "type": "boolean",
-      "default": false
-    },
-    "isChili": {
-      "type": "boolean",
-      "default": false
-    },
-    "isNew": {
-      "type": "boolean",
-      "default": false
-    },
-    "inCart": {
-      "type": "boolean",
-      "default": false
-    },
     "price_13": {
       "type": "decimal"
     },
@@ -182,6 +166,22 @@
     },
     "price_16": {
       "type": "decimal"
+    },
+    "isNew": {
+      "type": "boolean",
+      "default": true
+    },
+    "isAdult": {
+      "type": "boolean",
+      "default": false
+    },
+    "isChili": {
+      "type": "boolean",
+      "default": false
+    },
+    "inCart": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

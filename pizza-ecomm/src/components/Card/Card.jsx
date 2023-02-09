@@ -126,7 +126,7 @@ export default function Card({item, type, cathegory}) {
           <CardSize type={type} item={item} cathegory = {cathegory} priceValue = {priceValue} 
           isSize = {isSize} setIsSize = {setIsSize} isCrust = {isCrust} setIsCrust = {setIsCrust}
           />
-          <CardQuantity item={item} priceValue = {priceValue} cathegory={cathegory}
+          <CardQuantity item={item} type={type} priceValue = {priceValue} cathegory={cathegory}
            isSize = {isSize} setIsSize = {setIsSize}
           />
         </div>

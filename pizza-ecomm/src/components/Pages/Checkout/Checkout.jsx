@@ -1,11 +1,16 @@
 import { Add, DeliveryDiningOutlined, KeyboardArrowDownOutlined, LocationOn, Remove, StorefrontOutlined } from '@mui/icons-material';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './Checkout.scss';
 
 export default function Checkout() {
+  const products = useSelector(state => state.cart.products)
+
 
   const [activeBtn, setActiveBtn] = React.useState('delivery')
-  const [count, setCount] = React.useState('00')
+  const [count, setCount] = React.useState('')
+
+  console.log(products)
 
   return (
     <div className='checkout-wrapper'>
@@ -80,26 +85,28 @@ export default function Checkout() {
       <div className='right'>
         <span className='block-title'>Your order</span>
         <div className='right-wrapper'>
-          <div className='right-product'>
-              <img className='right-product-image' src="https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg" alt="#" />
-              <div className="right-product-text">
-                <span className='right-product-title'>Pizza title</span>
-                <span className='right-product-ingredients'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, placeat?</span>
-                <span className='right-product-crust'>XXLarge</span>
-                <span className='right-product-price'>231.00 <h5 className='right-price-currency'>uah</h5></span>
-                <span className='right-product-quantity'>
-                  <button className='quantity-btn' onClick={() => (setCount(count - 1))} style={{marginLeft: '-1px'}} >
-                    <Remove/>
-                  </button> 
-                  <div className='count'>
-                    {count} 
+          {products.map((item) => (
+                <div className='right-product' key={item.id}>
+                  <img className='right-product-image' src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="#" />
+                  <div className="right-product-text">
+                    <span className='right-product-title'>{item.title}</span>
+                    <span className='right-product-ingredients'>{item.description}</span>
+                    <span className='right-product-crust'>{item.size}</span>
+                    <span className='right-product-price'>{item.price}<h5 className='right-price-currency'>uah</h5></span>
+                    <span className='right-product-quantity'>
+                      <button className='quantity-btn' onClick={() => (setCount(count - 1))} style={{marginLeft: '-1px'}} >
+                        <Remove/>
+                      </button> 
+                      <div className='count'>
+                        {item.quantity} 
+                      </div>
+                      <button className='quantity-btn' onClick={() => (setCount(count + 1))} style={{margin: '-1px'}}>
+                        <Add/>
+                      </button>
+                    </span>
                   </div>
-                  <button className='quantity-btn' onClick={() => (setCount(count + 1))} style={{margin: '-1px'}}>
-                    <Add/>
-                  </button>
-                </span>
-              </div>
-          </div>
+                </div>
+              ))}
           <div className="right-price-wrapper">
             <span className='right-price'>231.00 <h5 className='right-price-currency'>uah</h5></span>
           </div>

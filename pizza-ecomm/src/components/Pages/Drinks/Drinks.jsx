@@ -8,6 +8,7 @@ export default function Drinks() {
 
   const [isSorting, setIsSorting] = React.useState('#')
 
+
   return (
     <div className='drinks'>
       <Sorting setIsSorting={setIsSorting}/> 

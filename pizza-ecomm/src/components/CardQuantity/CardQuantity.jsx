@@ -1,11 +1,38 @@
 import { Add, Remove } from '@mui/icons-material';
-import React from 'react';
+import React, { useState } from 'react';
+import useFetch from '../Hooks/useFetch';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cartReducer';
 import './CardQuantity.scss';
 
-export default function CardQuantity({item, priceValue, cathegory, isSize}) {
+export default function CardQuantity({item, priceValue, type , cathegory, isSize}) {
 
-    const [count, setCount] = React.useState(0)
+    // const {data, loading, error} = useFetch(
+    //     `products?populate=*&[filters][type][$eq]=${type}`
+    // ); 
   
+
+    const [quantity, setQuantity] = React.useState(0);
+    const products = useSelector(state => state.cart.products);
+    const dispatch = useDispatch();
+
+    function upload () {
+        dispatch(addToCart({
+            id: item.id,
+            title: item.attributes.title,
+            description: item.attributes.description,
+            price: item.attributes.price_1,
+            img: item.attributes.img.data.attributes.url,
+            size: priceValue,
+            quantity
+        }))
+    };
+
+    function increaseQuantity () {
+        setQuantity( + 1)
+    }
+
 
     return (
         <div className='card-quantity'>
@@ -127,22 +154,26 @@ export default function CardQuantity({item, priceValue, cathegory, isSize}) {
 
                 <span>uah</span>
             </div>
-            {   count === 0 ?
-                <div className='card-add-to-cart' onClick={() => (setCount(count + 1))}>
+            {   quantity === 0 ?
+                <div className='card-add-to-cart' 
+                    onClick={() => {upload(); increaseQuantity()}}>
                     To cart
                 </div>
+                // <div className='card-add-to-cart' onClick={() => (setQuantity(quantity + 1))}>
+                //     To cart
+                // </div>
             :
                 <div className='increase-decrease-quantity'>
-                        <button className='quantity-btn' onClick={() => (setCount(count - 1))} style={{marginLeft: '-1px'}} >
-                            <Remove className='quantity'/>
-                        </button>
+                    <button className='quantity-btn' onClick={() => setQuantity( - 1)} style={{marginLeft: '-1px'}} >
+                        <Remove className='quantity'/>
+                    </button>
                     
                     <div className='count'>
-                        {count} 
+                        {quantity} 
                     </div>
-                        <button className='quantity-btn' onClick={() => (setCount(count + 1))} style={{margin: '-1px'}}>
-                            <Add/>
-                        </button>
+                    <button className='quantity-btn' onClick={() => {upload(); increaseQuantity()}} style={{margin: '-1px'}}>
+                        <Add/>
+                    </button>
                 </div> 
             }
         

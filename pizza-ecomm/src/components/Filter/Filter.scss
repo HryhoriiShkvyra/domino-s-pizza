@@ -66,12 +66,9 @@
         border-radius: 20px;
         z-index: 100;
 
-        .checkbox[type="checkbox"] {
-            width: 100px;
-            height: 100px;
+        .checkbox:after {
             transform: scale(1.5);
-            border: 4px 4px 44px 8px;
-            border-radius: 20px;
+            border: 50px;
         }
     
         .label {
