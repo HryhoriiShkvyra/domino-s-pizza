@@ -1,9 +1,10 @@
 import { Add, Remove } from '@mui/icons-material';
-import React, { useState } from 'react';
-import useFetch from '../Hooks/useFetch';
+import React from 'react';
+// import useFetch from '../Hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/cartReducer';
+import { incrementQuantity } from '../redux/cartReducer'
 import './CardQuantity.scss';
 
 export default function CardQuantity({item, priceValue, type , cathegory, isSize}) {
@@ -14,8 +15,14 @@ export default function CardQuantity({item, priceValue, type , cathegory, isSize
   
 
     const [quantity, setQuantity] = React.useState(0);
+    const [isActiveBtn, setIsActiveBtn] = React.useState(true)
     const products = useSelector(state => state.cart.products);
     const dispatch = useDispatch();
+
+
+    function activeBtn() {
+        setIsActiveBtn(false)
+    }
 
     function upload () {
         dispatch(addToCart({
@@ -25,20 +32,26 @@ export default function CardQuantity({item, priceValue, type , cathegory, isSize
             price: item.attributes.price_1,
             img: item.attributes.img.data.attributes.url,
             size: priceValue,
-            quantity
+            quantity: quantity
         }))
+        setQuantity((action) => action + 1)
+
     };
 
-    function increaseQuantity () {
-        setQuantity( + 1)
-    }
+    // function increaseQuantity () {
+    //     dispatch(incrementQuantity({
+    //         quantity:quantity
+    //     }))
+    // }
 
+    function increaseQuantity() {
+        setQuantity((action) => action + 1)
+    }
 
     return (
         <div className='card-quantity'>
             <div className='card-price'>
                 {(() => {
-                    
                     if (cathegory === 'pizza') {
                         if (`${priceValue}` === 'standard-size,thick') {
                             return (
@@ -112,7 +125,7 @@ export default function CardQuantity({item, priceValue, type , cathegory, isSize
                             return (
                                 (item.attributes.price_1)
                             )
-                        } else if (`${isSize}` === 'double') {
+                        } else if (`${isSize}` === 'Double') {
                             return (
                                 (item.attributes.price_2)
                             )
@@ -132,7 +145,7 @@ export default function CardQuantity({item, priceValue, type , cathegory, isSize
                             return (
                                 (item.attributes.price_2)
                             )
-                        } else if (item.attributes.size_3 === 'big') {
+                        } else if (`${isSize}` === 'big') {
                             return (
                                 (item.attributes.price_3)
                             )
@@ -154,58 +167,26 @@ export default function CardQuantity({item, priceValue, type , cathegory, isSize
 
                 <span>uah</span>
             </div>
-            {   quantity === 0 ?
+
+            {   isActiveBtn === true ?
                 <div className='card-add-to-cart' 
-                    onClick={() => {upload(); increaseQuantity()}}>
+                    onClick={() => {upload(); activeBtn();}}>
                     To cart
                 </div>
-                // <div className='card-add-to-cart' onClick={() => (setQuantity(quantity + 1))}>
-                //     To cart
-                // </div>
             :
                 <div className='increase-decrease-quantity'>
-                    <button className='quantity-btn' onClick={() => setQuantity( - 1)} style={{marginLeft: '-1px'}} >
+                    <button className='quantity-btn' onClick={() => setQuantity(quantity - 1)} style={{marginLeft: '-1px'}} >
                         <Remove className='quantity'/>
                     </button>
                     
                     <div className='count'>
                         {quantity} 
                     </div>
-                    <button className='quantity-btn' onClick={() => {upload(); increaseQuantity()}} style={{margin: '-1px'}}>
+                    <button className='quantity-btn' onClick={() => {{upload();}}} style={{margin: '-1px'}}>
                         <Add/>
                     </button>
                 </div> 
-            }
-        
-            
-            {/* <div className='card-add-to-cart'>
-                <button>+</button>
-                <span>0</span>
-                <button>-</button>
-            </div> */}
-
-            {/* {
-            count === 0 ?
-                <button className={classes.productBlockWrap}>To cart</button>
-                  
-            :
-            <div className={classes.increaseDecreaseBtns}>
-                <div className={classes.decreaseBtn}>
-                    <button className={classes.decrease} >
-                        <i class="fa-solid fa-minus"></i>
-                    </button>
-                </div>
-                
-                <div className={classes.count}>
-                    {count} 
-                </div>
-                <div className={classes.increaseBtn}>
-                    <button className={classes.increase} >
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
-                </div>
-            </div> 
-            } */}
+            }           
         </div>
     )
 }

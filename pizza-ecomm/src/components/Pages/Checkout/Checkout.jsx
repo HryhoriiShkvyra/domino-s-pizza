@@ -10,6 +10,12 @@ export default function Checkout() {
   const [activeBtn, setActiveBtn] = React.useState('delivery')
   const [count, setCount] = React.useState('')
 
+  const totalPrice = () => {
+    let total = 0;
+    products.forEach((item) => (total += item.quantity * item.price));
+    return total.toFixed(2)
+  }
+
   console.log(products)
 
   return (
@@ -76,7 +82,7 @@ export default function Checkout() {
           </div>
           <div className='second-block-final-price-wrapper'>
             <h2 className='second-block-final-price-total'>Total</h2>
-            <h2 className='second-block-final-price'><span className='second-block-final-price-count'>0.00</span> uah</h2>
+            <h2 className='second-block-final-price'><span className='second-block-final-price-count'>{totalPrice()}</span> uah</h2>
             <button className='second-block-final-price-btn'>Checkout</button>
           </div>
 
@@ -108,7 +114,7 @@ export default function Checkout() {
                 </div>
               ))}
           <div className="right-price-wrapper">
-            <span className='right-price'>231.00 <h5 className='right-price-currency'>uah</h5></span>
+            <span className='right-price'>{totalPrice()}<h5 className='right-price-currency'>uah</h5></span>
           </div>
         </div>
       </div>      
