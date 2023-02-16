@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './CardIngredients.scss';
 
 export default function CardIngredients() {
+
   return (
     <div className='card-ingredient'>
         <div className='card-img-wrapper'>

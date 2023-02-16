@@ -1,20 +1,30 @@
 import { Add, DeliveryDiningOutlined, KeyboardArrowDownOutlined, LocationOn, Remove, StorefrontOutlined } from '@mui/icons-material';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import './Checkout.scss';
+import { incrementQuantity, decrementQuantity } from '../../redux/cartReducer';
 
 export default function Checkout() {
   const products = useSelector(state => state.cart.products)
 
-
   const [activeBtn, setActiveBtn] = React.useState('delivery')
-  const [count, setCount] = React.useState('')
+  const [quantity, setQuantity] = React.useState(0);
+
+  const dispatch = useDispatch();
+  function increaseQuantity () {
+    dispatch(incrementQuantity({
+      quantity: quantity,
+    }))
+  }
 
   const totalPrice = () => {
     let total = 0;
     products.forEach((item) => (total += item.quantity * item.price));
     return total.toFixed(2)
   }
+
+  
 
   console.log(products)
 
@@ -100,13 +110,13 @@ export default function Checkout() {
                     <span className='right-product-crust'>{item.size}</span>
                     <span className='right-product-price'>{item.price}<h5 className='right-price-currency'>uah</h5></span>
                     <span className='right-product-quantity'>
-                      <button className='quantity-btn' onClick={() => (setCount(count - 1))} style={{marginLeft: '-1px'}} >
+                      <button className='quantity-btn' onClick={() => (setQuantity(quantity - 1))} style={{marginLeft: '-1px'}} >
                         <Remove/>
                       </button> 
                       <div className='count'>
                         {item.quantity} 
                       </div>
-                      <button className='quantity-btn' onClick={() => (setCount(count + 1))} style={{margin: '-1px'}}>
+                      <button className='quantity-btn' onClick={() => (increaseQuantity())} style={{margin: '-1px'}}>
                         <Add/>
                       </button>
                     </span>

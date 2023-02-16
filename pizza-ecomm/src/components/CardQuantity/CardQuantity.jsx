@@ -38,66 +38,57 @@ export default function CardQuantity({item, priceValue, type , cathegory, isSize
 
     };
 
-    // function increaseQuantity () {
-    //     dispatch(incrementQuantity({
-    //         quantity:quantity
-    //     }))
-    // }
-
-    function increaseQuantity() {
-        setQuantity((action) => action + 1)
-    }
 
     return (
         <div className='card-quantity'>
             <div className='card-price'>
                 {(() => {
                     if (cathegory === 'pizza') {
-                        if (`${priceValue}` === 'standard-size,thick') {
+                        if (`${priceValue}` === 'standard-size ,thick') {
                             return (
                                 (item.attributes.price_1)
                             )
-                            } else if (`${priceValue}` === 'standard-size,thin') {
+                            } else if (`${priceValue}` === 'standard-size ,thin') {
                             return (
                                 (item.attributes.price_2)
                             )
-                            } else if (`${priceValue}` === 'standard-size,philadelphia') {
+                            } else if (`${priceValue}` === 'standard-size ,philadelphia') {
                             return (
                                 (item.attributes.price_3)
                             )
-                            } else if (`${priceValue}` === 'standard-size,hot-dog') {
+                            } else if (`${priceValue}` === 'standard-size ,hot-dog') {
                                 return(
                                     (item.attributes.price_4)
                                 )
-                            } else if (`${priceValue}` === 'large,thick') {
+                            } else if (`${priceValue}` === 'large ,thick') {
                                 return(
                                     (item.attributes.price_5)
                                 )
-                            } else if (`${priceValue}` === 'large,thin') {
+                            } else if (`${priceValue}` === 'large ,thin') {
                                 return(
                                     (item.attributes.price_6)
                                 )
-                            } else if (`${priceValue}` === 'large,philadelphia') {
+                            } else if (`${priceValue}` === 'large ,philadelphia') {
                                 return (
                                     (item.attributes.price_7)
                                 )
-                            } else if (`${priceValue}` === 'large,hot-dog') {
+                            } else if (`${priceValue}` === 'large ,hot-dog') {
                                 return(
                                     (item.attributes.price_8)
                                 )
-                            } else if (`${priceValue}` === 'extra,thick') {
+                            } else if (`${priceValue}` === 'extra ,thick') {
                                 return(
                                     (item.attributes.price_9)
                                 )
-                            } else if (`${priceValue}` === 'extra,thin') {
+                            } else if (`${priceValue}` === 'extra ,thin') {
                                 return(
                                     (item.attributes.price_10)
                                 )
-                            } else if (`${priceValue}` === 'extra,philadelphia') {
+                            } else if (`${priceValue}` === 'extra ,philadelphia') {
                                 return(
                                     (item.attributes.price_11)
                                 )
-                            } else if (`${priceValue}` === 'extra,hot-dog') {
+                            } else if (`${priceValue}` === 'extra ,hot-dog') {
                                 return(
                                     (item.attributes.price_12)
                                 )
@@ -105,15 +96,15 @@ export default function CardQuantity({item, priceValue, type , cathegory, isSize
                             //     return(
                             //         (item.attributes.price_13)
                             //     ) 
-                            } else if (`${priceValue}` === 'xxl,thin') {
+                            } else if (`${priceValue}` === 'xxl ,thin') {
                                 return(
                                 (item.attributes.price_14)
                             )
-                            } else if (`${priceValue}` === 'xxl,philadelphia') {
+                            } else if (`${priceValue}` === 'xxl ,philadelphia') {
                                 return(
                                     (item.attributes.price_15)
                                 )
-                            } else if (`${priceValue}` === 'xxl,hot-dog') {
+                            } else if (`${priceValue}` === 'xxl ,hot-dog') {
                                 return (
                                     (item.attributes.price_16)
                                     )
@@ -121,7 +112,7 @@ export default function CardQuantity({item, priceValue, type , cathegory, isSize
                         }
 
                     if (cathegory === 'sides') {
-                        if (`${isSize}` === 'standard-size') {
+                        if (`${isSize}` === 'standard-size ') {
                             return (
                                 (item.attributes.price_1)
                             )
@@ -137,7 +128,7 @@ export default function CardQuantity({item, priceValue, type , cathegory, isSize
                     }   
 
                     if (cathegory === 'drinks') {
-                        if (`${isSize}` === 'standard-size') {
+                        if (`${isSize}` === 'standard-size ') {
                         return (
                             (item.attributes.price_1)
                         )

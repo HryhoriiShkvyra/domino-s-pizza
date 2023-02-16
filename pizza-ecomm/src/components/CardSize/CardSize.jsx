@@ -13,17 +13,17 @@ export default function CardSize({item, type, cathegory, isCrust, setIsCrust, is
                 return(
                     <div className='card-size'>
                         <div className='card-block-size'>
-                            <button onClick={() => setIsSize('standard-size')} 
-                            className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}>Standard  size</button>
+                            <button onClick={() => setIsSize('standard-size ')} 
+                            className={isSize === 'standard-size ' ? 'card-size-btn-active' : 'card-size-btn'}>Standard  size</button>
                             <div className='span'></div>
-                            <button onClick={() => setIsSize('large')} 
-                            className={isSize === 'large' ? 'card-size-btn-active' : 'card-size-btn'}>Large</button>
+                            <button onClick={() => setIsSize('large ')} 
+                            className={isSize === 'large ' ? 'card-size-btn-active' : 'card-size-btn'}>Large</button>
                             <div className='span'></div>
-                            <button onClick={() => setIsSize('extra')} 
-                            className={isSize === 'extra' ? 'card-size-btn-active' : 'card-size-btn'}>ExtraLarge</button>
+                            <button onClick={() => setIsSize('extra ')} 
+                            className={isSize === 'extra ' ? 'card-size-btn-active' : 'card-size-btn'}>ExtraLarge</button>
                             <div className='span'></div>
-                            <button onClick={() => setIsSize('xxl')} 
-                            className={isSize === 'xxl' ? 'card-size-btn-active' : 'card-size-btn'}>XXLarge</button>
+                            <button onClick={() => setIsSize('xxl ')} 
+                            className={isSize === 'xxl ' ? 'card-size-btn-active' : 'card-size-btn'}>XXLarge</button>
                         </div>
                         <div className='card-block-size-crust'>
                             <button onClick={() => setIsCrust('thick')} 

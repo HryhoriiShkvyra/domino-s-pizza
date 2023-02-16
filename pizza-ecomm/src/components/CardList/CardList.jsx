@@ -3,16 +3,16 @@ import React from 'react';
 import Card from '../Card/Card';
 import './CardList.scss';
 import useFetch from '../Hooks/useFetch';
-// import { useParams } from 'react-router-dom';
 
 export default function CardList({type, cathegory, isSorting}) {
+
 
   const {data, loading, error} = useFetch(
     `products?populate=*&[filters][type][$eq]=${type}`
   ); 
 
   
-
+  
 
 
     return (

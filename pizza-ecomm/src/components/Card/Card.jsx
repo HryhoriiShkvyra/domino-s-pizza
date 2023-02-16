@@ -8,13 +8,131 @@ import './Card.scss';
 
 export default function Card({item, type, cathegory}) {
 
+  // const {data, loading, error} = useFetch(
+  //   `/products/${id}?populate=*`
+  // ); 
+  console.log(item.id)
+
   const inCart = true;
-  const [isSize, setIsSize] = React.useState('standard-size')
+  const [isSize, setIsSize] = React.useState('standard-size ')
   const [isCrust, setIsCrust] = React.useState('thick')
   const priceValue = [isSize, isCrust]
 
+  // console.log(priceValue);
 
-  
+  const weightCount = () => {
+      if (cathegory === 'pizza') {
+          if (`${priceValue}` === 'standard-size ,thick') {
+              return (
+                  (item.attributes.weight_1)
+              )
+              } else if (`${priceValue}` === 'standard-size ,thin') {
+              return (
+                  (item.attributes.weight_2)
+              )
+              } else if (`${priceValue}` === 'standard-size ,philadelphia') {
+              return (
+                  (item.attributes.weight_3)
+              )
+              } else if (`${priceValue}` === 'standard-size ,hot-dog') {
+                  return(
+                      (item.attributes.weight_4)
+                  )
+              } else if (`${priceValue}` === 'large ,thick') {
+                  return(
+                      (item.attributes.weight_5)
+                  )
+              } else if (`${priceValue}` === 'large ,thin') {
+                  return(
+                      (item.attributes.weight_6)
+                  )
+              } else if (`${priceValue}` === 'large ,philadelphia') {
+                  return (
+                      (item.attributes.weight_7)
+                  )
+              } else if (`${priceValue}` === 'large ,hot-dog') {
+                  return(
+                      (item.attributes.weight_8)
+                  )
+              } else if (`${priceValue}` === 'extra ,thick') {
+                  return(
+                      (item.attributes.weight_9)
+                  )
+              } else if (`${priceValue}` === 'extra ,thin') {
+                  return(
+                      (item.attributes.weight_10)
+                  )
+              } else if (`${priceValue}` === 'extra ,philadelphia') {
+                  return(
+                      (item.attributes.weight_11)
+                  )
+              } else if (`${priceValue}` === 'extra ,hot-dog') {
+                  return(
+                      (item.attributes.weight_12)
+                  )
+              // } else if (`${priceValue}` === 'xxl,thick') {
+              //     return(
+              //         (item.attributes.price_13)
+              //     ) 
+              } else if (`${priceValue}` === 'xxl ,thin') {
+                  return(
+                  (item.attributes.weight_14)
+              )
+              } else if (`${priceValue}` === 'xxl ,philadelphia') {
+                  return(
+                      (item.attributes.weight_15)
+                  )
+              } else if (`${priceValue}` === 'xxl ,hot-dog') {
+                  return (
+                      (item.attributes.weight_16)
+                      )
+                  }
+          }
+
+      if (cathegory === 'sides') {
+          if (`${isSize}` === 'standard-size ') {
+              return (
+                  (item.attributes.weight_1)
+              )
+          } else if (`${isSize}` === 'Double') {
+              return (
+                  (item.attributes.weight_2)
+              )
+          } else if (item.attributes.size_2 == null) {
+              return (
+                  (item.attributes.weight_1)
+              )
+          }
+      }   
+
+      if (cathegory === 'drinks') {
+          if (`${isSize}` === 'standard-size ') {
+          return (
+              (item.attributes.weight_1)
+          )
+          } else if (`${isSize}` === 'medium') {
+              return (
+                  (item.attributes.weight_2)
+              )
+          } else if (`${isSize}` === 'big') {
+              return (
+                  (item.attributes.weight_3)
+              )
+          }
+      }
+
+      if (cathegory === 'dessert') {
+          if (`${isSize}` === 'double') {
+              return(
+                  (item.attributes.weight_2)
+              )
+          } else {
+              return(
+                  (item.attributes.weight_1)
+              )
+          }
+      }
+  }  
 
   // const forEach = (arr, cb) => {
   //   for(let i = 0; i < + arr.length; i++) {
@@ -71,6 +189,7 @@ export default function Card({item, type, cathegory}) {
               }
               
             })()}
+
             {(() => {
               if (item.attributes.isAdult === true) {
                 return(
@@ -91,12 +210,13 @@ export default function Card({item, type, cathegory}) {
                   </div>     
                 )
               }
-            })()}
 
+            })()}
+            
               { item.attributes.weight_1 === null ?
                 null
                 :
-                <div className='weight'>{item?.attributes.weight_1} g</div>
+                <div className='weight'>{weightCount()} g</div>
               }
               
               {inCart === true ? 
@@ -115,7 +235,7 @@ export default function Card({item, type, cathegory}) {
               ?
               <div>
                 <h5 className='product-description'>{item.attributes.description}</h5>
-                <Link className='ingredients' to='/pizza-constructor/:id'>replace ingredients</Link>
+                <Link className='ingredients' to={`/product/${item.id}`}>replace ingredients</Link>
               </div>
               :
               null
