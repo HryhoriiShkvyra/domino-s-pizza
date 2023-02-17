@@ -13,17 +13,17 @@ export default function CardSize({item, type, cathegory, isCrust, setIsCrust, is
                 return(
                     <div className='card-size'>
                         <div className='card-block-size'>
-                            <button onClick={() => setIsSize('standard-size ')} 
-                            className={isSize === 'standard-size ' ? 'card-size-btn-active' : 'card-size-btn'}>Standard  size</button>
+                            <button onClick={() => setIsSize('standard-size')} 
+                            className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}>Standard  size</button>
                             <div className='span'></div>
-                            <button onClick={() => setIsSize('large ')} 
-                            className={isSize === 'large ' ? 'card-size-btn-active' : 'card-size-btn'}>Large</button>
+                            <button onClick={() => setIsSize('large')} 
+                            className={isSize === 'large' ? 'card-size-btn-active' : 'card-size-btn'}>Large</button>
                             <div className='span'></div>
-                            <button onClick={() => setIsSize('extra ')} 
-                            className={isSize === 'extra ' ? 'card-size-btn-active' : 'card-size-btn'}>ExtraLarge</button>
+                            <button onClick={() => setIsSize('extra')} 
+                            className={isSize === 'extra' ? 'card-size-btn-active' : 'card-size-btn'}>ExtraLarge</button>
                             <div className='span'></div>
-                            <button onClick={() => setIsSize('xxl ')} 
-                            className={isSize === 'xxl ' ? 'card-size-btn-active' : 'card-size-btn'}>XXLarge</button>
+                            <button onClick={() => setIsSize('xxl')} 
+                            className={isSize === 'xxl' ? 'card-size-btn-active' : 'card-size-btn'}>XXLarge</button>
                         </div>
                         <div className='card-block-size-crust'>
                             <button onClick={() => setIsCrust('thick')} 
@@ -47,8 +47,8 @@ export default function CardSize({item, type, cathegory, isCrust, setIsCrust, is
                             {item.attributes.size_1}
                         </button>
                         
-                        <button onClick={() => setIsSize('Double')} 
-                            className={isSize === 'Double' ? 'card-size-btn-active' : 'card-size-btn'}
+                        <button onClick={() => setIsSize('double')} 
+                            className={isSize === 'double' ? 'card-size-btn-active' : 'card-size-btn'}
                         >
                             {item.attributes.size_2}
                         </button>
@@ -65,22 +65,22 @@ export default function CardSize({item, type, cathegory, isCrust, setIsCrust, is
                     
                 }
             } else if (cathegory === 'drinks') {
-                if (item.attributes.size_2 === '340ml') {
+                if (item.attributes.size_2 === '340 ml') {
                     return (
                     <div className='card-else-btn'>
                         <button onClick={() => setIsSize('standard-size')} 
                             className={isSize === 'standard-size' ? 'card-size-btn-active' : 'card-size-btn'}
                         >
-                            {item.attributes.size_1}
+                            {item.attributes.size_1} 
                         </button>
                         
-                        <button onClick={() => setIsSize('medium')} 
-                            className={isSize === 'medium' ? 'card-size-btn-active' : 'card-size-btn'}
+                        <button onClick={() => setIsSize('large')} 
+                            className={isSize === 'large' ? 'card-size-btn-active' : 'card-size-btn'}
                         >
                             {item.attributes.size_2}
                         </button>
-                        <button onClick={() => setIsSize('big')} 
-                            className={isSize === 'big' ? 'card-size-btn-active' : 'card-size-btn'}
+                        <button onClick={() => setIsSize('extra')} 
+                            className={isSize === 'extra' ? 'card-size-btn-active' : 'card-size-btn'}
                         >
                             {item.attributes.size_3}
                         </button>

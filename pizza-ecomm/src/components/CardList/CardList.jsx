@@ -11,13 +11,12 @@ export default function CardList({type, cathegory, isSorting}) {
     `products?populate=*&[filters][type][$eq]=${type}`
   ); 
 
-  
-  
-
-
     return (
     <div className='card-list'>
         <div className='container'>
+          { type === 'Dessert' ? 
+            <div className='list-title-hidden'></div>
+            :
             <div className='list-title'>
               {type} 
               <div className='list-icon-wrapper'>
@@ -25,6 +24,8 @@ export default function CardList({type, cathegory, isSorting}) {
                 <Info className='icon'/>
               </div>
             </div>
+          }
+            
             <div className='card-list-block'>
 
                 { error 

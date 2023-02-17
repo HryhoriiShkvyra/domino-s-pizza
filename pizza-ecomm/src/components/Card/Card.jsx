@@ -11,62 +11,62 @@ export default function Card({item, type, cathegory}) {
   // const {data, loading, error} = useFetch(
   //   `/products/${id}?populate=*`
   // ); 
-  console.log(item.id)
 
   const inCart = true;
-  const [isSize, setIsSize] = React.useState('standard-size ')
+  const [isSize, setIsSize] = React.useState('standard-size')
   const [isCrust, setIsCrust] = React.useState('thick')
   const priceValue = [isSize, isCrust]
+  console.log(isSize)
 
   // console.log(priceValue);
 
   const weightCount = () => {
       if (cathegory === 'pizza') {
-          if (`${priceValue}` === 'standard-size ,thick') {
+          if (`${priceValue}` === 'standard-size,thick') {
               return (
                   (item.attributes.weight_1)
               )
-              } else if (`${priceValue}` === 'standard-size ,thin') {
+              } else if (`${priceValue}` === 'standard-size,thin') {
               return (
                   (item.attributes.weight_2)
               )
-              } else if (`${priceValue}` === 'standard-size ,philadelphia') {
+              } else if (`${priceValue}` === 'standard-size,philadelphia') {
               return (
                   (item.attributes.weight_3)
               )
-              } else if (`${priceValue}` === 'standard-size ,hot-dog') {
+              } else if (`${priceValue}` === 'standard-size,hot-dog') {
                   return(
                       (item.attributes.weight_4)
                   )
-              } else if (`${priceValue}` === 'large ,thick') {
+              } else if (`${priceValue}` === 'large,thick') {
                   return(
                       (item.attributes.weight_5)
                   )
-              } else if (`${priceValue}` === 'large ,thin') {
+              } else if (`${priceValue}` === 'large,thin') {
                   return(
                       (item.attributes.weight_6)
                   )
-              } else if (`${priceValue}` === 'large ,philadelphia') {
+              } else if (`${priceValue}` === 'large,philadelphia') {
                   return (
                       (item.attributes.weight_7)
                   )
-              } else if (`${priceValue}` === 'large ,hot-dog') {
+              } else if (`${priceValue}` === 'large,hot-dog') {
                   return(
                       (item.attributes.weight_8)
                   )
-              } else if (`${priceValue}` === 'extra ,thick') {
+              } else if (`${priceValue}` === 'extra,thick') {
                   return(
                       (item.attributes.weight_9)
                   )
-              } else if (`${priceValue}` === 'extra ,thin') {
+              } else if (`${priceValue}` === 'extra,thin') {
                   return(
                       (item.attributes.weight_10)
                   )
-              } else if (`${priceValue}` === 'extra ,philadelphia') {
+              } else if (`${priceValue}` === 'extra,philadelphia') {
                   return(
                       (item.attributes.weight_11)
                   )
-              } else if (`${priceValue}` === 'extra ,hot-dog') {
+              } else if (`${priceValue}` === 'extra,hot-dog') {
                   return(
                       (item.attributes.weight_12)
                   )
@@ -74,15 +74,15 @@ export default function Card({item, type, cathegory}) {
               //     return(
               //         (item.attributes.price_13)
               //     ) 
-              } else if (`${priceValue}` === 'xxl ,thin') {
+              } else if (`${priceValue}` === 'xxl,thin') {
                   return(
                   (item.attributes.weight_14)
               )
-              } else if (`${priceValue}` === 'xxl ,philadelphia') {
+              } else if (`${priceValue}` === 'xxl,philadelphia') {
                   return(
                       (item.attributes.weight_15)
                   )
-              } else if (`${priceValue}` === 'xxl ,hot-dog') {
+              } else if (`${priceValue}` === 'xxl,hot-dog') {
                   return (
                       (item.attributes.weight_16)
                       )
@@ -90,11 +90,11 @@ export default function Card({item, type, cathegory}) {
           }
 
       if (cathegory === 'sides') {
-          if (`${isSize}` === 'standard-size ') {
+          if (`${isSize}` === 'standard-size') {
               return (
                   (item.attributes.weight_1)
               )
-          } else if (`${isSize}` === 'Double') {
+          } else if (`${isSize}` === 'double') {
               return (
                   (item.attributes.weight_2)
               )
@@ -106,15 +106,15 @@ export default function Card({item, type, cathegory}) {
       }   
 
       if (cathegory === 'drinks') {
-          if (`${isSize}` === 'standard-size ') {
+          if (`${isSize}` === 'standard-size') {
           return (
               (item.attributes.weight_1)
           )
-          } else if (`${isSize}` === 'medium') {
+          } else if (`${isSize}` === 'large') {
               return (
                   (item.attributes.weight_2)
               )
-          } else if (`${isSize}` === 'big') {
+          } else if (`${isSize}` === 'extra') {
               return (
                   (item.attributes.weight_3)
               )
@@ -133,26 +133,6 @@ export default function Card({item, type, cathegory}) {
           }
       }
   }  
-
-  // const forEach = (arr, cb) => {
-  //   for(let i = 0; i < + arr.length; i++) {
-  //     const element = arr
-  //     cb(element)
-  //   }
-  // }
-
-  // setTimeout(() =>
-  //   forEach(datas, (data) => {
-  //     console.log(data)
-  //   })
-  //   , 5000)
- 
-
-  // const {data, loading, error} = useFetch(
-  //   `products?populate=*&[filters][price_1][$eq]=${type}$`
-  // );
-  
-  // console.log(useFetch)
 
   return (
     <div className='card'>
@@ -213,6 +193,14 @@ export default function Card({item, type, cathegory}) {
 
             })()}
             
+              {/* {(() => {
+                if (item.attribute.weight_1 === null) {
+                  return(
+                    null
+                  )
+                } else if (item.attribute.weight === )
+                  
+              })()} */}
               { item.attributes.weight_1 === null ?
                 null
                 :
@@ -239,15 +227,14 @@ export default function Card({item, type, cathegory}) {
               </div>
               :
               null
-              
             }
           
           </div>
           <CardSize type={type} item={item} cathegory = {cathegory} priceValue = {priceValue} 
-          isSize = {isSize} setIsSize = {setIsSize} isCrust = {isCrust} setIsCrust = {setIsCrust}
+          isSize = {isSize} setIsSize={setIsSize} isCrust={isCrust} setIsCrust={setIsCrust} 
           />
-          <CardQuantity item={item} type={type} priceValue = {priceValue} cathegory={cathegory}
-           isSize = {isSize} setIsSize = {setIsSize}
+          <CardQuantity item={item} priceValue = {priceValue} cathegory={cathegory}
+           isSize = {isSize} isCrust={isCrust}
           />
         </div>
     </div>
