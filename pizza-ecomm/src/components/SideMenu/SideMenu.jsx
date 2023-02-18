@@ -84,45 +84,6 @@ export const SideMenu = ({sideBarActive}) => {
             </div>
             }
         </>
-            
-        // <div>
-        //     {/* {isOpenSideMenu ?  */}
-        //         <div className='sideMenu'>
-                    // <div className='partOne'>
-                    //     <div className='partOneContent'>
-                    //         <div className='sideMenuBtn'>
-                    //                 <div className='icon'><i class="fa-solid fa-pizza-slice"></i></div>
-                    //                 <div className='btnTitle'>Pizza</div>
-                    //         </div>
-                    //         <div className='sideMenuBtn'>
-                    //             <div className='icon'><i class="fa-solid fa-bottle-water"></i></div>
-                    //             <div className='btnTitle'>Drinks</div>
-                                                        
-                    //         </div>
-                    //         <div className='sideMenuBtn'>
-                    //             <div className='icon'><i class="fa-solid fa-bowl-food"></i></div>
-                    //             <div className='btnTitle'>Sides</div>
-                    //         </div>
-                    //         <div className='sideMenuBtn'>
-                    //             <div className='icon'><i class="fa-solid fa-cookie"></i></div>
-                    //             <div className='btnTitle'>Desserts</div>
-                    //         </div>
-                    //     </div>        
-        //             </div>
-                    // <div className='partTwo'>
-                    //     <div className='additionalInfo'>
-                    //         <a className='infoBtn'>text</a>
-                    //         <a className='infoBtn'>text</a>
-                    //         <a className='infoBtn'>text</a>
-                    //         <a className='infoBtn'>text</a>
-                    //         <a className='infoBtn'>text</a>
-                    //     </div>
-                    // </div>
-        //         </div>
-        //     {/* : null */}
-                
-        //     {/* } */}
-        // </div>
     );
 };
 

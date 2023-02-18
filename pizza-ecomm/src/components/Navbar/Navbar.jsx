@@ -103,7 +103,5 @@ export default function Navbar() {
         <SideMenu sideBarActive={sideBarActive}/>      
       </div>
     </div>
-
-    
   )
 }
