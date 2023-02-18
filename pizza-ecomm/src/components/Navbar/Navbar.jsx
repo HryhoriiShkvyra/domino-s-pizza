@@ -3,12 +3,31 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import React from 'react';
 import './Navbar.scss';
 import { Link } from 'react-router-dom';
+import { SideMenu } from '../SideMenu/SideMenu';
 // import { useScrollPosition } from '../Hooks/useScrollPosition';
 
 export default function Navbar() {
 
   const [navBarActive, setNavBarActive] = React.useState('pizza');
   // const scrollPosition = useScrollPosition();
+  const [sideBarActive, setSideBarActive] = React.useState(false)
+  // const [sideBarPosition, setSideBarPosition] = React.useState(0)
+
+  // React.useEffect(() => {
+  //     if(sideBarActive === false) {
+  //       return(
+  //         setSideBarPosition(0)
+  //       )
+  //     } else {
+  //       return(
+  //         setSideBarPosition(1)
+  //       )
+  //     }
+  // }, [sideBarActive])
+
+  // console.log(sideBarPosition)
+  console.log(sideBarActive)
+
 
   return (
     <div className='navbar'>
@@ -69,7 +88,6 @@ export default function Navbar() {
               </Link>
             </div>
           </nav>
-          <div></div>
           <div className='cart-wrapper'>
             <div className='cart'>
               <span>00</span>
@@ -77,10 +95,15 @@ export default function Navbar() {
             </div>
             <Link className='checkout' onClick={() => setNavBarActive('checkout')} to='/checkout/'>checkout</Link>
           </div>
-          <div className='bar-menu'><Dehaze/></div>
+          <div onClick={() => setSideBarActive((prev) => !prev)} className='bar-menu'><Dehaze/></div>
+          
         </div>
       </div>
-      
+      <div className='side-menu'>
+        <SideMenu sideBarActive={sideBarActive}/>      
+      </div>
     </div>
+
+    
   )
 }

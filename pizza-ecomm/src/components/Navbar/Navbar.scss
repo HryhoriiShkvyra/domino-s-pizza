@@ -1,8 +1,10 @@
 .navbar {
 
     .first {
+        position: relative;
+        z-index: 20;
         background-color: rgb(75, 75, 75);
-        
+                
 
         .firstIn {
             width: 70%;
@@ -128,10 +130,7 @@
 
 
     .second-sticky {
-        // display: flex;
         width: 100%;
-        position: fixed;
-        top: 0;
         background-color: #222;
         
 
@@ -308,16 +307,18 @@
 
                 cursor: pointer;
             }
+
+           
         }
         
     }
 
     .second {
-        // display: flex;
+        position: relative;
         height: 100%;
-        position: sticky;
-        top: 0;
         background-color: #222;
+
+        z-index: 20;
         
 
 
@@ -493,6 +494,8 @@
 
                 cursor: pointer;
             }
+
+            
         }
         
     }
@@ -502,3 +505,17 @@
     
     
 }
+
+.side-menu {
+    position: absolute;
+    transition: all 1s ease;
+    z-index: 10;
+}
+
+// .side-menu-deActive {
+//     display: block;
+//     position: absolute;
+//     transition: all 1s ease;
+//     transform: translateX(80vw);
+//     z-index: 10;
+// }
