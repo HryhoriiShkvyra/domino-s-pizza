@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import './Checkout.scss';
 import { incrementQuantity, decrementQuantity } from '../../redux/cartReducer';
+import {loadStripe} from '@stripe/stripe-js';
+import { makeRequest } from '../../../makeRequest'
+
 
 export default function Checkout() {
   const products = useSelector(state => state.cart.products)
@@ -24,6 +27,25 @@ export default function Checkout() {
     return total.toFixed(2)
   }
 
+  const stripePromise = loadStripe(
+    'pk_test_51MboeJJnoHW1zmgYv34JTHBK2VKAApu7IyeYnFs5vxVPpb4Ch6h0V01OPRKXU56n1UhQoq5ilr13NhIEKzEMu95Q00hZ3jCIYF'
+  );
+
+  const handlePayment = async () => {
+ 
+    try {
+      const stripe = await stripePromise;
+      const res = await makeRequest.post('/orders', {
+        products,
+      })
+
+      await stripe.redirectToCheckout({
+        sessionId: res.data.stripeSession.id,
+      })
+    } catch (err) {
+      console.log(err)
+    }
+  }
   
 
   console.log(products)
@@ -93,7 +115,7 @@ export default function Checkout() {
           <div className='second-block-final-price-wrapper'>
             <h2 className='second-block-final-price-total'>Total</h2>
             <h2 className='second-block-final-price'><span className='second-block-final-price-count'>{totalPrice()}</span> uah</h2>
-            <button className='second-block-final-price-btn'>Checkout</button>
+            <button className='second-block-final-price-btn' onClick={handlePayment}>Checkout</button>
           </div>
 
         </div>

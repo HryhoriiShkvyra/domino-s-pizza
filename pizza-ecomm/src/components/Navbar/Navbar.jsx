@@ -11,21 +11,7 @@ export default function Navbar() {
   const [navBarActive, setNavBarActive] = React.useState('pizza');
   // const scrollPosition = useScrollPosition();
   const [sideBarActive, setSideBarActive] = React.useState(false)
-  // const [sideBarPosition, setSideBarPosition] = React.useState(0)
 
-  // React.useEffect(() => {
-  //     if(sideBarActive === false) {
-  //       return(
-  //         setSideBarPosition(0)
-  //       )
-  //     } else {
-  //       return(
-  //         setSideBarPosition(1)
-  //       )
-  //     }
-  // }, [sideBarActive])
-
-  // console.log(sideBarPosition)
   console.log(sideBarActive)
 
 
@@ -62,28 +48,28 @@ export default function Navbar() {
             <div className='nav-link'>
               <Link onClick={() => setNavBarActive('pizza')} 
               className={navBarActive === 'pizza' ? 'link-active' : 'link'} 
-              to='/pizza/id'>
+              to='/pizza/'>
                 Pizza
               </Link>
             </div>
             <div className='nav-link'>
               <Link onClick={() => setNavBarActive('drinks')} 
               className={navBarActive === 'drinks' ? 'link-active' : 'link'} 
-              to='/drinks/id'>
+              to='/drinks/'>
                 Drinks
               </Link>
             </div>
             <div className='nav-link'>
               <Link onClick={() => setNavBarActive('sides')} 
               className={navBarActive === 'sides' ? 'link-active' : 'link'} 
-              to='/sides/id'>
+              to='/sides/'>
                 Sides
               </Link>
             </div>
             <div className='nav-link'>
               <Link onClick={() => setNavBarActive('dessert')} 
               className={navBarActive === 'dessert' ? 'link-active' : 'link'} 
-              to='/dessert/id'>
+              to='/dessert/'>
                 Dessert
               </Link>
             </div>

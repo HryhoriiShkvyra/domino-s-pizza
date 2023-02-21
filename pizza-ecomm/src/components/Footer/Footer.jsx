@@ -15,7 +15,7 @@ export default function Footer() {
         <div className='footer-first'>
           <div className='section'>
             <h2>Domino's Pizza</h2>
-            <Link className='link' to='/pizza/:id'>Menu</Link>
+            <Link className='link'>Menu</Link>
             <Link className='link'>Pizzerias</Link>
             <Link className='link'>Franchising</Link>
             <Link className='link'>Information about the content of allergens and nutritional value</Link>

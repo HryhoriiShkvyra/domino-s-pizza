@@ -39,19 +39,19 @@ export default function  App() {
         element: <Home/>
         },
         {
-          path: '/pizza/:id',
+          path: '/pizza/',
           element: <Pizza/>
         },
         {
-          path: '/drinks/:id',
+          path: '/drinks/',
           element: <Drinks/>,
         },
         {
-          path: '/sides/:id',
+          path: '/sides/',
           element: <Sides/>,
         },
         {
-          path: '/dessert/:id',
+          path: '/dessert/',
           element: <Dessert/>,
         },
         {

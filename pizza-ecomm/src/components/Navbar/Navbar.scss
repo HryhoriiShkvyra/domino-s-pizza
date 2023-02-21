@@ -1,10 +1,11 @@
 .navbar {
 
+
     .first {
+
         position: relative;
-        z-index: 20;
+        z-index: 10;
         background-color: rgb(75, 75, 75);
-                
 
         .firstIn {
             width: 70%;
@@ -37,10 +38,7 @@
                 .number {
                     font-size: 20px;
                     font-weight: 700;
-                    // color: rgb(220, 220, 220);
                 }
-
-                
             }
 
             .geolocation {
@@ -56,12 +54,10 @@
                     color: rgb(223, 223, 223);
                 }
 
-
                 span {
                     text-decoration: underline;
                 }
             }
-
 
             .buttons {
                 display: flex;
@@ -117,23 +113,18 @@
 
                     cursor: pointer;
 
-
                     &:hover {
                         background-color: rgb(255, 255, 255);
                     }
                 }
             }
-    
         }
     }
 
-
-
     .second-sticky {
-        width: 100%;
+        position: relative;
         background-color: #222;
-        
-
+        z-index: 20;
 
         .secondIn {
             width: 70%;
@@ -170,13 +161,12 @@
                 justify-content: space-between;
                 align-items: center;
 
-
                 .nav-link {
                     display: flex;
                     width: calc(100% + 25px);
                     justify-content: center;
                     align-items: center;
-                height: 50px;
+                    height: 50px;
 
                     .link {
                         display: flex;
@@ -192,11 +182,8 @@
                         
                         &:hover {
                             font-weight: 700;
-                            
                         }
                     }
-
-                    
                     
                     .link-active {
                         display: flex;
@@ -211,28 +198,11 @@
                         text-decoration: none;
                     }
                 }
-
-                // .link {
-                //     display: flex;
-                //     justify-content: center;
-                //     align-items: center;
-                    
-                //     color: white;
-
-                //     padding: 10px 0px;
-
-                //     font-size: 18px;
-                //     font-weight: 700;
-                //     text-decoration: none;
-    
-                // }
-
             }
             
             .cart-wrapper {
                 display: flex;
                 grid-area: cart;
-                // justify-content: space-between;
                 align-items: center;
 
                 margin-left: 11px;
@@ -250,7 +220,6 @@
                     cursor: not-allowed;
                 }
                 
-
                 .cart {
                     display: grid;
                     width: 44px;
@@ -296,7 +265,6 @@
                     border-radius: 30px;
                     background-color: #e31837;
                 }
-
             }
             
             .bar-menu {
@@ -307,20 +275,16 @@
 
                 cursor: pointer;
             }
-
-           
         }
-        
     }
 
     .second {
-        position: relative;
+        position: sticky;
+        top: 0;
         height: 100%;
         background-color: #222;
 
         z-index: 20;
-        
-
 
         .secondIn {
             width: 70%;
@@ -357,13 +321,12 @@
                 justify-content: space-between;
                 align-items: center;
 
-
                 .nav-link {
                     display: flex;
                     width: calc(100% + 25px);
                     justify-content: center;
                     align-items: center;
-                height: 50px;
+                    height: 50px;
 
                     .link {
                         display: flex;
@@ -383,8 +346,6 @@
                         }
                     }
 
-                    
-                    
                     .link-active {
                         display: flex;
                         justify-content: center;
@@ -398,28 +359,11 @@
                         text-decoration: none;
                     }
                 }
-
-                // .link {
-                //     display: flex;
-                //     justify-content: center;
-                //     align-items: center;
-                    
-                //     color: white;
-
-                //     padding: 10px 0px;
-
-                //     font-size: 18px;
-                //     font-weight: 700;
-                //     text-decoration: none;
-    
-                // }
-
             }
             
             .cart-wrapper {
                 display: flex;
                 grid-area: cart;
-                // justify-content: space-between;
                 align-items: center;
 
                 margin-left: 11px;
@@ -437,7 +381,6 @@
                     cursor: not-allowed;
                 }
                 
-
                 .cart {
                     display: grid;
                     width: 44px;
@@ -483,7 +426,6 @@
                     border-radius: 30px;
                     background-color: #e31837;
                 }
-
             }
             
             .bar-menu {
@@ -493,17 +435,9 @@
                 right: -10px;
 
                 cursor: pointer;
-            }
-
-            
-        }
-        
-    }
-
-
-    
-    
-    
+            }   
+        }   
+    }    
 }
 
 .side-menu {
@@ -511,11 +445,3 @@
     transition: all 1s ease;
     z-index: 10;
 }
-
-// .side-menu-deActive {
-//     display: block;
-//     position: absolute;
-//     transition: all 1s ease;
-//     transform: translateX(80vw);
-//     z-index: 10;
-// }
