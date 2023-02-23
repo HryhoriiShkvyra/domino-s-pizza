@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "email": {
-      "type": "string"
-    },
     "products": {
       "type": "json"
     },

@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import './Checkout.scss';
 import { incrementQuantity, decrementQuantity } from '../../redux/cartReducer';
-import {loadStripe} from '@stripe/stripe-js';
 import { makeRequest } from '../../../makeRequest'
+import {loadStripe} from '@stripe/stripe-js';
 
 
 export default function Checkout() {
@@ -28,24 +28,22 @@ export default function Checkout() {
   }
 
   const stripePromise = loadStripe(
-    'pk_test_51MboeJJnoHW1zmgYv34JTHBK2VKAApu7IyeYnFs5vxVPpb4Ch6h0V01OPRKXU56n1UhQoq5ilr13NhIEKzEMu95Q00hZ3jCIYF'
+    "pk_test_51MboeJJnoHW1zmgYv34JTHBK2VKAApu7IyeYnFs5vxVPpb4Ch6h0V01OPRKXU56n1UhQoq5ilr13NhIEKzEMu95Q00hZ3jCIYF"
   );
-
   const handlePayment = async () => {
- 
     try {
       const stripe = await stripePromise;
-      const res = await makeRequest.post('/orders', {
+      const res = await makeRequest.post("/orders", {
         products,
-      })
-
+      });
       await stripe.redirectToCheckout({
         sessionId: res.data.stripeSession.id,
-      })
+      });
+
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
-  }
+  };
   
 
   console.log(products)
