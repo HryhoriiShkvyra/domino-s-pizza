@@ -4,7 +4,7 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-import Navbar from './components/Navbar/Navbar';
+import NavbarFirstPart from './components/Navbar/NavbarFirstPart';
 import Footer from './components/Footer/Footer';
 import Home from './components/Pages/Home/Home';
 import Pizza from './components/Pages/Pizza/Pizza';
@@ -22,7 +22,7 @@ export default function  App() {
   const Layout = () => {
     return(
       <div className='app'>
-        <Navbar/>
+        <NavbarFirstPart/>
         <Outlet/>
         <Footer/>
       </div>

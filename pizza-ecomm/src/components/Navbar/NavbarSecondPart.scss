@@ -1,0 +1,166 @@
+.second {
+    position: sticky;
+    top: 0;
+    background-color: #222;
+    z-index: 20;
+
+    .secondIn {
+        top: 0;
+        width: 70%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        margin: 0 auto;
+        color: white;
+        justify-content: space-between;
+        grid-template-areas: "logo navigation navigation cart";
+        padding: 10px 0;
+        position: relative;
+        
+        .logo {
+            display: flex;
+            grid-area: logo;
+            gap: 7px;
+            align-items: center;
+            text-decoration: none;
+            
+            img {
+                width: 30px;
+            }
+
+            span {
+                font-size: 23px;
+                font-weight: 700;
+                color: white;
+            }
+        }
+
+        .nav {
+            display: flex;
+            grid-area: navigation;
+            justify-content: space-between;
+            align-items: center;
+
+            .nav-link {
+                display: flex;
+                width: calc(100% + 25px);
+                justify-content: center;
+                align-items: center;
+                height: 50px;
+
+                .link {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    height: 50px;                       
+                    color: white;
+
+                    font-size: 20px;
+                    font-weight: 500;
+                    text-decoration: none;
+                    
+                    &:hover {
+                        font-weight: 700;
+                    }
+                }
+                
+                .link-active {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    height: 50px;                        
+                    color: white;
+
+                    font-size: 20px;
+                    font-weight: 700;
+                    text-decoration: none;
+                }
+            }
+        }
+        
+        .cart-wrapper {
+            display: flex;
+            grid-area: cart;
+            align-items: center;
+
+            margin-left: 11px;
+            padding: 2px;
+            width: 190px;
+            border-radius: 30px;
+            background-color: #f8f8f8;
+
+            &:hover > .cart {
+                background-color: #333;
+                cursor: pointer;
+            }
+
+            &:hover > .checkout {
+                cursor: not-allowed;
+            }
+            
+            .cart {
+                display: grid;
+                width: 44px;
+                height: 44px;
+                justify-content: center;
+                align-items: center;
+                border-radius: 30px;
+                border: 1px solid #e5e5e5;
+                background-color: #444;
+
+                span{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    
+                    margin-top: 2px;
+
+                    font-size: 15px;
+                    font-weight: 700;
+                }
+
+                .icon {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 19px;
+
+                    margin-bottom: 2px;
+                }
+            }
+
+            .checkout {
+                width: 150px;
+                height: 46px;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-transform: capitalize;
+                font-weight: 700;
+                color: #fff;
+
+                border-radius: 30px;
+                background-color: #e31837;
+            }
+        }
+        
+        .bar-menu {
+            
+            position: absolute;
+            top: 25px;
+            right: -10px;
+
+            cursor: pointer;
+        }
+
+        
+    }
+}
+
+.side-menu {
+    position: absolute;
+    transition: all 1s ease;
+    z-index: 10;
+}

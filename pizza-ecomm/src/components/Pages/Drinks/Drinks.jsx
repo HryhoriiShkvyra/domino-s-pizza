@@ -1,4 +1,5 @@
 import React from 'react';
+import NavbarSecondPart from '../../Navbar/NavbarSecondPart';
 import CardList from '../../CardList/CardList'
 import Sorting from '../../Sorting/Sorting';
 import Filter from '../../Filter/Filter';
@@ -11,11 +12,13 @@ export default function Drinks() {
 
   return (
     <div className='drinks'>
-      <Sorting setIsSorting={setIsSorting}/> 
-      <Filter/>
-      <CardList cathegory='drinks' type='Water' isSorting={isSorting}/>
-      <CardList cathegory='drinks' type='Tea' isSorting={isSorting}/>
-      {/* <CardList type='Tea' cathegory='drinks'/> */}
+      <NavbarSecondPart/>
+      <div className='drinks-container'>
+        <Sorting setIsSorting={setIsSorting}/> 
+        <Filter/>
+        <CardList cathegory='drinks' type='Water' isSorting={isSorting}/>
+        <CardList cathegory='drinks' type='Tea' isSorting={isSorting}/>
+      </div>
     </div>
   )
 }

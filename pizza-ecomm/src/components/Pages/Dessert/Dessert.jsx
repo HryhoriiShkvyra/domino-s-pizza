@@ -1,4 +1,5 @@
 import React from 'react';
+import NavbarSecondPart from '../../Navbar/NavbarSecondPart';
 import Sorting from '../../Sorting/Sorting';
 import CardList from '../../CardList/CardList'
 import './Dessert.scss';
@@ -9,8 +10,11 @@ export default function Desserts() {
 
   return (
     <div className='dessert'>
-      <Sorting setIsSorting={setIsSorting}/> 
-      <CardList cathegory='dessert' type='Dessert' isSorting={isSorting}/>
+      <NavbarSecondPart/>
+      <div className='dessert-container'>
+        <Sorting setIsSorting={setIsSorting}/> 
+        <CardList cathegory='dessert' type='Dessert' isSorting={isSorting}/>
+      </div>      
     </div>
   )
 }

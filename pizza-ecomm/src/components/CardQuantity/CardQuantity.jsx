@@ -3,11 +3,13 @@ import React from 'react';
 // import useFetch from '../Hooks/useFetch';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../redux/cartReducer';
-import { incrementQuantity } from '../redux/cartReducer'
+// import { addItem, removeItem, increaseQuantity, decreaseQuantity } from '../redux/cartReducer'
+import { addToCart,  incrementQuantity, decrementQuantity, removeItem } from '../redux/cartReducer';
+// import { decrementQuantity } from '../redux/cartReducer';
+// import { incrementQuantity } from '../redux/cartReducer'
 import './CardQuantity.scss';
 
-export default function CardQuantity({item, priceValue, cathegory, isSize, isCrust}) {
+export default function CardQuantity({ item, priceValue, cathegory, isSize, isCrust }) {
 
     const [quantity, setQuantity] = React.useState(0);
     const [isActiveBtn, setIsActiveBtn] = React.useState(true)
@@ -19,38 +21,97 @@ export default function CardQuantity({item, priceValue, cathegory, isSize, isCru
         setIsActiveBtn(false)
     }
 
+    React.useEffect(() => {
+        console.log(quantity)
+    }, [quantity])
+
+//     const cartItems = useSelector(state => state.cart.items);
+
+//   const handleAddToCart = () => {
+//     dispatch(addItem({ id: product.id, name: product.name, price: product.price }));
+//   }
+
+//   const handleRemoveFromCart = () => {
+//     dispatch(removeItem({ id: product.id }));
+//   }
+
+//   const handleIncreaseQuantity = () => {
+//     dispatch(increaseQuantity({ id: product.id }));
+//   }
+
+//   const handleDecreaseQuantity = () => {
+//     dispatch(decreaseQuantity({ id: product.id }));
+//   }
+
+//   const cartItem = cartItems.find(item => item.id === product.id);
+
     function upload () {
-        if (cathegory === 'pizza') {
-            return(
-                dispatch(addToCart({
-                    id: item.id,
-                    title: item.attributes.title,
-                    description: item.attributes.description,
-                    price: price(),
-                    img: item.attributes.img.data.attributes.url,
-                    size: `${isSize}, ${isCrust}`,
-                    quantity: quantity
-                })),
-                setQuantity((action) => action + 1)
-            )
-        } else {
-            return(
-                dispatch(addToCart({
-                    id: item.id,
-                    title: item.attributes.title,
-                    description: item.attributes.description,
-                    price: price(),
-                    img: item.attributes.img.data.attributes.url,
-                    size: isSize,
-                    quantity: quantity
-                })),
-                setQuantity((action) => action + 1)
-
-            )
-        }
-        
-
+        return(
+            dispatch(addToCart({
+                id: item.id,
+                title: item.attributes.title,
+                description: item.attributes.description,
+                price: price(),
+                img: item.attributes.img.data.attributes.url,
+                size: `${isSize}, ${isCrust}`,
+                quantity
+            })),
+            setQuantity((action) => action += 1)
+        );
     };
+
+    function increaseQuantity () {
+        return(
+            dispatch(incrementQuantity({
+                quantity,
+            })),
+            setQuantity((action) => action += 1),
+            console.log('increase' + quantity)
+        );
+    };
+
+    function decreaseQuantity () {
+        return(
+            dispatch(decrementQuantity({
+                quantity,
+            })),
+            setQuantity((action) => action -= 1),
+            console.log('decrease' + quantity)
+        );
+    };
+
+    
+
+    // function upload () {
+    //     if (cathegory === 'pizza') {
+    //         return(
+    //             dispatch(addToCart({
+    //                 id: item.id,
+    //                 title: item.attributes.title,
+    //                 description: item.attributes.description,
+    //                 price: price(),
+    //                 img: item.attributes.img.data.attributes.url,
+    //                 size: `${isSize}, ${isCrust}`,
+    //                 quantity: quantity
+    //             })),
+    //             setQuantity((action) => action + 1)
+    //         )
+    //     } else {
+    //         return(
+    //             dispatch(addToCart({
+    //                 id: item.id,
+    //                 title: item.attributes.title,
+    //                 description: item.attributes.description,
+    //                 price: price(),
+    //                 img: item.attributes.img.data.attributes.url,
+    //                 size: isSize,
+    //                 quantity: quantity
+    //             })),
+    //             setQuantity((action) => action + 1)
+
+    //         )
+    //     }
+    // };
 
     function price() {
         if (cathegory === 'pizza') {
@@ -182,14 +243,14 @@ export default function CardQuantity({item, priceValue, cathegory, isSize, isCru
                 </div>
             :
                 <div className='increase-decrease-quantity'>
-                    <button className='quantity-btn' onClick={() => setQuantity(quantity - 1)} style={{marginLeft: '-1px'}} >
+                    <button className='quantity-btn' onClick={() => {{decreaseQuantity()}}} style={{marginLeft: '-1px'}} >
                         <Remove className='quantity'/>
                     </button>
                     
                     <div className='count'>
                         {quantity} 
                     </div>
-                    <button className='quantity-btn' onClick={() => {{upload();}}} style={{margin: '-1px'}}>
+                    <button className='quantity-btn' onClick={() => {increaseQuantity()}} style={{margin: '-1px'}}>
                         <Add/>
                     </button>
                 </div> 
