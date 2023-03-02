@@ -1,7 +1,8 @@
 import React from 'react';
 import NavbarSecondPart from '../../Navbar/NavbarSecondPart';
 import Slider from '../../Slider/Slider';
-import Pizza from '../Pizza/Pizza';
+import CardList from '../../CardList/CardList';
+import isSorting from '../../Sorting/Sorting'
 import './Home.scss';
 
 export default function Home() {
@@ -11,7 +12,8 @@ export default function Home() {
     <div className='home'>
       <NavbarSecondPart/>
       <Slider/>
-      <Pizza/>
+      <CardList cathegory='pizza' type='Pizza: Best Price' isSorting={isSorting}/>
+      <CardList cathegory='pizza' type='Pizza: Heroes' isSorting={isSorting}/>    
     </div>
   )
 }

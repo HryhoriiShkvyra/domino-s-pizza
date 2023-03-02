@@ -1,10 +1,9 @@
 import { Add, DeliveryDiningOutlined, KeyboardArrowDownOutlined, LocationOn, Remove, StorefrontOutlined } from '@mui/icons-material';
 import React from 'react';
 import NavbarSecondPart from '../../Navbar/NavbarSecondPart';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './Checkout.scss';
-import { incrementQuantity, decrementQuantity } from '../../redux/cartReducer';
+import { incrementQuantity, decrementQuantity, removeItem } from '../../redux/cartReducer';
 import { makeRequest } from '../../../makeRequest'
 import {loadStripe} from '@stripe/stripe-js';
 
@@ -28,19 +27,18 @@ export default function Checkout() {
     return total.toFixed(2)
   }
 
-    function productsLength () {
-      if (products.length === 0) {
-        return(0)
-      } else if (products.length === 1) {
-        return (140) 
-      } else if (products.length === 2) {
-        return (280)
-      } else {
-        return (420)
-      }
+  function productsLength () {
+    if (products.length === 0) {
+      return(0)
+    } else if (products.length === 1) {
+      return (140) 
+    } else if (products.length === 2) {
+      return (280)
+    } else {
+      return (420)
     }
+  }
 
-  console.log(productsLength())
 
   const stripePromise = loadStripe(
     "pk_test_51MboeJJnoHW1zmgYv34JTHBK2VKAApu7IyeYnFs5vxVPpb4Ch6h0V01OPRKXU56n1UhQoq5ilr13NhIEKzEMu95Q00hZ3jCIYF"
@@ -61,7 +59,6 @@ export default function Checkout() {
   };
   
 
-  // console.log(products.length)
 
   return (
     <div className='checkout'>
@@ -151,13 +148,13 @@ export default function Checkout() {
                         <span className='right-price-currency'>uah</span>
                       </span>
                       <span className='right-product-quantity'>
-                        <button className='quantity-btn' onClick={() => (setQuantity(quantity - 1))} style={{marginLeft: '-1px'}} >
+                        <button className='quantity-btn' onClick={() => (dispatch(decrementQuantity()))} style={{marginLeft: '-1px'}} >
                           <Remove/>
                         </button> 
                         <div className='count'>
                           {item.quantity} 
                         </div>
-                        <button className='quantity-btn' onClick={() => (increaseQuantity())} style={{margin: '-1px'}}>
+                        <button className='quantity-btn' onClick={() => dispatch(increaseQuantity())} style={{margin: '-1px'}}>
                           <Add/>
                         </button>
                       </span>

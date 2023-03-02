@@ -72,9 +72,7 @@ export default function CardQuantity({ item, priceValue, cathegory, isSize, isCr
 
     function decreaseQuantity () {
         return(
-            dispatch(decrementQuantity({
-                quantity,
-            })),
+            dispatch(decrementQuantity({})),
             setQuantity((action) => action -= 1),
             console.log('decrease' + quantity)
         );
@@ -243,7 +241,7 @@ export default function CardQuantity({ item, priceValue, cathegory, isSize, isCr
                 </div>
             :
                 <div className='increase-decrease-quantity'>
-                    <button className='quantity-btn' onClick={() => {{decreaseQuantity()}}} style={{marginLeft: '-1px'}} >
+                    <button className='quantity-btn' onClick={() => {decreaseQuantity()}} style={{marginLeft: '-1px'}} >
                         <Remove className='quantity'/>
                     </button>
                     
