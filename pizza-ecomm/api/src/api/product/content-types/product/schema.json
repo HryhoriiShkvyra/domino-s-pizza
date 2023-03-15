@@ -169,7 +169,7 @@
     },
     "isNew": {
       "type": "boolean",
-      "default": true
+      "default": false
     },
     "isAdult": {
       "type": "boolean",
