@@ -3,22 +3,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CardQuantity from '../CardQuantity/CardQuantity';
 import CardSize from '../CardSize/CardSize';
-// import useFetch from '../Hooks/useFetch';
 import './Card.scss';
 
 export default function Card({item, type, cathegory}) {
 
-  // const {data, loading, error} = useFetch(
-  //   `/products/${id}?populate=*`
-  // ); 
+
 
   const inCart = true;
   const [isSize, setIsSize] = React.useState('standard-size')
   const [isCrust, setIsCrust] = React.useState('thick')
   const priceValue = [isSize, isCrust]
-  console.log(isSize)
 
-  // console.log(priceValue);
+
 
   const weightCount = () => {
       if (cathegory === 'pizza') {
@@ -234,7 +230,7 @@ export default function Card({item, type, cathegory}) {
           isSize = {isSize} setIsSize={setIsSize} isCrust={isCrust} setIsCrust={setIsCrust} 
           />
           <CardQuantity item={item} priceValue = {priceValue} cathegory={cathegory}
-           isSize = {isSize} isCrust={isCrust}
+           isSize = {isSize} isCrust={isCrust} 
           />
         </div>
     </div>

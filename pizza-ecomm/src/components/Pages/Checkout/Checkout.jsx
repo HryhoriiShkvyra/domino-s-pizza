@@ -1,65 +1,60 @@
-import { Add, DeliveryDiningOutlined, KeyboardArrowDownOutlined, LocationOn, Remove, StorefrontOutlined } from '@mui/icons-material';
+import { Add, DeleteOutline, DeliveryDiningOutlined, KeyboardArrowDownOutlined, LocationOn, Remove, StorefrontOutlined } from '@mui/icons-material';
 import React from 'react';
 import NavbarSecondPart from '../../Navbar/NavbarSecondPart';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import './Checkout.scss';
-import { incrementQuantity, decrementQuantity, removeItem } from '../../redux/cartReducer';
-import { makeRequest } from '../../../makeRequest'
 import {loadStripe} from '@stripe/stripe-js';
+import CheckoutItem from '../../CheckoutItem/CheckoutItem';
 
 
 export default function Checkout() {
-  const products = useSelector(state => state.cart.products)
+
+  const productsInCart = useSelector(state => state.cart.items)
 
   const [activeBtn, setActiveBtn] = React.useState('delivery')
-  const [quantity, setQuantity] = React.useState(0);
-
-  const dispatch = useDispatch();
-  function increaseQuantity () {
-    dispatch(incrementQuantity({
-      quantity: quantity,
-    }))
-  }
-
+    
   const totalPrice = () => {
     let total = 0;
-    products.forEach((item) => (total += item.quantity * item.price));
+    productsInCart.forEach((product) => (total += product.quantity * product.price));
     return total.toFixed(2)
   }
 
-  function productsLength () {
-    if (products.length === 0) {
-      return(0)
-    } else if (products.length === 1) {
-      return (140) 
-    } else if (products.length === 2) {
-      return (280)
+
+  function productLength () {
+    if (productsInCart.length === 0) {
+       return(0)
+    } else if (productsInCart.length === 1) {
+        return (140) 
+    } else if (productsInCart.length === 2) {
+        return (280)
     } else {
-      return (420)
+        return (420)
     }
   }
 
 
-  const stripePromise = loadStripe(
-    "pk_test_51MboeJJnoHW1zmgYv34JTHBK2VKAApu7IyeYnFs5vxVPpb4Ch6h0V01OPRKXU56n1UhQoq5ilr13NhIEKzEMu95Q00hZ3jCIYF"
-  );
-  const handlePayment = async () => {
-    try {
-      const stripe = await stripePromise;
-      const res = await makeRequest.post("/orders", {
-        products,
-      });
-      await stripe.redirectToCheckout({
-        sessionId: res.data.stripeSession.id,
-      });
+  // const stripePromise = loadStripe(
+  //   "pk_test_51MboeJJnoHW1zmgYv34JTHBK2VKAApu7IyeYnFs5vxVPpb4Ch6h0V01OPRKXU56n1UhQoq5ilr13NhIEKzEMu95Q00hZ3jCIYF"
+  // );
+  // const handlePayment = async () => {
+  //   try {
+  //     const stripe = await stripePromise;
+  //     const res = await makeRequest.post("/orders", {
+  //       products,
+  //     });
+  //     await stripe.redirectToCheckout({
+  //       sessionId: res.data.stripeSession.id,
+  //     });
 
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  const handlePayment = () => {
+    console.log('payment button works')
+  }
   
-
-
   return (
     <div className='checkout'>
       <NavbarSecondPart/>
@@ -79,7 +74,6 @@ export default function Checkout() {
                 Carry out
               </button>
             </div>
-          
           </div>
           <div className='second-block'>
             <div className='second-block-info'>
@@ -135,32 +129,10 @@ export default function Checkout() {
         <div className='right'>
           <span className='block-title'>Your order</span>
           <div className='right-container'>
-            <div className='right-product-wrapper' style={{height: `${productsLength()}px`}}>
-              {products.map((item) => (
-                  <div className='right-product' key={item.id}>
-                    <img className='right-product-image' src={process.env.REACT_APP_UPLOAD_URL + item.img} alt="#" />
-                    {/* <img className='right-product-image'  alt="#" /> */}
-                    <div className="right-product-text">
-                      <span className='right-product-title'>{item.title}</span>
-                      <span className='right-product-ingredients'>{item.description}</span>
-                      <span className='right-product-crust'>{item.size}</span>
-                      <span className='right-product-price'>{item.price}.00
-                        <span className='right-price-currency'>uah</span>
-                      </span>
-                      <span className='right-product-quantity'>
-                        <button className='quantity-btn' onClick={() => (dispatch(decrementQuantity()))} style={{marginLeft: '-1px'}} >
-                          <Remove/>
-                        </button> 
-                        <div className='count'>
-                          {item.quantity} 
-                        </div>
-                        <button className='quantity-btn' onClick={() => dispatch(increaseQuantity())} style={{margin: '-1px'}}>
-                          <Add/>
-                        </button>
-                      </span>
-                    </div>
-                  </div>
-                ))}
+            <div className='right-product-wrapper' style={{height: `${productLength()}px`}}>
+              {productsInCart.map((product) => (
+                <CheckoutItem key={product.id} product={product}/>
+              ))}
             </div>
             <div className="right-price-wrapper">
               <span className='right-price'>{totalPrice()}

@@ -13,7 +13,6 @@ import Sides from './components/Pages/Sides/Sides';
 import Dessert from './components/Pages/Dessert/Dessert';
 import Checkout from './components/Pages/Checkout/Checkout';
 import PizzaConstructor from './components/Pages/PizzaConstructor/PizzaConstructor';
-
 import './App.scss';
 import CardIngredients from './components/CardIngredient/CardIngredients';
 
@@ -29,6 +28,7 @@ export default function  App() {
     )
     
   }
+  
   
   const router = createBrowserRouter([
     {

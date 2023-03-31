@@ -3,11 +3,24 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import './NavbarSecondPart.scss'
 import { SideMenu } from '../SideMenu/SideMenu';
+import { useSelector } from 'react-redux';
 
 export default function SecondP() {
 
   const [sideBarActive, setSideBarActive] = React.useState(false)
   const [navBarActive, setNavBarActive] = React.useState('pizza');
+
+  const productsInCart = useSelector(state => state.cart.items)
+
+  function totalCount () {
+    if (productsInCart.length < 10) {
+      return('0'+ productsInCart.length)
+    } else {
+      return( 
+        productsInCart.length
+      )
+    }
+  }
 
   return (
     <>
@@ -49,7 +62,7 @@ export default function SecondP() {
           </nav>
           <div className='cart-wrapper'>
             <div className='cart'>
-              <span>00</span>
+              <span>{totalCount()}</span>
               <ShoppingCart className='icon'/>
             </div>
             <Link className='checkout' onClick={() => setNavBarActive('checkout')} to='/checkout/'>checkout</Link>
