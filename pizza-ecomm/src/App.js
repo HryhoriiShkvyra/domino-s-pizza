@@ -15,6 +15,14 @@ import Checkout from './components/Pages/Checkout/Checkout';
 import PizzaConstructor from './components/Pages/PizzaConstructor/PizzaConstructor';
 import './App.scss';
 import CardIngredients from './components/CardIngredient/CardIngredients';
+import UserProfile from './components/User/UserProfile/UserProfile'
+import UserBankCards from './components/User/UserBankCards/UserBankCards';
+import UserLeaveFeedback from './components/User/UserLeaveFeedback/UserLeaveFeedback';
+import UserMessages from './components/User/UserMessages/UserMessages';
+import UserOrders from './components/User/UserOrders/UserOrders';
+import UserAddresses from './components/User/UserAddresses/UserAddresses';
+import UserGroups from './components/User/UserGroups/UserGroups';
+import UserContainer from './components/User/UserContainer/UserContainer';
 
 export default function  App() {
 
@@ -56,15 +64,47 @@ export default function  App() {
         },
         {
           path: '/checkout/',
-          element: <Checkout/>
+          element: <Checkout/>,
         },
         {
           path: '/product/:id',
-          element: <CardIngredients/>
+          element: <CardIngredients/>,
         },
         {
           path: '/pizza-constructor/:id',
-          element: <PizzaConstructor/>
+          element: <PizzaConstructor/>,
+        },
+        {
+          path: '/profile/',
+          element: <UserProfile/>,
+        },
+        {
+          path: '/bankcard/',
+          element: <UserBankCards/>,
+        },
+        {
+          path: '/addresses/',
+          element: <UserAddresses/>,
+        },
+        {
+          path: '/groups/',
+          element: <UserGroups/>,
+        },
+        {
+          path: '/leave-feedback/',
+          element: <UserLeaveFeedback/>,
+        },
+        {
+          path: '/messages/',
+          element: <UserMessages/>,
+        },
+        {
+          path: '/orders/',
+          element: <UserOrders/>,
+        },
+        {
+          path: '/user-container/',
+          element: <UserContainer/>,
         },
       ]
     },

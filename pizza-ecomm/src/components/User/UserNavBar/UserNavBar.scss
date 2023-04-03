@@ -1,0 +1,33 @@
+.user-navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    // gap: 20px;
+
+    // margin-top: 10px;\
+
+    .user-navbar-links {
+
+        .user-link {
+            padding: 10px 15px;    
+            margin: 10px 0;
+
+            border-radius: 7px;
+            
+            transition: all .5s ease;
+        }
+    
+        .user-link-active {
+            padding: 10px 15px;
+            margin: 10px 0;
+            
+            color: #dee3ed;
+            background-color: #2f3237;
+            border-radius: 7px;
+
+            transition: all .5s ease;
+
+        }
+    }    
+}

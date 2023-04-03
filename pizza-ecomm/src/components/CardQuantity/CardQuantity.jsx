@@ -15,13 +15,13 @@ export default function CardQuantity({ item, priceValue, cathegory, isSize, isCr
                     (item.attributes.price_1)
                 )
                 } else if (`${priceValue}` === 'standard-size,thin') {
-                return (
-                    (item.attributes.price_2)
-                )
+                    return (
+                        (item.attributes.price_2)
+                    )
                 } else if (`${priceValue}` === 'standard-size,philadelphia') {
-                return (
-                    (item.attributes.price_3)
-                )
+                    return (
+                        (item.attributes.price_3)
+                    )
                 } else if (`${priceValue}` === 'standard-size,hot-dog') {
                     return(
                         (item.attributes.price_4)
@@ -65,7 +65,7 @@ export default function CardQuantity({ item, priceValue, cathegory, isSize, isCr
                 } else if (`${priceValue}` === 'xxl,thin') {
                     return(
                     (item.attributes.price_14)
-                )
+                    )
                 } else if (`${priceValue}` === 'xxl,philadelphia') {
                     return(
                         (item.attributes.price_15)
@@ -73,10 +73,10 @@ export default function CardQuantity({ item, priceValue, cathegory, isSize, isCr
                 } else if (`${priceValue}` === 'xxl,hot-dog') {
                     return (
                         (item.attributes.price_16)
-                        )
-                    }
-            }
-
+                    )
+                }
+        }
+ 
         if (cathegory === 'sides') {
             if (`${isSize}` === 'standard-size') {
                 return (
@@ -119,7 +119,7 @@ export default function CardQuantity({ item, priceValue, cathegory, isSize, isCr
                     (item.attributes.price_1)
                 )
             }
-        }   
+        }  
     }
 
 
@@ -133,9 +133,9 @@ export default function CardQuantity({ item, priceValue, cathegory, isSize, isCr
         setIsActiveBtn(false)
     }
 
-    React.useEffect(() => {
-        console.log(quantity)
-    }, [quantity])
+    // React.useEffect(() => {
+    //     console.log(quantity)
+    // }, [quantity])
 
 
   const handleAddToCart = () => {
@@ -157,7 +157,9 @@ export default function CardQuantity({ item, priceValue, cathegory, isSize, isCr
   }
 
   const handleIncreaseQuantity = () => {
-    dispatch(increaseQuantity({ id: item.id }));
+    dispatch(increaseQuantity({ 
+        id: item.id,
+        size: `${isSize}, ${isCrust}` }));
     setQuantity((prev) => prev + 1)
   }
 

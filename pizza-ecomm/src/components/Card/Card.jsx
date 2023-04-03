@@ -15,6 +15,7 @@ export default function Card({item, type, cathegory}) {
   const priceValue = [isSize, isCrust]
 
 
+  console.log(item)
 
   const weightCount = () => {
       if (cathegory === 'pizza') {

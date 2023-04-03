@@ -5,7 +5,7 @@ import './CardSize.scss';
 
 export default function CardSize({item, type, cathegory, isCrust, setIsCrust, isSize, setIsSize}) {
     
-
+    // console.log(item.attributes.size_2)
   return (
     <div>
         {(() => {

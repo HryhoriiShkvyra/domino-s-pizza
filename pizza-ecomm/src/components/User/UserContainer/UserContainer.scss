@@ -1,0 +1,21 @@
+.user-container {
+   
+    .user-container-wrapper {
+        display: flex;
+
+        width: 900px;
+        margin: 100px auto 0;
+        padding: 20px;
+
+        background-color: #dee3ed;
+        border-radius: 20px;
+
+        .user-tab {
+            visibility: hidden;
+        }
+
+        .user-tab-active {
+            visibility: visible;
+        }
+    }
+}

@@ -2,6 +2,7 @@ import { LocationOn, Phone, } from '@mui/icons-material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import React from 'react';
 import './NavbarFirstPart.scss';
+import { Link } from 'react-router-dom';
 
 export default function NavbarFirstPart() {
 
@@ -26,7 +27,7 @@ export default function NavbarFirstPart() {
               Eng
               <span className='icon'><KeyboardArrowDownIcon/></span>
             </button>
-            <button className='login'>Sign In</button>
+            <Link className='login' to='/user-container/' >Sign In</Link>
           </div>
         </div>
       </div>      

@@ -10,20 +10,39 @@ const cartSlice = createSlice({
       const itemInCart = state.items.find((item) => {
         return (item.id === action.payload.id)
       });
-      if (itemInCart) {
-        itemInCart.quantity+=1;
-      } else {
-        state.items.push({ ...action.payload, quantity: 1 });
-      }
+      console.log(itemInCart)
+      // if (itemInCart) {
+      //   itemInCart.quantity+=1;
+      // } else {
+      //   state.items.push({ ...action.payload, quantity: 1 });
+      // }
+      console.log(action.payload)
     },
 
     increaseQuantity: (state, action) => {
-      const itemsInCart = state.items.find((item) => {
+      const itemInCart = state.items.find((item) => {
         return (item.id === action.payload.id)
       });
-      if (itemsInCart) {
-        itemsInCart.quantity+=1;
-      }
+      console.log(action.payload)
+      console.log(itemInCart)
+      console.log('here i must add another count for quantity for each size of product')
+      // if (itemInCart) {
+      //   itemInCart.quantity+=1;
+      // }
+
+      // const itemSize = state.items.find((item) => {
+      //   return (item.size === action.payload.size)
+      //   if (itemSize) {
+          
+      //   }
+      // })
+      // const itemId = state.items.find((item) => {
+      //   return (item.id === action.payload.id)
+      // });
+
+      // if (itemId) {
+      //   itemId.quantity+=1;
+      // }
     },
 
     decreaseQuantity: (state,action) => {

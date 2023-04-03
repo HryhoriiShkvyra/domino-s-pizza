@@ -33,29 +33,29 @@ export default function SecondP() {
           <nav className='nav'>
             <div className='nav-link'>
               <Link onClick={() => setNavBarActive('pizza')} 
-              className={navBarActive === 'pizza' ? 'link-active' : 'link'} 
-              to='/pizza/'>
+                className={navBarActive === 'pizza' ? 'link-active' : 'link'} 
+                to='/pizza/'>
                 Pizza
               </Link>
             </div>
             <div className='nav-link'>
               <Link onClick={() => setNavBarActive('drinks')} 
-              className={navBarActive === 'drinks' ? 'link-active' : 'link'} 
-              to='/drinks/'>
+                className={navBarActive === 'drinks' ? 'link-active' : 'link'} 
+                to='/drinks/'>
                 Drinks
               </Link>
             </div>
             <div className='nav-link'>
               <Link onClick={() => setNavBarActive('sides')} 
-              className={navBarActive === 'sides' ? 'link-active' : 'link'} 
-              to='/sides/'>
+                className={navBarActive === 'sides' ? 'link-active' : 'link'} 
+                to='/sides/'>
                 Sides
               </Link>
             </div>
             <div className='nav-link'>
               <Link onClick={() => setNavBarActive('dessert')} 
-              className={navBarActive === 'dessert' ? 'link-active' : 'link'} 
-              to='/dessert/'>
+                className={navBarActive === 'dessert' ? 'link-active' : 'link'} 
+                to='/dessert/'>
                 Dessert
               </Link>
             </div>

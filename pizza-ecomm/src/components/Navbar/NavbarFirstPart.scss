@@ -100,20 +100,25 @@
                 }
 
                 .login {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     width: 135px;
                     height: 28px;
                     border-radius: 15px;
                     border: none;
                     text-align: center;
-                    color: #444;
+                    color: #1d1e20;
                     font-weight: 700;
+                    background-color: #f1f3f9;
 
-                    transition: all .4s ease; 
+                    transition: all .6s ease; 
 
                     cursor: pointer;
 
                     &:hover {
-                        background-color: rgb(255, 255, 255);
+                        color: #f1f3f9;
+                        background-color: #1d1e20;
                     }
                 }
             }
