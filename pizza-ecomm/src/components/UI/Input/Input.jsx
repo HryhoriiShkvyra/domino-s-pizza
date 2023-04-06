@@ -1,13 +1,10 @@
 import React from "react";
 import './Input.scss';
 
-const Input = () => {
+const Input = (props) => {
 
     return(
-        <input
-            className="input" 
-            placeholder='enter value of data'
-        />
+        <input className="input" placeholder={props.placeholder}/>
     );
 };
 

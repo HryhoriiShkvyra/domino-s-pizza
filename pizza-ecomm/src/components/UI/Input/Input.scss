@@ -1,9 +1,14 @@
 .input {
+    width: 100%;
     padding: 10px 15px;
     margin: 10px 0;
 
-    background-color: #f1f3f9;
+    background-color: #dee3ed;
     border: none;
     border-bottom: 1px solid;
-    border-radius: 7px;
+
+    &:focus {
+        outline: none;
+        border: 1px solid;
+    }
 }

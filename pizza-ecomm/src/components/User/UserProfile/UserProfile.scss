@@ -1,24 +1,36 @@
 .user-profile{
     display: none;
+    
 }
 
 .user-profile-active {
     visibility: visible;
 
     display: flex;
-    padding: 0px 0px 40px 40px;
+
+    transition: all .5s ease;
+
 
     .user-profile-wrapper {
         display: flex;
         flex-direction: column;
+        width: 450px;
         gap: 20px;
+        transition: all .5s ease;
+
+        .user-title-tab {
+            font-size: 30px;
+            font-weight: 700;
+        }
 
         .user-profile-col {
             display: flex;
             flex-direction: column;
             gap: 10px;
+            
 
             .user-profile-more-info {
+                position: relative;
                 display: flex;
                 align-items: center;
                 gap: 10px;
@@ -38,8 +50,123 @@
                     border-radius: 10px;
     
                 } 
+
+                .additional-info-tip-email {
+                    display: none;
+                    transition: all .5s ease;
+
+                }
+
+                .additional-info-tip-email-active {
+                    position: absolute;
+                    top: 35px;
+                    left: -30%;
+                    display: block;
+                    width: 200px;
+                    padding: 15px;
+                    background-color: #f8f9fc;
+
+                    border-radius: 20px;
+
+                    transition: all .5s ease;
+
+                    z-index: 100;
+                }
+
+                .additional-info-tip-phone {
+                    display: none;
+                    transition: all .5s ease;
+
+                }
+
+                .additional-info-tip-phone-active {
+                    position: absolute;
+                    top: 35px;
+                    left: -30%;
+                    display: block;
+                    width: 200px;
+                    padding: 15px;
+                    background-color: #f8f9fc;
+
+                    border-radius: 20px;
+
+                    transition: all .5s ease;
+
+                    z-index: 100;
+                }
+            }
+
+            .user-profile-gender {
+                border: none;
+
+                background-color: #dee3ed;
+
+                &:focus{
+                    outline: none;
+                    background-color: #f8f9fc;
+                }
             }
             
+        }
+        
+        .user-profile-btns {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px auto;
+
+
+            .user-profile-btn-change-password {
+                position: absolute;
+                right: -200px;
+
+                color:rgb(39, 155, 249);
+                background-color: #ffffff00;
+                border: none;
+            }
+
+
+            .user-profile-btn{
+
+                width: 350px;
+                margin: 0 auto;
+                padding: 15px 0;
+
+                font-size: 16px;
+
+                background-color: #c2c9d6;
+                border: none;
+                border-radius: 15px;
+
+                transition: all .5s ease;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #8f96a3;
+                }
+            }
+            
+            .user-profile-btn-save {
+                width: 350px;
+                margin: 0 auto;
+                padding: 15px 0;
+
+                font-size: 16px;
+                color: #f8f9fc;
+
+                background-color: rgb(254, 0, 33);
+                border: none;
+                border-radius: 15px;
+
+                transition: all .5s ease;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #e31837;
+
+                }
+            }
         }
     }
 }

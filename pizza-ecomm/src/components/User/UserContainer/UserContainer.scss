@@ -1,6 +1,9 @@
 .user-container {
+    font-family: 'Open Sans', sans-serif;
+    transition: all .5s ease;
    
     .user-container-wrapper {
+        position: relative;
         display: flex;
 
         width: 900px;
@@ -10,12 +13,27 @@
         background-color: #dee3ed;
         border-radius: 20px;
 
-        .user-tab {
-            visibility: hidden;
+        
+        transition: all .5s ease;
+
+
+        .user-navbar-position {
+            position: absolute;
         }
 
-        .user-tab-active {
-            visibility: visible;
+        .user-tabs {
+            width: 500px;
+            padding: 0 0 40px 200px;
+
+
+            transition: all .5s ease;
+
+
         }
+
+        .user-tab {
+        }
+
+       
     }
 }

@@ -4,4 +4,97 @@
 
 .user-addresses-active {
     visibility: visible;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    margin: 0 auto;
+
+    .user-title-tab {
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .user-addresses-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+
+
+        
+
+        .user-addresses-rows {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 500px;
+            
+
+            .user-addresses-value {
+                font-weight: 500;
+            }    
+
+            .user-addresses-select {
+                padding: 7px 5px; 
+                
+                font-size: 18px;
+
+                background-color: #dee3ed;
+                border: none;
+                border-bottom: 1px solid #2f3237;     
+                outline: none;  
+                
+                .user-addresses-select-option {
+                    padding: 10px;
+
+                    font-size: 18px;
+
+
+                    
+                }
+            } 
+        }
+
+        .user-addresses-columns{
+            display: flex;
+            flex-direction: row;   
+            gap: 40px;   
+            
+            .user-addresses-column {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                margin-top: 20px ;
+
+                .user-addresses-column-item {
+                    display: flex;
+                    flex-direction: column;
+                    width: 230px;
+                }
+            }
+        }
+
+        .user-addresses-btn {
+            width: 350px;
+            margin: 40px auto 0;
+            padding: 15px 0;
+
+            font-size: 16px;
+            color: #f8f9fc;
+
+            background-color: rgb(254, 0, 33);
+            border: none;
+            border-radius: 15px;
+
+            transition: all .5s ease;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #e31837;
+
+            }
+        }
+    }
 }

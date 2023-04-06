@@ -23,13 +23,16 @@ const UserContainer = () => {
             <NavbarSecondPart/>
             <div className="user-container-wrapper">
                 <UserNavBar activeTab={activeTab} setActiveTab={setActiveTab}/>
-                <UserProfile activeTab={activeTab} />
-                <UserAddresses activeTab={activeTab} />
-                <UserGroups activeTab={activeTab} />
-                <UserLeaveFeedback activeTab={activeTab} />
-                <UserMessages activeTab={activeTab} />
-                <UserOrders activeTab={activeTab} />
-                <UserBankCards activeTab={activeTab} />
+                <div className="user-tabs">
+                    <UserProfile activeTab={activeTab} />
+                    <UserAddresses activeTab={activeTab} />
+                    <UserGroups activeTab={activeTab} />
+                    <UserLeaveFeedback activeTab={activeTab} />
+                    <UserMessages activeTab={activeTab} />
+                    <UserOrders activeTab={activeTab} />
+                    <UserBankCards activeTab={activeTab} />
+                </div>
+               
             </div>
         </div>
     );
