@@ -1,4 +1,6 @@
 .user-container {
+    margin-bottom: 100px;
+
     font-family: 'Open Sans', sans-serif;
     transition: all .5s ease;
    
@@ -23,6 +25,7 @@
 
         .user-tabs {
             width: 500px;
+            min-height: 350px;
             padding: 0 0 40px 200px;
 
 

@@ -5,7 +5,11 @@ const UserMessages  = ({activeTab}) => {
     
     return(
         <div className={activeTab === 'messages'? 'user-messages-active' : 'user-messages'}>
-            <h1 className="user-title-tab">Messages</h1>
+            <div className="user-messages-container">
+                <div className="user-messages-no-messages">
+                    You have no messages
+                </div>
+            </div>
         </div>    
     );
 };

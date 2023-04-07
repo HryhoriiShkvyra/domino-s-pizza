@@ -3,7 +3,7 @@ import React from 'react';
 import Card from '../Card/Card';
 import './CardList.scss';
 import useFetch from '../Hooks/useFetch';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 export default function CardList({type, cathegory, isSorting}) {
 
@@ -12,7 +12,7 @@ export default function CardList({type, cathegory, isSorting}) {
     `products?populate=*&[filters][type][$eq]=${type}`
   ); 
 
-  const products = useSelector((state) => state.cart.items) 
+  // const products = useSelector((state) => state.cart.items) 
 
 
 
@@ -32,7 +32,8 @@ export default function CardList({type, cathegory, isSorting}) {
         }        
         <div className='card-list-block'>
           { error 
-            ? 'something went wrong' :
+            ? 'something went wrong' 
+            :
             loading
             ? 'loading'
             :

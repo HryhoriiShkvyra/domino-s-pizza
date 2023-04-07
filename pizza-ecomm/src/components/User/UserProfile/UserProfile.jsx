@@ -9,7 +9,6 @@ const UserProfile = ({activeTab}) => {
     const [activeTipEmail, setActiveTipEmail] = React.useState(false);
     const [activeTipPhone, setActiveTipPhone] = React.useState(false);
     
-    console.log(activeTipPhone)
 
     return(
         <div className={activeTab === 'profile'? 'user-profile-active' : 'user-profile'}>

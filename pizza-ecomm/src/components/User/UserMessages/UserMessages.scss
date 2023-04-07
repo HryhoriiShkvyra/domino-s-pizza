@@ -5,8 +5,14 @@
 .user-messages-active {
     visibility: visible;
 
-    .user-title-tab {
-        font-size: 30px;
-        font-weight: 700;
+
+    .user-messages-container {
+        
+        .user-messages-no-messages {
+            width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #5e636e;
+        }
     }
 }

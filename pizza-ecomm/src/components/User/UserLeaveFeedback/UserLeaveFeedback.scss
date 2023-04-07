@@ -5,8 +5,136 @@
 .user-leave-feedback-active {
     visibility: visible;
 
-    .user-title-tab {
-        font-size: 30px;
-        font-weight: 700;
+    .user-leave-feedback-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        
+        .user-leave-feedback-stars {
+            display: flex;
+            justify-content: space-between;
+
+            .user-leave-feedback-star-not-active {
+                transform: scale(2.0);
+                color: grey;
+            }
+
+            .user-leave-feedback-star-active {
+                transform: scale(2.0);
+                color: yellow;
+            }
+
+           
+        }
+
+        .user-leave-feedback-rate-us {
+            display: flex;
+            justify-content: center;
+            color: #8f96a3;
+        }
+
+        .user-leave-feedback-cols {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+
+            .user-leave-feedback-col {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                
+
+                .user-leave-feedback-title-input {
+                    font-size: 20px;
+                }
+
+
+
+                .user-leave-feedback-select {
+                    padding: 7px 5px; 
+                    
+                    font-size: 18px;
+    
+                    background-color: #dee3ed;
+                    border: none;
+                    border-bottom: 1px solid #2f3237;     
+                    outline: none;  
+                    
+                    .user-leave-feedback-select-option {
+                        padding: 10px;
+    
+                        font-size: 18px;
+    
+    
+                        
+                    }
+                } 
+
+
+
+
+                .user-leave-feedback-upload-btn {
+                    width: 100%;
+                    display: flex;
+                    gap: 5px;
+                    flex-direction: column;
+                    align-items: center;
+
+                    padding: 20px 0;
+
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 12px;
+                    color: #8f96a3;
+                    background-color: #f1f3f9;
+                    border-radius: 10px;
+                    border: 1px dashed #8f96a3;
+                    .user-leave-feedback-file-upload {
+                        display: none;
+                    }
+
+                    .user-leave-feedback-upload-btn-text-one {
+                        
+                        .user-leave-feedback-file-update-text-blue {
+                            margin-left: 4px;
+                            color: rgb(145, 145, 238);
+                        }
+                    }
+                }
+
+            }    
+            .user-leave-feedback-captcha {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 200px;
+                height: 60px;
+                margin: 0 auto;
+
+                background-color: #f8f9fc;
+                border-radius: 10px;
+
+            }
+
+            .user-leave-feedback-send-btn {
+                width: 100%;
+                margin: 0 auto;
+                padding: 10px 0;
+    
+                font-size: 16px;
+                color: #f8f9fc;
+    
+                background-color: rgb(254, 0, 33);
+                border: none;
+                border-radius: 15px;
+    
+                transition: all .5s ease;
+                cursor: pointer;
+    
+                &:hover {
+                    background-color: #e31837;
+    
+                }
+            }
+        }        
     }
 }

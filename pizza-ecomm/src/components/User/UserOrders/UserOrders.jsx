@@ -24,17 +24,17 @@ const UserOrders  = ({activeTab}) => {
                     {
                         activeOrderBtn === "ongoing" 
                         ? 
-                        <div className="user-orders-ongoing-order-no-current-orders">
-                            <img className="user-orders-ongoing-order-no-current-orders-img" src={img1}/>
-                            <span className="user-orders-ongoing-order-no-current-orders-title" >You have no current orders</span>
-                            <span className="user-orders-ongoing-order-no-current-orders-subtitle" >To see the list of current orders, you need to place an order</span>
-                        </div>
+                            <div className="user-orders-ongoing-order-no-current-orders">
+                                <img className="user-orders-ongoing-order-no-current-orders-img" src={img1} alt="#"/>
+                                <span className="user-orders-ongoing-order-no-current-orders-title" >You have no current orders</span>
+                                <span className="user-orders-ongoing-order-no-current-orders-subtitle" >To see the list of current orders, you need to place an order</span>
+                            </div>
                         :
-                        <div className="user-orders-ongoing-order-no-current-orders">
-                            <img className="user-orders-ongoing-order-no-current-orders-img" src={img1}/>
-                            <span className="user-orders-ongoing-order-no-current-orders-title" >You don't have any completed orders yet</span>
-                            <span className="user-orders-ongoing-order-no-current-orders-subtitle" >When you receive an order, you can view it here</span>
-                        </div>
+                            <div className="user-orders-ongoing-order-no-current-orders">
+                                <img className="user-orders-ongoing-order-no-current-orders-img" src={img1} alt="#"/>
+                                <span className="user-orders-ongoing-order-no-current-orders-title" >You don't have any completed orders yet</span>
+                                <span className="user-orders-ongoing-order-no-current-orders-subtitle" >When you receive an order, you can view it here</span>
+                            </div>
                     }
                 </div>
             </div>
