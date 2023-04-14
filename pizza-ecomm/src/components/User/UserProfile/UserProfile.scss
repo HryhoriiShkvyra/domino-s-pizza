@@ -5,18 +5,18 @@
 
 .user-profile-active {
     visibility: visible;
+    position: relative;
 
     display: flex;
 
-    transition: all .5s ease;
 
 
     .user-profile-wrapper {
         display: flex;
         flex-direction: column;
-        width: 450px;
         gap: 20px;
-        transition: all .5s ease;
+
+        padding-right: 25px;
 
         .user-title-tab {
             font-size: 30px;
@@ -28,6 +28,9 @@
             flex-direction: column;
             gap: 10px;
             
+            .user-profile-input {
+                width: 500px;
+            }
 
             .user-profile-more-info {
                 position: relative;
@@ -114,7 +117,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin: 30px auto;
+            margin: 50px auto 30px;
 
 
             .user-profile-btn-change-password {

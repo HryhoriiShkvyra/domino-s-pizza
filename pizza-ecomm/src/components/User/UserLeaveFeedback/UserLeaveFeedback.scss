@@ -9,6 +9,7 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        padding: 15px 25px 0 0 ;
         
         .user-leave-feedback-stars {
             display: flex;
@@ -42,6 +43,8 @@
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
+
+                width: 500px;
                 
 
                 .user-leave-feedback-title-input {
@@ -61,6 +64,8 @@
                     outline: none;  
                     
                     .user-leave-feedback-select-option {
+                        display: block;
+                        width: 500px;
                         padding: 10px;
     
                         font-size: 18px;
@@ -88,6 +93,8 @@
                     background-color: #f1f3f9;
                     border-radius: 10px;
                     border: 1px dashed #8f96a3;
+
+                    cursor: pointer;
                     .user-leave-feedback-file-upload {
                         display: none;
                     }

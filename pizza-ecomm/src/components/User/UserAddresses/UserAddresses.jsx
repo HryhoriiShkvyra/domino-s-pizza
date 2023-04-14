@@ -12,7 +12,7 @@ const UserAddresses = ({activeTab}) => {
                 <div className="user-addresses-rows">
                     <>
                         <span className="user-addresses-title-input">Name*</span>
-                        <Input className="user-addresses-value" placeholder='Enter Name'/>
+                        <Input className="user-addresses-input" placeholder='Enter Name'/>
                     </>
                     <>
                         <span className="user-addresses-title-input">City*</span>

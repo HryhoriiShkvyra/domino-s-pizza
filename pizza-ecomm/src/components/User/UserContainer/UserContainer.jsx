@@ -21,6 +21,20 @@ const UserContainer = () => {
     return(
         <div className="user-container">
             <NavbarSecondPart/>
+            {
+                activeTab === 'profile' ? 
+
+                <div className="user-profile-bonus-wrapper">
+                    <span className="user-profile-bonus-col">Bonuses available: 0 bonuses</span>
+                    <span className="user-profile-bonus-col">Bonuses spent: 79 bonuses</span>
+                    <span className="user-profile-bonus-col">
+                        Bonuses can be used for 42 days from the date of accrual
+                    </span>
+                </div>
+                :
+                null    
+            }
+            
             <div className="user-container-wrapper">
                 <UserNavBar activeTab={activeTab} setActiveTab={setActiveTab}/>
                 <div className="user-tabs">

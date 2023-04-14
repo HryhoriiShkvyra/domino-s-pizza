@@ -7,16 +7,13 @@
     display: flex;
     flex-direction: column;
 
-    width: 650px;
-    height: 600px;
-
+    transition: all .5s ease;
    
 
-    .user-orders-wrapper {
+    .user-orders-container {
         display: flex;
         flex-direction: column;
-        margin: 0 auto;
-
+      
         .user-title-tab {
             font-size: 30px;
             font-weight: 700;
@@ -29,6 +26,7 @@
             gap: 20px;
 
             width: 100%;
+            margin: 0 auto;
             justify-content: center;
         
             .user-orders-btn {
@@ -68,18 +66,27 @@
                 -moz-box-shadow: 1px 1px 46px -15px rgba(0,0,0,0.75);
                 box-shadow: 1px 1px 46px -15px rgba(0,0,0,0.75);
 
+
+                
             }
         }
 
         .user-orders-wrapper {
+            width: 100%;
+            margin: 0 auto;
             
 
             .user-orders-ongoing-order-no-current-orders {
+                display: none;
+            }
+
+            .user-orders-ongoing-order-no-current-orders-active  {
+
                 display: flex;
                 flex-direction: column;
                 align-items: center;
 
-                margin-top: 170px;
+                margin: 100px auto 0;
 
                 .user-orders-ongoing-order-no-current-orders-img {
                     width: 175px;
@@ -94,6 +101,82 @@
                     font-size: 14px;
                     font-weight: 500;
                 }
+            }
+            
+            .user-orders-archive {
+                display: none;
+            }
+
+            .user-orders-archive-active {
+               display: flex;
+                flex-direction: column;
+                align-items: center;
+                
+                margin-top: 80px;
+
+                   
+
+                    .archive-order-description {
+                        display: flex;
+                        flex-direction: row;
+                        align-content: center;
+                        gap: 20px;
+
+                        color: #5e636e;
+                        font-size: 12px;
+
+                        .archive-order-description-orderNumber {
+                            width: 90px;
+                            
+                        }
+
+                        .archive-order-description-orderTime {
+                            width: 110px;
+
+                        }
+
+                        .archive-order-description-address {
+                            width: 150px;
+                        }
+
+                        .archive-order-description-phoneNumber {
+                            width: 100px;
+                            
+                        }
+
+                        .archive-order-description-summ {
+                            width: 70px;
+
+                        }
+
+                        .archive-order-description-orderStatus {
+
+                        }
+
+                    }
+
+
+                .user-orders-archive-no-orders {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .user-orders-archive-no-orders-img {
+                        width: 175px;
+                    }
+    
+                    .user-orders-archive-no-orders-title {
+                        font-size: 24px;
+                        font-weight: 700;
+                    }
+    
+                    .user-orders-archive-no-orders-subtitle {
+                        font-size: 14px;
+                        font-weight: 500;
+                    }
+                }
+
+                
             }
         }
     }
