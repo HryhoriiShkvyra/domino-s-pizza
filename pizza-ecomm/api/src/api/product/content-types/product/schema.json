@@ -24,28 +24,11 @@
     "price_1": {
       "type": "decimal"
     },
-    "img": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "size_1": {
       "type": "string"
     },
     "crust_1": {
       "type": "string"
-    },
-    "cathegory": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::cathegory.cathegory",
-      "inversedBy": "products"
     },
     "price_2": {
       "type": "decimal"
@@ -143,18 +126,6 @@
     "weight_16": {
       "type": "string"
     },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Pizza: Best Price",
-        "Pizza: Heroes",
-        "Water",
-        "Tea",
-        "Combo-boxes",
-        "Bread",
-        "Dessert"
-      ]
-    },
     "price_13": {
       "type": "decimal"
     },
@@ -182,6 +153,43 @@
     "inCart": {
       "type": "boolean",
       "default": false
+    },
+    "cathegory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cathegory.cathegory",
+      "inversedBy": "products"
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "New",
+        "Best Price",
+        "Water and drinks",
+        "Juice",
+        "Beer",
+        "Coffee and tea",
+        "Chicken and ribs",
+        "Salads",
+        "Mini rolls",
+        "Combo-boxes",
+        "Sides",
+        "Bread",
+        "Sauces",
+        "Dessert",
+        "Ice cream"
+      ]
     }
   }
 }
