@@ -1,0 +1,137 @@
+.right-product-wrapper {
+    overflow: auto;
+
+    /* width */
+    &::-webkit-scrollbar {
+        width: 7px;
+        padding: 1px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: #dee3ed; 
+
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #fff;
+        border-radius: 5px;
+        margin: 2px;
+
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #fff; 
+    }
+
+    .right-product{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        border-right: 1px solid #dee3ed;
+        border-bottom: 1px solid #dee3ed;
+        padding: 10px 20px 10px 10px;
+
+        .right-product-image {
+            min-width: 192px;
+            height: 120px;
+            border-radius: 20px;
+        }
+        
+        .right-product-text {
+            position: relative;
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            gap: 10px;
+            
+            .right-product-title {
+                color: #5e636e;
+            }
+
+            .right-product-remove-btn {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 24px;
+                height: 24px;
+                border-radius: 20px;
+                border: none;
+                transform: rotate(45deg);
+                color: #5e636e;
+
+                cursor: pointer;
+            }
+
+            .right-product-ingredients {
+                font-size: 11px;
+                color: #5e636e;
+            }
+
+            .right-product-crust {
+                font-size: 11px;
+                font-weight: 600;
+            }
+
+            .right-product-price {
+                position: absolute;
+                top: 90px;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                font-weight: 700;
+               
+                .right-price-currency {
+                    font-size: 10px;
+                }
+            }
+
+            .right-product-quantity {
+                width: fit-content;
+                height: 25px;
+                display: flex;
+                gap: 10px;
+                position: absolute;
+                right: 5px;
+                bottom: 5px;
+                margin-right: -10px;
+                justify-content: space-between;
+                align-items: center;
+                color: #fff;
+                font-size: 18px;
+                font-weight: 700;
+                background-color: #e31837;
+                border: 1px solid rgba(0,0,0,.08);
+                border-radius: 15px;
+                
+                .quantity-btn {
+                    display: flex;
+                    width: 25px;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 25px;
+                    color: #fff;
+                    background-color: #e31837;
+                    border: 1px solid rgba(0,0,0,.08);
+                    border-radius: 15px;
+            
+                    cursor: pointer;
+            
+                }
+
+                .count {
+                    font-size: 15px;
+                    font-weight: 400;
+                }
+            }
+        }   
+    }
+
+    
+}

@@ -7,87 +7,217 @@ import "./Card.scss";
 import NewIcon from "../assets/icons/new.avif";
 import AdultIcon from "../assets/icons/chili.avif";
 import ChiliIcon from "../assets/icons/chili.avif";
+import useFetch from "../Hooks/useFetch";
 
-export default function Card({ item, type, category }) {
+export default function Card({ item, cardType, category, productsInCart }) {
   const inCart = true;
   const [isSize, setIsSize] = React.useState("standard-size");
   const [isCrust, setIsCrust] = React.useState("thick");
-  const priceValue = [isSize, isCrust];
+  const [cardData, setCardData] = React.useState();
+  const [cardCategory, setCardCategory] = React.useState();
+  // const priceValue = [isSize, isCrust];
+  const priceValue = [`${isSize},${isCrust}`];
 
-  // console.log(item);
+  const [cardSize, setCardSize] = React.useState("");
 
-  const weightCount = () => {
-    if (category === "pizza") {
+  const cardSizeBehavior = () => {};
+
+  const { data, error, loading } = useFetch(
+    `products?populate=*&[filters][id][$eq]=${item.id}`
+  );
+
+  // if (data) {
+  //   console.log(cardData);
+  // } else console.log(error);
+
+  const handleCardData = () => {
+    if (loading) {
+      // console.log("Loading...");
+      return;
+    }
+
+    if (error) {
+      console.error("Error:", error);
+      return;
+    }
+
+    if (data && Array.isArray(data) && data.length > 0) {
+      const singleItem = data[0];
+      setCardData(singleItem);
+      // console.log(data);
+    } else {
+      // console.log("No data available or data is not in expected format");
+    }
+  };
+
+  React.useEffect(() => {
+    if (data !== undefined) {
+      handleCardData();
+    }
+  }, [data, loading, error]);
+
+  const getStoredCategories = JSON.parse(localStorage.getItem("category"));
+
+  // React.useEffect(() => {
+  //   console.log(getStoredCategories);
+  // }, []);
+
+  const weightCountATTRIBUTES = () => {
+    if (getStoredCategories[0] === "pizza") {
       if (`${priceValue}` === "standard-size,thick") {
-        return item.attributes.weight_1;
+        return cardData.weight_1;
       } else if (`${priceValue}` === "standard-size,thin") {
-        return item.attributes.weight_2;
+        return cardData?.weight_2;
       } else if (`${priceValue}` === "standard-size,philadelphia") {
-        return item.attributes.weight_3;
+        return cardData?.weight_3;
       } else if (`${priceValue}` === "standard-size,hot-dog") {
-        return item.attributes.weight_4;
+        return cardData?.weight_4;
       } else if (`${priceValue}` === "large,thick") {
-        return item.attributes.weight_5;
+        return cardData?.weight_5;
       } else if (`${priceValue}` === "large,thin") {
-        return item.attributes.weight_6;
+        return cardData?.weight_6;
       } else if (`${priceValue}` === "large,philadelphia") {
-        return item.attributes.weight_7;
+        return cardData?.weight_7;
       } else if (`${priceValue}` === "large,hot-dog") {
-        return item.attributes.weight_8;
+        return cardData?.weight_8;
       } else if (`${priceValue}` === "extra,thick") {
-        return item.attributes.weight_9;
+        return cardData?.weight_9;
       } else if (`${priceValue}` === "extra,thin") {
-        return item.attributes.weight_10;
+        return cardData?.weight_10;
       } else if (`${priceValue}` === "extra,philadelphia") {
-        return item.attributes.weight_11;
+        return cardData?.weight_11;
       } else if (`${priceValue}` === "extra,hot-dog") {
-        return item.attributes.weight_12;
+        return cardData?.weight_12;
         // } else if (`${priceValue}` === 'xxl,thick') {
         //     return(
-        //         (item.attributes.price_13)
+        //         (cardData?.attributes?.price_13)
         //     )
       } else if (`${priceValue}` === "xxl,thin") {
-        return item.attributes.weight_14;
+        return cardData?.weight_14;
       } else if (`${priceValue}` === "xxl,philadelphia") {
-        return item.attributes.weight_15;
+        return cardData?.weight_15;
       } else if (`${priceValue}` === "xxl,hot-dog") {
-        return item.attributes.weight_16;
+        return cardData?.weight_16;
       }
     }
 
-    if (category === "sides") {
+    if (getStoredCategories[1] === "drinks") {
       if (`${isSize}` === "standard-size") {
-        return item.attributes.weight_1;
-      } else if (`${isSize}` === "double") {
-        return item.attributes.weight_2;
-      } else if (item.attributes.size_2 == null) {
-        return item.attributes.weight_1;
-      }
-    }
-
-    if (category === "drinks") {
-      if (`${isSize}` === "standard-size") {
-        return item.attributes.weight_1;
+        return cardData?.attributes?.weight_1;
       } else if (`${isSize}` === "large") {
-        return item.attributes.weight_2;
+        return cardData?.attributes?.weight_2;
       } else if (`${isSize}` === "extra") {
-        return item.attributes.weight_3;
+        return cardData?.attributes?.weight_3;
       }
     }
 
-    if (category === "dessert") {
+    if (getStoredCategories[2] === "sides") {
+      if (`${isSize}` === "standard-size") {
+        return cardData?.attributes?.weight_1;
+      } else if (`${isSize}` === "double") {
+        return cardData?.attributes?.weight_2;
+      } else if (cardData?.attributes?.size_2 == null) {
+        return cardData?.attributes?.weight_1;
+      }
+    }
+
+    if (getStoredCategories[3] === "dessert") {
       if (`${isSize}` === "double") {
-        return item.attributes.weight_2;
+        return cardData?.attributes?.weight_2;
       } else {
-        return item.attributes.weight_1;
+        return cardData?.attributes?.weight_1;
       }
     }
   };
 
+  const weightCount = () => {
+    if (getStoredCategories[0] === "pizza") {
+      if (`${priceValue}` === "standard-size,thick") {
+        return cardData?.weight_1;
+      } else if (`${priceValue}` === "standard-size,thin") {
+        return cardData?.weight_2;
+      } else if (`${priceValue}` === "standard-size,philadelphia") {
+        return cardData?.weight_3;
+      } else if (`${priceValue}` === "standard-size,hot-dog") {
+        return cardData?.weight_4;
+      } else if (`${priceValue}` === "large,thick") {
+        return cardData?.weight_5;
+      } else if (`${priceValue}` === "large,thin") {
+        return cardData?.weight_6;
+      } else if (`${priceValue}` === "large,philadelphia") {
+        return cardData?.weight_7;
+      } else if (`${priceValue}` === "large,hot-dog") {
+        return cardData?.weight_8;
+      } else if (`${priceValue}` === "extra,thick") {
+        return cardData?.weight_9;
+      } else if (`${priceValue}` === "extra,thin") {
+        return cardData?.weight_10;
+      } else if (`${priceValue}` === "extra,philadelphia") {
+        return cardData?.weight_11;
+      } else if (`${priceValue}` === "extra,hot-dog") {
+        return cardData?.weight_12;
+        // } else if (`${priceValue}` === 'xxl,thick') {
+        //     return(
+        //         (cardData?.price_13)
+        //     )
+      } else if (`${priceValue}` === "xxl,thin") {
+        return cardData?.weight_14;
+      } else if (`${priceValue}` === "xxl,philadelphia") {
+        return cardData?.weight_15;
+      } else if (`${priceValue}` === "xxl,hot-dog") {
+        return cardData?.weight_16;
+      }
+    }
+
+    if (getStoredCategories[1] === "drinks") {
+      if (`${isSize}` === "standard-size") {
+        return cardData?.weight_1;
+      } else if (`${isSize}` === "large") {
+        return cardData?.weight_2;
+      } else if (`${isSize}` === "extra") {
+        return cardData?.weight_3;
+      }
+    }
+
+    if (getStoredCategories[2] === "sides") {
+      if (`${isSize}` === "standard-size") {
+        return cardData?.weight_1;
+      } else if (`${isSize}` === "double") {
+        return cardData?.weight_2;
+      } else if (cardData?.size_2 == null) {
+        return cardData?.weight_1;
+      }
+    }
+
+    if (getStoredCategories[3] === "dessert") {
+      if (`${isSize}` === "double") {
+        return cardData?.weight_2;
+      } else {
+        return cardData?.weight_1;
+      }
+    }
+  };
+
+  const HandleCardCategoryType = () => {
+    if (loading) {
+      return console.log("error card category type");
+    } else if (getStoredCategories[0] === "pizza") {
+      return setCardCategory("pizza");
+    } else if (getStoredCategories[1] === "drinks") {
+      return setCardCategory("drinks");
+    }
+  };
+
+  React.useEffect(() => {
+    HandleCardCategoryType();
+  }, []);
+
   const HandleCardCategory = () => {
-    if (category === "pizza") {
+    if (loading) {
+      // return console.log(error);
+    } else if (getStoredCategories[0] === "pizza") {
       return HandlePizza();
-    } else if (category === "drinks") {
+    } else if (getStoredCategories[1] === "drinks") {
       return HandleWaterAndDrinks();
     }
   };
@@ -99,27 +229,24 @@ export default function Card({ item, type, category }) {
           <div className="img-container">
             <img
               className="img-product"
-              src={
-                process.env.REACT_APP_UPLOAD_URL +
-                item?.attributes?.img?.data?.attributes?.url
-              }
+              src={process.env.REACT_APP_UPLOAD_URL + cardData?.img?.url}
               alt=""
             />
 
             {(() => {
-              if (item.attributes.isAdult === true) {
+              if (cardData?.isAdult === true) {
                 return (
                   <div className="type">
                     <img className="icon" src={AdultIcon} alt="AdultIcon" />
                   </div>
                 );
-              } else if (item.attributes.isNew === true) {
+              } else if (cardData?.isNew === true) {
                 return (
                   <div className="type">
                     <img className="icon" src={NewIcon} alt="NewIcon" />
                   </div>
                 );
-              } else if (item.attributes.isChili === true) {
+              } else if (cardData?.isChili === true) {
                 return (
                   <div className="type">
                     <img className="icon" src={ChiliIcon} alt="ChiliIcon" />
@@ -128,15 +255,7 @@ export default function Card({ item, type, category }) {
               }
             })()}
 
-            {/* {(() => {
-                if (item.attribute.weight_1 === null) {
-                  return(
-                    null
-                  )
-                } else if (item.attribute.weight === )
-                  
-              })()} */}
-            {item.attributes.weight_1 === null ? null : (
+            {cardData?.weight_1 === null ? null : (
               <div className="weight">{weightCount()} g</div>
             )}
 
@@ -149,14 +268,15 @@ export default function Card({ item, type, category }) {
 
           <div className="product-about">
             <Link className="product-title" to="/product/:id">
-              {item.attributes.title}
+              {cardData?.title}
             </Link>
-            {category === "pizza" ? (
+            {getStoredCategories[0] === "pizza" ? (
               <div>
-                <h5 className="product-description">
-                  {item.attributes.description}
-                </h5>
-                <Link className="ingredients" to={`/product/${item.id}`}>
+                <h5 className="product-description">{cardData?.description}</h5>
+                <Link
+                  className="ingredients"
+                  // to={`/product/${cardData?.attributes?.id}`}
+                >
                   replace ingredients
                 </Link>
               </div>
@@ -164,10 +284,10 @@ export default function Card({ item, type, category }) {
           </div>
 
           <CardSize
-            type={type}
-            item={item}
-            category={category}
-            priceValue={priceValue}
+            // type={type}
+            cardData={cardData}
+            cardCategory={cardCategory}
+            // priceValue={priceValue}
             isSize={isSize}
             setIsSize={setIsSize}
             isCrust={isCrust}
@@ -175,11 +295,12 @@ export default function Card({ item, type, category }) {
           />
 
           <CardQuantity
-            item={item}
+            cardData={cardData}
             priceValue={priceValue}
-            category={category}
+            cardCategory={cardCategory}
             isSize={isSize}
             isCrust={isCrust}
+            // productsInCart={productsInCart}
           />
         </div>
       </div>
@@ -195,25 +316,25 @@ export default function Card({ item, type, category }) {
               className="img-product"
               src={
                 process.env.REACT_APP_UPLOAD_URL +
-                item?.attributes?.img?.data?.attributes?.url
+                cardData?.attributes?.img?.data?.attributes?.url
               }
               alt=""
             />
 
             {(() => {
-              if (item.attributes.isAdult === true) {
+              if (cardData?.attributes?.isAdult === true) {
                 return (
                   <div className="type">
                     <img className="icon" src={AdultIcon} alt="AdultIcon" />
                   </div>
                 );
-              } else if (item.attributes.isNew === true) {
+              } else if (cardData?.attributes?.isNew === true) {
                 return (
                   <div className="type">
                     <img className="icon" src={NewIcon} alt="NewIcon" />
                   </div>
                 );
-              } else if (item.attributes.isChili === true) {
+              } else if (cardData?.attributes?.isChili === true) {
                 return (
                   <div className="type">
                     <img className="icon" src={ChiliIcon} alt="ChiliIcon" />
@@ -223,14 +344,14 @@ export default function Card({ item, type, category }) {
             })()}
 
             {/* {(() => {
-                if (item.attribute.weight_1 === null) {
+                if (cardData.attribute.weight_1 === null) {
                   return(
                     null
                   )
-                } else if (item.attribute.weight === )
+                } else if (cardData.attribute.weight === )
                   
               })()} */}
-            {item.attributes.weight_1 === null ? null : (
+            {cardData?.attributes?.weight_1 === null ? null : (
               <div className="weight">{weightCount()} g</div>
             )}
 
@@ -243,14 +364,14 @@ export default function Card({ item, type, category }) {
 
           <div className="product-about">
             <Link className="product-title" to="/product/:id">
-              {item.attributes.title}
+              {cardData?.attributes?.title}
             </Link>
             {category === "pizza" ? (
               <div>
                 <h5 className="product-description">
-                  {item.attributes.description}
+                  {cardData?.attributes?.description}
                 </h5>
-                <Link className="ingredients" to={`/product/${item.id}`}>
+                <Link className="ingredients" to={`/product/${cardData.id}`}>
                   replace ingredients
                 </Link>
               </div>
@@ -258,8 +379,8 @@ export default function Card({ item, type, category }) {
           </div>
 
           <CardSize
-            type={type}
-            item={item}
+            // type={type}
+            cardData={cardData}
             category={category}
             priceValue={priceValue}
             isSize={isSize}
@@ -269,11 +390,12 @@ export default function Card({ item, type, category }) {
           />
 
           <CardQuantity
-            item={item}
+            cardData={cardData}
             priceValue={priceValue}
             category={category}
             isSize={isSize}
             isCrust={isCrust}
+            productsInCart={productsInCart}
           />
         </div>
       </div>

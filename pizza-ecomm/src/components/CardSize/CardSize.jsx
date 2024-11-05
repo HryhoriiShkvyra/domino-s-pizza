@@ -3,7 +3,7 @@ import React from "react";
 import "./CardSize.scss";
 
 export default function CardSize({
-  item,
+  cardData,
   type,
   category,
   isCrust,
@@ -11,16 +11,31 @@ export default function CardSize({
   isSize,
   setIsSize,
 }) {
-  console.log(item);
+  // console.log(cardData);
+
+  // const CardSizeWrapper = () => {
+  //   if (category === "pizza") {
+  //     return PizzaCardSize();
+  //   } else if (category === "drinks") {
+  //     return DrinksCardSize();
+  //   } else if (category === "sides") {
+  //     return SidesCardSize();
+  //   } else if (category === "desserts") {
+  //     return DessertsCardSize();
+  //   }
+  // };
+
+  const getStoredCategories = JSON.parse(localStorage.getItem("category"));
+  // console.log(getStoredCategories);
 
   const CardSizeWrapper = () => {
-    if (category === "pizza") {
+    if (getStoredCategories[0] === "pizza") {
       return PizzaCardSize();
-    } else if (category === "drinks") {
+    } else if (getStoredCategories[1] === "sides") {
       return DrinksCardSize();
-    } else if (category === "sides") {
+    } else if (getStoredCategories[2] === "drinks") {
       return SidesCardSize();
-    } else if (category === "desserts") {
+    } else if (getStoredCategories[3] === "desserts") {
       return DessertsCardSize();
     }
   };
@@ -108,7 +123,7 @@ export default function CardSize({
   };
 
   const DrinksCardSize = () => {
-    if (item.attributes.size_3) {
+    if (cardData?.attributes?.size_3) {
       return (
         <div className="card-else-btn">
           <button
@@ -119,7 +134,7 @@ export default function CardSize({
                 : "card-size-btn"
             }
           >
-            {item.attributes.size_1}
+            {cardData.attributes.size_1}
           </button>
 
           <button
@@ -128,7 +143,7 @@ export default function CardSize({
               isSize === "large" ? "card-size-btn-active" : "card-size-btn"
             }
           >
-            {item.attributes.size_2}
+            {cardData.attributes.size_2}
           </button>
 
           <button
@@ -137,11 +152,11 @@ export default function CardSize({
               isSize === "extra" ? "card-size-btn-active" : "card-size-btn"
             }
           >
-            {item.attributes.size_3}
+            {cardData.attributes.size_3}
           </button>
         </div>
       );
-    } else if (item.attributes.size_2) {
+    } else if (cardData.attributes.size_2) {
       return (
         <div className="card-else-btn">
           <button
@@ -152,7 +167,7 @@ export default function CardSize({
                 : "card-size-btn"
             }
           >
-            {item.attributes.size_1}
+            {cardData.attributes.size_1}
           </button>
 
           <button
@@ -161,11 +176,11 @@ export default function CardSize({
               isSize === "large" ? "card-size-btn-active" : "card-size-btn"
             }
           >
-            {item.attributes.size_2}
+            {cardData.attributes.size_2}
           </button>
         </div>
       );
-    } else if (item.attributes.size_1) {
+    } else if (cardData.attributes.size_1) {
       return (
         <div className="card-else-btn">
           <button
@@ -176,7 +191,7 @@ export default function CardSize({
                 : "card-size-btn"
             }
           >
-            {item.attributes.size_1}
+            {cardData.attributes.size_1}
           </button>
         </div>
       );
@@ -208,7 +223,7 @@ export default function CardSize({
               : "card-size-btn"
           }
         >
-          {item.attributes.size_1}
+          {cardData.attributes.size_1}
         </button>
 
         <button
@@ -217,7 +232,7 @@ export default function CardSize({
             isSize === "double" ? "card-size-btn-active" : "card-size-btn"
           }
         >
-          {item.attributes.size_2}
+          {cardData.attributes.size_2}
         </button>
       </div>
     );
@@ -225,7 +240,7 @@ export default function CardSize({
     //   return (
     //     <div className="card-else-btn">
     //       <button className="card-size-btn-active">
-    //         {item.attributes.size_1}
+    //         {cardData.attributes.size_1}
     //       </button>
     //     </div>
     //   );
@@ -243,7 +258,7 @@ export default function CardSize({
               : "card-size-btn"
           }
         >
-          {item.attributes.size_1}
+          {cardData.attributes.size_1}
         </button>
         <button
           onClick={() => setIsSize("double")}
@@ -251,7 +266,7 @@ export default function CardSize({
             isSize === "double" ? "card-size-btn-active" : "card-size-btn"
           }
         >
-          {item.attributes.size_2}
+          {cardData.attributes.size_2}
         </button>
       </div>
     );
@@ -266,7 +281,7 @@ export default function CardSize({
     //             : "card-size-btn"
     //         }
     //       >
-    //         {item.attributes.size_1}
+    //         {cardData.attributes.size_1}
     //       </button>
     //     </div>
     //   );

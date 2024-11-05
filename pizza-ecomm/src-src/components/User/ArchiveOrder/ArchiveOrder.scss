@@ -1,0 +1,72 @@
+.archive-order-info {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+
+    align-items: center;
+
+    padding: 25px 0;
+
+    color: #5e636e;
+    font-size: 12px;
+
+    border-bottom: 1px solid #2f3237;
+
+    .archive-order-info-orderNumber {
+        width: 90px;
+
+    }
+
+    .archive-order-info-orderTime {
+        width: 110px;
+    }
+
+    .archive-order-info-address {
+        width: 150px;
+    }
+
+    .archive-order-info-phoneNumber {
+        width: 100px;
+        
+    }
+
+    .archive-order-info-summ {
+        width: 70px;
+
+    }
+
+    .archive-order-info-orderStatus {
+
+    }
+
+    .archive-order-info-btn {
+        width: 90px;
+        height: 40px;
+
+        margin-left: 15px;
+
+        background-color: #8f96a3;
+        border-radius: 20px;
+        border: none;
+
+        cursor: pointer;
+    }
+
+    
+}
+
+
+.archive-order-info-products {
+    display: none;
+}
+
+.archive-order-info-products-active {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    padding: 15px 0;
+
+    border-bottom: 1px solid #2f3237;
+
+}
