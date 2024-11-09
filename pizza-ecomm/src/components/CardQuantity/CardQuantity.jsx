@@ -54,25 +54,19 @@ export default function CardQuantity({
       CardIdMatch();
     }, []);
     const CardIdMatch = () => {
+      // const cartStateLength = () => {
+      // }
 
-      const cartStateLength = cartState.length() <= 0 : 
-
-      const matchingCardId = cartState.find((card) => card.id === cardData.id);
-      const matchingCardSize = cartState.find((card) => card.size === cardSize);
+      const matchingCardIdAndSize = cartState.find(
+        (card) => card.id === cardData.id && card.size === cardSize
+      );
+      // const matchingCardSize = cartState.find((card) => card.size === cardSize);
 
       // const findCardIdFromCart = cart
-      console.log(cardSize);
-      console.log(cartState);
+      // console.log(matchingCardIdAndSize);
+      // console.log(cartState);
 
-      if (matchingCardId) {
-        // setCardQuantityNumber(matchingCard);
-        if (matchingCardSize) {
-          return matchingCardId.quantity;
-        }
-      } else {
-        console.log("error");
-        return null;
-      }
+      return matchingCardIdAndSize ? matchingCardIdAndSize.quantity : 0;
     };
 
     console.log(CardIdMatch());
