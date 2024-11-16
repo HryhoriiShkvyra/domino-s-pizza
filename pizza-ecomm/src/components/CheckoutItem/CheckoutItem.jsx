@@ -3,8 +3,8 @@ import "./CheckoutItem.scss";
 import { useSelector, useDispatch } from "react-redux";
 import useFetch from "../Hooks/useFetch";
 import {
-  addToCart,
-  // decreaseQuantity,
+  handleAddToCartAndIncreaseQuantity,
+  decreaseQuantity,
   removeItem,
 } from "../redux/cartReducer";
 import { Add, Remove } from "@mui/icons-material";
@@ -17,11 +17,11 @@ const CheckoutItem = ({ product }) => {
   }
 
   function handleIncreaseQuantity() {
-    // dispatch(increaseQuantity({ id: product.id }));
+    dispatch(handleAddToCartAndIncreaseQuantity({ id: product.id }));
   }
 
   function handleDecreaseQuantity() {
-    // dispatch(decreaseQuantity({ id: product.id }));
+    dispatch(decreaseQuantity({ id: product.id }));
   }
 
   return (

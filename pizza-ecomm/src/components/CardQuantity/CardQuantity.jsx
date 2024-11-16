@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import {
   handleAddToCartAndIncreaseQuantity,
   removeItem,
+  decreaseQuantity,
 } from "../redux/cartReducer";
 import "./CardQuantity.scss";
 
@@ -45,7 +46,6 @@ export default function CardQuantity({
 
     if (cardData) {
       setIsLoading((prevState) => true);
-      // console.log(cartState);
     } else console.log("error");
   }, [cartState]);
 
@@ -54,17 +54,9 @@ export default function CardQuantity({
       CardIdMatch();
     }, []);
     const CardIdMatch = () => {
-      // const cartStateLength = () => {
-      // }
-
       const matchingCardIdAndSize = cartState.find(
         (card) => card.id === cardData.id && card.size === cardSize
       );
-      // const matchingCardSize = cartState.find((card) => card.size === cardSize);
-
-      // const findCardIdFromCart = cart
-      // console.log(matchingCardIdAndSize);
-      // console.log(cartState);
 
       return matchingCardIdAndSize ? matchingCardIdAndSize.quantity : 0;
     };
@@ -255,7 +247,8 @@ export default function CardQuantity({
     };
 
     const handleDecreaseQuantity = () => {
-      // dispatch(decreaseQuantity({ id: cardData.id }));
+      dispatch(decreaseQuantity({ id: cardData.id }));
+      console.log(cardData.id);
     };
 
     return (

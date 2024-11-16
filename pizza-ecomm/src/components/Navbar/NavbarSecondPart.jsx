@@ -9,7 +9,7 @@ export default function SecondP() {
   const [sideBarActive, setSideBarActive] = React.useState(false);
   const [navBarActive, setNavBarActive] = React.useState("pizza");
 
-  const productsInCart = useSelector((state) => state.cart.items);
+  const productsInCart = useSelector((state) => state.cart.cartItems);
 
   // function totalCount () {
   //   if (productsInCart.length < 10) {
@@ -20,6 +20,8 @@ export default function SecondP() {
   //     )
   //   }
   // }
+
+  console.log(productsInCart.length);
 
   return (
     <>
@@ -74,19 +76,37 @@ export default function SecondP() {
               </Link>
             </div>
           </nav>
-          <div className="cart-wrapper">
-            <div className="cart">
-              {/* <span>{totalCount()}</span> */}
-              <ShoppingCart className="icon" />
+
+          {productsInCart.length > 0 ? (
+            <div className="cart-wrapper">
+              <div className="cart">
+                {/* <span>{totalCount()}</span> */}
+                <ShoppingCart className="icon" />
+              </div>
+              <Link
+                className="checkout"
+                onClick={() => setNavBarActive("checkout")}
+                to="/checkout/"
+              >
+                checkout
+              </Link>
             </div>
-            <Link
-              className="checkout"
-              onClick={() => setNavBarActive("checkout")}
-              to="/checkout/"
-            >
-              checkout
-            </Link>
-          </div>
+          ) : (
+            <div className="cart-wrapper-not-allowed">
+              <div className="cart">
+                {/* <span>{totalCount()}</span> */}
+                <ShoppingCart className="icon" />
+              </div>
+              <Link
+                className="checkout"
+                // onClick={() => setNavBarActive("checkout")}
+                // to="/checkout/"
+              >
+                checkout
+              </Link>
+            </div>
+          )}
+
           <div
             onClick={() => setSideBarActive((prev) => !prev)}
             className="bar-menu"
