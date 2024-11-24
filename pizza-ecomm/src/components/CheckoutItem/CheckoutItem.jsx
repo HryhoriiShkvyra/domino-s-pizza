@@ -26,11 +26,13 @@ const CheckoutItem = ({ product }) => {
 
   return (
     <div className="right-product" key={product.id}>
-      <img
-        className="right-product-image"
-        src={process.env.REACT_APP_UPLOAD_URL + product.img}
-        alt="#"
-      />
+      <div className="right-product-image-wrapper">
+        <img
+          className="right-product-image"
+          src={process.env.REACT_APP_UPLOAD_URL + product.img}
+          alt="#"
+        />
+      </div>
       <div className="right-product-text">
         <span className="right-product-title">{product.title}</span>
         <button

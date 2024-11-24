@@ -11,6 +11,7 @@ import React from "react";
 import NavbarSecondPart from "../../Navbar/NavbarSecondPart";
 import { useSelector } from "react-redux";
 import "./Checkout.scss";
+import { makeRequest } from "../../../makeRequest";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutItem from "../../CheckoutItem/CheckoutItem";
 
@@ -43,27 +44,26 @@ export default function Checkout() {
     }
   }
 
-  // const stripePromise = loadStripe(
-  //   "pk_test_51MboeJJnoHW1zmgYv34JTHBK2VKAApu7IyeYnFs5vxVPpb4Ch6h0V01OPRKXU56n1UhQoq5ilr13NhIEKzEMu95Q00hZ3jCIYF"
-  // );
-  // const handlePayment = async () => {
-  //   try {
-  //     const stripe = await stripePromise;
-  //     const res = await makeRequest.post("/orders", {
-  //       products,
-  //     });
-  //     await stripe.redirectToCheckout({
-  //       sessionId: res.data.stripeSession.id,
-  //     });
-
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
-  const handlePayment = () => {
-    console.log("payment button works");
+  const stripePromise = loadStripe(
+    "pk_test_51MboeJJnoHW1zmgYv34JTHBK2VKAApu7IyeYnFs5vxVPpb4Ch6h0V01OPRKXU56n1UhQoq5ilr13NhIEKzEMu95Q00hZ3jCIYF"
+  );
+  const handlePayment = async () => {
+    try {
+      const stripe = await stripePromise;
+      const res = await makeRequest.post("/orders", {
+        productsInCart,
+      });
+      await stripe.redirectToCheckout({
+        sessionId: res.data.stripeSession.id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  // const handlePayment = () => {
+  //   console.log("payment button works");
+  // };
 
   return (
     <div className="checkout">
