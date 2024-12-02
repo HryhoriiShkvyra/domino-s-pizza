@@ -11,33 +11,102 @@ export default function CardSize({
   isSize,
   setIsSize,
 }) {
-  // console.log(cardData);
-
-  // const CardSizeWrapper = () => {
-  //   if (category === "pizza") {
-  //     return PizzaCardSize();
-  //   } else if (category === "drinks") {
-  //     return DrinksCardSize();
-  //   } else if (category === "sides") {
-  //     return SidesCardSize();
-  //   } else if (category === "desserts") {
-  //     return DessertsCardSize();
-  //   }
-  // };
-
   const getStoredCategories = JSON.parse(localStorage.getItem("category"));
   // console.log(getStoredCategories);
 
+  const [isLoading, setIsLoading] = React.useState("#");
+
+  React.useEffect(() => {
+    console.log(isLoading);
+  }, [isLoading]);
+
   const CardSizeWrapper = () => {
-    if (getStoredCategories[0] === "pizza") {
-      return PizzaCardSize();
-    } else if (getStoredCategories[1] === "sides") {
-      return DrinksCardSize();
-    } else if (getStoredCategories[2] === "drinks") {
-      return SidesCardSize();
-    } else if (getStoredCategories[3] === "desserts") {
-      return DessertsCardSize();
+    try {
+      if (getStoredCategories[0] === "pizza") {
+        if (cardData) {
+          if (cardData.title === "Sweet pizza") {
+            return PizzaCardSizeOne();
+          }
+          return PizzaCardSize();
+        }
+      } else if (getStoredCategories[1] === "sides") {
+        DrinksCardSize();
+      } else if (getStoredCategories[2] === "drinks") {
+        SidesCardSize();
+      } else if (getStoredCategories[3] === "desserts") {
+        DessertsCardSize();
+      }
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  const PizzaCardSizeOne = () => {
+    return (
+      <div className="card-size-one">
+        <div className="card-block-size">
+          <button
+            onClick={() => setIsSize("standard-size")}
+            className={
+              isSize === "standard-size"
+                ? "card-size-btn-active"
+                : "card-size-btn"
+            }
+          >
+            Standard size
+          </button>
+          <div className="span"></div>
+          <button
+            onClick={() => setIsSize("large")}
+            className={
+              isSize === "large" ? "card-size-btn-active" : "card-size-btn"
+            }
+          >
+            Large
+          </button>
+          <div className="span"></div>
+          <button
+            onClick={() => setIsSize("extra")}
+            className={
+              isSize === "extra" ? "card-size-btn-active" : "card-size-btn"
+            }
+          >
+            ExtraLarge
+          </button>
+          <div className="span"></div>
+          <button
+            onClick={() => setIsSize("xxl")}
+            className={
+              isSize === "xxl" ? "card-size-btn-active" : "card-size-btn"
+            }
+          >
+            XXLarge
+          </button>
+        </div>
+        <div className="card-block-size-crust-one">
+          <button
+            onClick={() => setIsCrust("thick")}
+            className={
+              isCrust === "thick"
+                ? "card-size-btn-active-one"
+                : "card-size-btn-one"
+            }
+          >
+            Cherry
+          </button>
+          <button
+            onClick={() => setIsCrust("thick")}
+            className={
+              isCrust === "thick"
+                ? "card-size-btn-active-one"
+                : "card-size-btn-one"
+            }
+          >
+            Cherry
+          </button>
+        </div>
+      </div>
+    );
   };
 
   const PizzaCardSize = () => {
