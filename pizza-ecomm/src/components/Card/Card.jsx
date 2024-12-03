@@ -15,10 +15,7 @@ export default function Card({ item, cardType, category, productsInCart }) {
   const [isCrust, setIsCrust] = React.useState("thick");
   const [cardData, setCardData] = React.useState();
   const [cardCategory, setCardCategory] = React.useState();
-  // const priceValue = [isSize, isCrust];
   const priceValue = [`${isSize},${isCrust}`];
-
-  const [cardSize, setCardSize] = React.useState("");
 
   const cardSizeBehavior = () => {};
 
@@ -26,9 +23,9 @@ export default function Card({ item, cardType, category, productsInCart }) {
     `products?populate=*&[filters][id][$eq]=${item.id}`
   );
 
-  // if (data) {
-  //   console.log(cardData);
-  // } else console.log(error);
+  React.useEffect(() => {
+    console.log(item);
+  }, []);
 
   const handleCardData = () => {
     if (loading) {
@@ -46,7 +43,6 @@ export default function Card({ item, cardType, category, productsInCart }) {
       setCardData(singleItem);
       // console.log(data);
     } else {
-      // console.log("No data available or data is not in expected format");
     }
   };
 
@@ -57,10 +53,6 @@ export default function Card({ item, cardType, category, productsInCart }) {
   }, [data, loading, error]);
 
   const getStoredCategories = JSON.parse(localStorage.getItem("category"));
-
-  // React.useEffect(() => {
-  //   console.log(getStoredCategories);
-  // }, []);
 
   const weightCountATTRIBUTES = () => {
     if (getStoredCategories[0] === "pizza") {
@@ -156,10 +148,8 @@ export default function Card({ item, cardType, category, productsInCart }) {
         return cardData?.weight_11;
       } else if (`${priceValue}` === "extra,hot-dog") {
         return cardData?.weight_12;
-        // } else if (`${priceValue}` === 'xxl,thick') {
-        //     return(
-        //         (cardData?.price_13)
-        //     )
+        // } else if (`${priceValue}` === "xxl,thick") {
+        //   return cardData?.price_14;
       } else if (`${priceValue}` === "xxl,thin") {
         return cardData?.weight_14;
       } else if (`${priceValue}` === "xxl,philadelphia") {

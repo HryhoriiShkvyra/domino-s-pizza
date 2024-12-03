@@ -27,23 +27,7 @@ export default function CardQuantity({
 
   const dispatch = useDispatch();
 
-  // console.log(cartState);
-
-  // console.log(getStoredCategories);
-
   React.useEffect(() => {
-    // console.log(cardData);
-    // console.log(priceValue);
-    // console.log(category);
-  }, [cardData]);
-
-  React.useEffect(() => {
-    // if (cartState) {
-    //   if (cartState.length > 0) {
-    //     return console.log(cartState);
-    //   } else console.log("cartItems is empty");
-    // } else console.log("cartState is undefined");
-
     if (cardData) {
       setIsLoading((prevState) => true);
     } else console.log("error");
@@ -153,70 +137,6 @@ export default function CardQuantity({
       setIsActiveBtn((prev) => !prev === prev);
     }
 
-    // React.useEffect(() => {
-    //     console.log(quantity)
-    // }, [quantity])
-
-    const CardQuantity = () => {
-      // const compareCardX = () => {
-      //   const compareCard = cartState.filter(
-      //     (cartItem) => cartItem.id === cardData.id
-      //   );
-
-      //   if (compareCard) {
-      //     return console.log(cardData.id);
-      //   } else return console.log("compareCard corrupted");
-      // };
-
-      // compareCardX();
-
-      // const cardContainer = ""
-
-      //   if (cartState) {
-
-      //     const comparedCard = cartState.filter(
-      //       (cardItem) => cardItem.id === cardData.id
-      //     );
-
-      //     return cardContainer.push(comparedCard)
-      //   } else return
-
-      // const compareCardId = () => {
-      //   const compare = cartState.filter((cardId) => cardId.id === cardData.id);
-
-      //   if (compare) {
-
-      //   }
-      // }
-
-      // if (cartState) {
-      //   return compareCardId();
-      // } else return console.log("error");
-
-      // if (comparedCard) {
-      //   return console.log(comparedCard);
-      // } else return console.log("comparedCard is corrupted");
-      if (!cartState) {
-        return null;
-      }
-
-      // const findCardInCart = cartState.find(
-      //   (cartItem) => cartItem.id === cardData.id
-      // );
-
-      // console.log(findCardInCart);
-
-      // if (cartItem) {
-      //   return setCardQuantityNumber(cartItem.quantity);
-      // }
-    };
-
-    // React.useEffect(() => {
-    //   cardQuantity();
-    // }, []);
-
-    // console.log(cardData);
-
     const handleAddToCart = () => {
       setQuantity((prev) => prev + 1);
       dispatch(
@@ -230,20 +150,6 @@ export default function CardQuantity({
           quantity: 1,
         })
       );
-    };
-
-    const handleRemoveFromCart = () => {
-      // dispatch(removecardData({ id: cardData.id }));
-    };
-
-    const handleIncreaseQuantity = () => {
-      // dispatch(
-      //   increaseQuantity({
-      //     id: cardData.id,
-      //     size: `${isSize}, ${isCrust}`,
-      //   })
-      // );
-      // setQuantity((prev) => prev + 1);
     };
 
     const handleDecreaseQuantity = () => {

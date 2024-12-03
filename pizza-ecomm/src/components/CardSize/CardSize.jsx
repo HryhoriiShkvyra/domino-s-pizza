@@ -14,11 +14,9 @@ export default function CardSize({
   const getStoredCategories = JSON.parse(localStorage.getItem("category"));
   // console.log(getStoredCategories);
 
-  const [isLoading, setIsLoading] = React.useState("#");
-
   React.useEffect(() => {
-    console.log(isLoading);
-  }, [isLoading]);
+    console.log([isCrust, isSize]);
+  }, []);
 
   const CardSizeWrapper = () => {
     try {
@@ -37,7 +35,6 @@ export default function CardSize({
         DessertsCardSize();
       }
     } finally {
-      setIsLoading(false);
     }
   };
 
