@@ -41,7 +41,7 @@ export default function SecondP() {
           <nav className="nav">
             <div className="nav-link">
               <Link
-                onClick={() => setNavBarActive("pizza")}
+                // onClick={() => setNavBarActive("pizza")}
                 className={navBarActive === "pizza" ? "link-active" : "link"}
                 to="/pizza/"
               >
@@ -108,7 +108,7 @@ export default function SecondP() {
           )}
 
           <div
-            onClick={() => setSideBarActive((prev) => !prev)}
+            // onClick={() => setSideBarActive((prev) => !prev)}
             className="bar-menu"
           >
             <Dehaze />
@@ -116,7 +116,7 @@ export default function SecondP() {
         </div>
       </div>
       <div className="side-menu">
-        <SideMenu sideBarActive={sideBarActive} />
+        {/* <SideMenu sideBarActive={sideBarActive} /> */}
       </div>
     </>
   );

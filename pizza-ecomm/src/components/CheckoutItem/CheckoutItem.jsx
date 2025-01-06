@@ -9,7 +9,7 @@ import {
 } from "../redux/cartReducer";
 import { Add, Remove } from "@mui/icons-material";
 
-const CheckoutItem = ({ product }) => {
+const CheckoutItem = React.memo(({ product }) => {
   const dispatch = useDispatch();
   function handleRemoveFromCart() {
     dispatch(removeItem({ id: product.id }));
@@ -67,6 +67,6 @@ const CheckoutItem = ({ product }) => {
       </div>
     </div>
   );
-};
+});
 
 export default CheckoutItem;

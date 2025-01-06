@@ -19,7 +19,7 @@ export default function Home() {
     <div className="home">
       <NavbarSecondPart />
       <Slider />
-      <CardList category="pizza" type="New" isSorting={isSorting} />
+      <CardList category="pizza" type="New" isSorting={isSorting} />{" "}
       <CardList category="pizza" type="Best Price" isSorting={isSorting} />
     </div>
   );

@@ -6,7 +6,7 @@ import useFetch from "../Hooks/useFetch";
 import { useSelector } from "react-redux";
 // import { useSelector } from 'react-redux';
 
-export default function CardList({ type, category, isSorting }) {
+const CardList = React.memo(({ type, category, isSorting }) => {
   const [requestData, setRequestData] = React.useState();
   const { data, loading, error } = useFetch(
     `products?populate=*&[filters][type][$eq]=${type}`
@@ -144,4 +144,6 @@ export default function CardList({ type, category, isSorting }) {
       </div>
     </div>
   );
-}
+});
+
+export default CardList;

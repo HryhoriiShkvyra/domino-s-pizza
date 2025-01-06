@@ -9,7 +9,7 @@ import AdultIcon from "../assets/icons/chili.avif";
 import ChiliIcon from "../assets/icons/chili.avif";
 import useFetch from "../Hooks/useFetch";
 
-export default function Card({ item, cardType, category, productsInCart }) {
+const Card = React.memo(({ item, cardType, category, productsInCart }) => {
   const inCart = true;
   const [isSize, setIsSize] = React.useState("standard-size");
   const [isCrust, setIsCrust] = React.useState("thick");
@@ -393,4 +393,6 @@ export default function Card({ item, cardType, category, productsInCart }) {
   };
 
   return <HandleCardCategory />;
-}
+});
+
+export default Card;

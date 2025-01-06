@@ -137,6 +137,21 @@ export default function CardQuantity({
       setIsActiveBtn((prev) => !prev === prev);
     }
 
+    // const handleAddToCart = () => {
+    //   setQuantity((prev) => prev + 1);
+    //   dispatch(
+    //     handleAddToCartAndIncreaseQuantity({
+    //       id: cardData?.id,
+    //       title: cardData?.title,
+    //       description: cardData?.description,
+    //       price: price(),
+    //       img: cardData?.img.url,
+    //       size: cardSize,
+    //       quantity: 1,
+    //     })
+    //   );
+    // };
+
     const handleAddToCart = () => {
       setQuantity((prev) => prev + 1);
       dispatch(
