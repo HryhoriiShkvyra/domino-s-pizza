@@ -190,6 +190,12 @@
         "Dessert",
         "Ice cream"
       ]
+    },
+    "types": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::type.type",
+      "inversedBy": "products"
     }
   }
 }

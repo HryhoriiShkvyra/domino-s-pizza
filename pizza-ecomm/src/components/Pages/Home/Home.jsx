@@ -12,15 +12,28 @@ export default function Home() {
   const categories = ["pizza", "sides", "drinks", "desserts"];
   localStorage.setItem("category", JSON.stringify(categories));
 
-  const pizzaTypes = ["New", "Best Price"];
+  const pizzaTypes = [
+    "Bestsellers and novelties",
+    "Best Price",
+    "Heroes",
+    "Wonder",
+    "Finest",
+    "Gourmet",
+  ];
   localStorage.setItem("pizzaType", JSON.stringify(pizzaTypes));
 
   return (
     <div className="home">
       <NavbarSecondPart />
       <Slider />
-      <CardList category="pizza" type="New" isSorting={isSorting} />{" "}
+      <CardList
+        category="pizza"
+        type="Bestsellers and novelties"
+        isSorting={isSorting}
+      />{" "}
       <CardList category="pizza" type="Best Price" isSorting={isSorting} />
+      <CardList category="pizza" type="Heroes" isSorting={isSorting} />
+      <CardList category="pizza" type="Wonder" isSorting={isSorting} />
     </div>
   );
 }

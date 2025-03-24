@@ -12,9 +12,9 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.4.2",
-    "@strapi/plugin-users-permissions": "5.4.2",
-    "@strapi/strapi": "5.4.2",
+    "@strapi/plugin-cloud": "5.6.0",
+    "@strapi/plugin-users-permissions": "5.6.0",
+    "@strapi/strapi": "5.6.0",
     "fs-extra": "^10.0.0",
     "mime-types": "^2.1.27",
     "mysql2": "3.9.8",
@@ -29,6 +29,6 @@
     "npm": ">=6.0.0"
   },
   "strapi": {
-    "uuid": "976bbc65-b055-40d5-87c0-63e8a76fda38"
+    "uuid": "15382284-ef8f-45b5-b208-32ec6100f3b3"
   }
 }

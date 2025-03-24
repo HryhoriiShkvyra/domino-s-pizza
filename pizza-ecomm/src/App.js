@@ -1,117 +1,113 @@
-import React from 'react'
-import {
-  createBrowserRouter,
-  Outlet,
-  RouterProvider,
-} from "react-router-dom";
-import NavbarFirstPart from './components/Navbar/NavbarFirstPart';
-import Footer from './components/Footer/Footer';
-import Home from './components/Pages/Home/Home';
-import Pizza from './components/Pages/Pizza/Pizza';
-import Drinks from './components/Pages/Drinks/Drinks';
-import Sides from './components/Pages/Sides/Sides';
-import Dessert from './components/Pages/Dessert/Dessert';
-import Checkout from './components/Pages/Checkout/Checkout';
-import PizzaConstructor from './components/Pages/PizzaConstructor/PizzaConstructor';
-import './App.scss';
-import CardIngredients from './components/CardIngredient/CardIngredients';
-import UserProfile from './components/User/UserProfile/UserProfile'
-import UserBankCards from './components/User/UserBankCards/UserBankCards';
-import UserLeaveFeedback from './components/User/UserLeaveFeedback/UserLeaveFeedback';
-import UserMessages from './components/User/UserMessages/UserMessages';
-import UserOrders from './components/User/UserOrders/UserOrders';
-import UserAddresses from './components/User/UserAddresses/UserAddresses';
-import UserGroups from './components/User/UserGroups/UserGroups';
-import UserContainer from './components/User/UserContainer/UserContainer';
+import React from "react";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import NavbarFirstPart from "./components/Navbar/NavbarFirstPart";
+import Footer from "./components/Footer/Footer";
+import Home from "./components/Pages/Home/Home";
+import Pizza from "./components/Pages/Pizza/Pizza";
+import Drinks from "./components/Pages/Drinks/Drinks";
+import Sides from "./components/Pages/Sides/Sides";
+import Dessert from "./components/Pages/Dessert/Dessert";
+import Checkout from "./components/Pages/Checkout/Checkout";
+import PizzaConstructor from "./components/Pages/PizzaConstructor/PizzaConstructor";
+import "./App.scss";
+import CardIngredients from "./components/CardIngredient/CardIngredients";
+import UserProfile from "./components/User/UserProfile/UserProfile";
+import UserBankCards from "./components/User/UserBankCards/UserBankCards";
+import UserLeaveFeedback from "./components/User/UserLeaveFeedback/UserLeaveFeedback";
+import UserMessages from "./components/User/UserMessages/UserMessages";
+import UserOrders from "./components/User/UserOrders/UserOrders";
+import UserAddresses from "./components/User/UserAddresses/UserAddresses";
+import UserGroups from "./components/User/UserGroups/UserGroups";
+import UserContainer from "./components/User/UserContainer/UserContainer";
+// import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
 
-export default function  App() {
-
+export default function App() {
   const Layout = () => {
-    return(
-      <div className='app'>
-        <NavbarFirstPart/>
-        <Outlet/>
-        <Footer/>
+    return (
+      <div className="app">
+        <NavbarFirstPart />
+        <Outlet />
+        <Footer />
       </div>
-    )
-    
-  }
-  
-  
+    );
+  };
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout/>,
+      element: <Layout />,
       children: [
-        {path: '/',
-        element: <Home/>
+        { path: "/", element: <Home /> },
+        {
+          path: "/pizza/",
+          element: <Pizza />,
         },
         {
-          path: '/pizza/',
-          element: <Pizza/>
+          path: "/drinks/",
+          element: <Drinks />,
         },
         {
-          path: '/drinks/',
-          element: <Drinks/>,
+          path: "/sides/",
+          element: <Sides />,
         },
         {
-          path: '/sides/',
-          element: <Sides/>,
+          path: "/dessert/",
+          element: <Dessert />,
         },
         {
-          path: '/dessert/',
-          element: <Dessert/>,
+          path: "/checkout/",
+          element: <Checkout />,
+        },
+        // {
+        //   path: "/checkout/payment-info",
+        //   element: <CheckoutForm />,
+        // },
+        {
+          path: "/product/:id",
+          element: <CardIngredients />,
         },
         {
-          path: '/checkout/',
-          element: <Checkout/>,
+          path: "/pizza-constructor/:id",
+          element: <PizzaConstructor />,
         },
         {
-          path: '/product/:id',
-          element: <CardIngredients/>,
+          path: "/profile/",
+          element: <UserProfile />,
         },
         {
-          path: '/pizza-constructor/:id',
-          element: <PizzaConstructor/>,
+          path: "/bankcard/",
+          element: <UserBankCards />,
         },
         {
-          path: '/profile/',
-          element: <UserProfile/>,
+          path: "/addresses/",
+          element: <UserAddresses />,
         },
         {
-          path: '/bankcard/',
-          element: <UserBankCards/>,
+          path: "/groups/",
+          element: <UserGroups />,
         },
         {
-          path: '/addresses/',
-          element: <UserAddresses/>,
+          path: "/leave-feedback/",
+          element: <UserLeaveFeedback />,
         },
         {
-          path: '/groups/',
-          element: <UserGroups/>,
+          path: "/messages/",
+          element: <UserMessages />,
         },
         {
-          path: '/leave-feedback/',
-          element: <UserLeaveFeedback/>,
+          path: "/orders/",
+          element: <UserOrders />,
         },
         {
-          path: '/messages/',
-          element: <UserMessages/>,
+          path: "/user-container/",
+          element: <UserContainer />,
         },
-        {
-          path: '/orders/',
-          element: <UserOrders/>,
-        },
-        {
-          path: '/user-container/',
-          element: <UserContainer/>,
-        },
-      ]
+      ],
     },
   ]);
   return (
-    <div className='app'>
-      <RouterProvider router={router}/>
+    <div className="app">
+      <RouterProvider router={router} />
     </div>
-  )
+  );
 }

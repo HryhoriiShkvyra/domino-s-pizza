@@ -14,30 +14,19 @@ import "./Checkout.scss";
 import { makeRequest } from "../../../makeRequest";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutItem from "../../CheckoutItem/CheckoutItem";
-import CheckoutForm from "../../CheckoutForm/CheckoutForm";
+import CheckoutFormFill from "../../CheckoutFormFill/CheckoutFormFill";
 
 const Checkout = React.memo(() => {
   const productsInCart = useSelector((state) => state.cart.cartItems);
 
-  React.useEffect(() => {
-    console.log(productsInCart);
-  }, [productsInCart]);
-
-  // const [deliveryInfo, setDeliveryInfo] = React.useState([
-  //   {
-  //     orderInfo: {
-  //       firstName: "",
-  //     },
-  //   },
-  // ]);
-
   const [deliveryInfo, setDeliveryInfo] = React.useState("#");
+  const [activeBtn, setActiveBtn] = React.useState("delivery");
+
+  const [checkoutFormFilled, setCheckoutFormFilled] = React.useState(false);
 
   React.useEffect(() => {
     console.log(deliveryInfo);
   }, [deliveryInfo]);
-
-  const [activeBtn, setActiveBtn] = React.useState("delivery");
 
   const totalPrice = () => {
     let total = 0;
@@ -123,7 +112,7 @@ const Checkout = React.memo(() => {
     // alert(`You searched for "${query}"`);
   };
 
-  const CheckoutWrapper = () => {
+  const CheckoutPage = () => {
     return (
       <div className="checkout">
         <NavbarSecondPart />
@@ -156,114 +145,8 @@ const Checkout = React.memo(() => {
                 </button>
               </div>
             </div>
-            {/* <form onSubmit={search} >
-              <input name="query" type="text" />
-              <button type="submit">Search</button>
-            </form> */}
-            <CheckoutForm />
-            {/* <form className="second-block">
-              <div className="second-block-info">
-                <h2 className="second-block-info-title">Contacts</h2>
-                <div className="second-block-info-wrapper">
-                  <input
-                    className="second-block-info-input"
-                    placeholder="First Name"
-                    type="text"
-                    // value={deliveryInfo}
-                    // onChange={(e) => setDeliveryInfo(e.target.value)}
-                  ></input>
-                  <button type="submit"></button>
-                  <input
-                    className="second-block-info-input"
-                    placeholder="Phone"
-                    type="text"
-                  ></input>
-                  <input
-                    className="second-block-info-input"
-                    placeholder="E-mail"
-                    type="text"
-                  ></input>
-                </div>
-              </div>
-              <div className="second-block-info">
-                <h2 className="second-block-info-title">Store</h2>
-                <div className="second-block-info-store-geolocation">
-                  <LocationOn style={{ color: "#A8A8A8" }} />
-                  <span className="second-block-info-store-geolocation-city">
-                    Kyiv
-                  </span>
-                </div>
 
-                <div className="second-block-info-store-inputs">
-                  <input
-                    className="second-block-info-choose-store"
-                    type="text"
-                    placeholder="Choose Store"
-                  />
-                  <KeyboardArrowDownOutlined className="second-block-info-choose-store-icon" />
-                  <textarea
-                    className="second-block-info-comments"
-                    type="text"
-                    rows="4"
-                    cols="50"
-                    placeholder="Comments"
-                  />
-                </div>
-              </div>
-
-              <div className="second-block-info">
-                <h2 className="second-block-info-title">Date and Time</h2>
-                <div className="second-block-info-wrapper">
-                  <input
-                    className="second-block-info-input"
-                    type="text"
-                    placeholder="Today"
-                  />
-                  <input
-                    className="second-block-info-input"
-                    type="text"
-                    placeholder="Now"
-                  />
-                </div>
-              </div>
-
-              <div className="second-block-info">
-                <h2 className="second-block-info-title">Payment</h2>
-                <div className="second-block-info-wrapper">
-                  <input
-                    className="second-block-info-input"
-                    type="text"
-                    placeholder="Use coupon"
-                  />
-                  <input
-                    className="second-block-info-input"
-                    type="text"
-                    placeholder="Change"
-                  />
-                  <span></span>
-                  <input
-                    className="second-block-info-input"
-                    type="text"
-                    placeholder="Payment type"
-                  />
-                </div>
-              </div>
-              <div className="second-block-final-price-wrapper">
-                <h2 className="second-block-final-price-total">Total</h2>
-                <h2 className="second-block-final-price">
-                  <span className="second-block-final-price-count">
-                    {totalPrice()}
-                  </span>{" "}
-                  uah
-                </h2>
-                <button
-                  className="second-block-final-price-btn"
-                  onClick={handlePayment}
-                >
-                  Checkout
-                </button>
-              </div>
-            </form> */}
+            <CheckoutFormFill />
           </div>
           <div className="right">
             <div className="order-info">
@@ -288,83 +171,13 @@ const Checkout = React.memo(() => {
                 </div>
               </div>
             </div>
-            <div className="delivery-info">
-              <div className="block-title">Delivery info</div>
-
-              <div className="delivery-info-cols">
-                <div className="delivery-info-col">
-                  <div className="delivery-info-col-title">First Name: </div>
-                  <div className="delivery-info-col-text">Hryhorii</div>
-                </div>
-                <div className="delivery-info-col">
-                  <div className="delivery-info-col-title">Phone: </div>
-                  <div className="delivery-info-col-text">0006661877</div>
-                </div>
-                <div className="delivery-info-col">
-                  <div className="delivery-info-col-title">E-Mail: </div>
-                  <div className="delivery-info-col-text">
-                    hryhorii@gmail.com
-                  </div>
-                </div>
-                <div className="delivery-info-col">
-                  <div className="delivery-info-col-title">Store: </div>
-                  <div className="delivery-info-col-text">
-                    {" "}
-                    city: Kyiv, street: Verhovnoyi radu
-                  </div>
-                </div>
-                <div className="delivery-info-col">
-                  <div className="delivery-info-col-title">comments: </div>
-                  <div className="delivery-info-col-text">no comments</div>
-                </div>
-                <div className="delivery-info-col">
-                  <div className="delivery-info-col-title">Date and Time: </div>
-                  <div className="delivery-info-col-text">
-                    12/15/2004, 8:29 pm
-                  </div>
-                </div>
-                <div className="delivery-info-col">
-                  <div className="delivery-info-col-title">Payment: </div>
-                  <div className="delivery-info-col-text">card</div>
-                </div>
-                <div className="delivery-info-col">
-                  <div className="delivery-info-col-title">Your order: </div>
-                  <div className="delivery-info-col-text">
-                    {" "}
-                    <div
-                      className="right-product-wrapper"
-                      style={{ height: `${productLength()}px` }}
-                    >
-                      {productsInCart.map((product, index) => (
-                        <CheckoutItem
-                          key={product.id + `${index}`}
-                          product={product}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="delivery-info-col">
-                  <div className="delivery-info-col-title">Total</div>
-                  <div className="delivery-info-col-text">
-                    {" "}
-                    <div className="right-price-wrapper">
-                      <span className="right-price">
-                        {totalPrice()}
-                        <h5 className="right-price-currency">uah</h5>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
     );
   };
 
-  return <CheckoutWrapper />;
+  return <CheckoutPage />;
 });
 
 export default Checkout;

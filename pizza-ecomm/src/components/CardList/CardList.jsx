@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 const CardList = React.memo(({ type, category, isSorting }) => {
   const [requestData, setRequestData] = React.useState();
   const { data, loading, error } = useFetch(
-    `products?populate=*&[filters][type][$eq]=${type}`
-    // `products?populate=*[filters][sub_title][$eq]=${type}`
+    `products?populate=*&[filters][types][sub_title][$eq]=${type}`
+    // `products?populate=*&`
     // `types?populate=*&[filters][sub_title][$eq]=new`
   );
 

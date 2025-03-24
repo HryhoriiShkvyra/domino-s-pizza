@@ -14,6 +14,12 @@
   "attributes": {
     "sub_title": {
       "type": "string"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product.product",
+      "mappedBy": "types"
     }
   }
 }
