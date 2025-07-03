@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarSecondPart from "../../Navbar/NavbarSecondPart";
+import NavbarSecond from "../../Navbar/NavbarSecond";
 import CardList from "../../CardList/CardList";
 import Sorting from "../../Sorting/Sorting";
 import "./Sides.scss";
@@ -9,7 +9,7 @@ export default function Sides() {
 
   return (
     <div className="sides">
-      <NavbarSecondPart />
+      <NavbarSecond />
       <div className="sides-container">
         <Sorting setIsSorting={setIsSorting} />
         <CardList category="sides" type="Combo-boxes" isSorting={isSorting} />

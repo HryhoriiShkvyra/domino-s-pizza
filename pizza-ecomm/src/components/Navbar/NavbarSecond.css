@@ -1,0 +1,143 @@
+.second {
+  position: sticky;
+  /* position: fixed; */
+  top: 0;
+  background-color: #222;
+  z-index: 20;
+}
+
+.secondIn {
+  top: 0;
+  width: 70%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 0 auto;
+  color: white;
+  justify-content: space-between;
+  grid-template-areas: "logo navigation navigation cart";
+  padding: 10px 0;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  grid-area: logo;
+  gap: 7px;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.nav {
+  display: flex;
+  grid-area: navigation;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-link {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  font-weight: 400;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.nav-link-active {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.nav-link:hover {
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cart-wrapper {
+  display: flex;
+  grid-area: cart;
+  align-items: center;
+  margin-left: 11px;
+  padding: 2px;
+  width: 190px;
+  border-radius: 30px;
+  background-color: #f8f8f8;
+}
+
+.cart-wrapper:hover > .cart {
+  background-color: #333;
+  cursor: pointer;
+}
+
+.cart-wrapper:hover > .checkout {
+  cursor: pointer;
+}
+
+.cart {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  border: 1px solid #e5e5e5;
+  background-color: #444;
+}
+
+.checkout {
+  width: 150px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #fff;
+  border-radius: 30px;
+  background-color: #e31837;
+}
+
+.cart-wrapper-not-allowed {
+  display: flex;
+  grid-area: cart;
+  align-items: center;
+  margin-left: 11px;
+  padding: 2px;
+  width: 190px;
+  border-radius: 30px;
+  background-color: #f8f8f8;
+  cursor: not-allowed;
+}
+
+.cart-wrapper-not-allowed:hover > .cart {
+  background-color: #333;
+  cursor: not-allowed;
+}
+
+.cart-wrapper-not-allowed:hover > .checkout {
+  cursor: not-allowed;
+}
+
+.bar-menu {
+  position: absolute;
+  top: 25px;
+  right: -10px;
+  cursor: pointer;
+}
+
+.side-menu {
+  position: absolute;
+  transition: all 1s ease;
+  z-index: 10;
+}

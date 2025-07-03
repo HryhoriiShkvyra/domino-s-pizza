@@ -1,6 +1,6 @@
 import React from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import NavbarFirstPart from "./components/Navbar/NavbarFirstPart";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Home from "./components/Pages/Home/Home";
 import Pizza from "./components/Pages/Pizza/Pizza";
@@ -9,7 +9,7 @@ import Sides from "./components/Pages/Sides/Sides";
 import Dessert from "./components/Pages/Dessert/Dessert";
 import Checkout from "./components/Pages/Checkout/Checkout";
 import PizzaConstructor from "./components/Pages/PizzaConstructor/PizzaConstructor";
-import "./App.scss";
+import "./App.css";
 import CardIngredients from "./components/CardIngredient/CardIngredients";
 import UserProfile from "./components/User/UserProfile/UserProfile";
 import UserBankCards from "./components/User/UserBankCards/UserBankCards";
@@ -19,13 +19,14 @@ import UserOrders from "./components/User/UserOrders/UserOrders";
 import UserAddresses from "./components/User/UserAddresses/UserAddresses";
 import UserGroups from "./components/User/UserGroups/UserGroups";
 import UserContainer from "./components/User/UserContainer/UserContainer";
+import IndexPage from "./components/Pages/IndexPage/IndexPage";
 // import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
 
 export default function App() {
   const Layout = () => {
     return (
       <div className="app">
-        <NavbarFirstPart />
+        <Navbar />
         <Outlet />
         <Footer />
       </div>
@@ -37,7 +38,7 @@ export default function App() {
       path: "/",
       element: <Layout />,
       children: [
-        { path: "/", element: <Home /> },
+        { path: "/", element: <IndexPage /> },
         {
           path: "/pizza/",
           element: <Pizza />,

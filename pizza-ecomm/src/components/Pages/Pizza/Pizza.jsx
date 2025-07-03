@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarSecondPart from "../../Navbar/NavbarSecondPart";
+import NavbarSecond from "../../Navbar/NavbarSecond";
 import Sorting from "../../Sorting/Sorting";
 import CardList from "../../CardList/CardList";
 import "./Pizza.scss";
@@ -9,7 +9,7 @@ export default function Pizza() {
 
   return (
     <div className="pizza">
-      <NavbarSecondPart />
+      <NavbarSecond />
       <div className="pizza-container">
         <Sorting setIsSorting={setIsSorting} />
         <CardList category="pizza" type="New" isSorting={isSorting} />

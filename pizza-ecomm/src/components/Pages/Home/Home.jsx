@@ -1,9 +1,9 @@
 import React from "react";
-import NavbarSecondPart from "../../Navbar/NavbarSecondPart";
+import NavbarSecond from "../../Navbar/NavbarSecond";
 import Slider from "../../Slider/Slider";
 import CardList from "../../CardList/CardList";
 import isSorting from "../../Sorting/Sorting";
-import "./Home.scss";
+import "./Home.css";
 
 export default function Home() {
   // localStorage.setItem("category", "pizza");
@@ -24,16 +24,12 @@ export default function Home() {
 
   return (
     <div className="home">
-      <NavbarSecondPart />
-      <Slider />
-      <CardList
-        category="pizza"
-        type="Bestsellers and novelties"
-        isSorting={isSorting}
-      />{" "}
-      <CardList category="pizza" type="Best Price" isSorting={isSorting} />
-      <CardList category="pizza" type="Heroes" isSorting={isSorting} />
-      <CardList category="pizza" type="Wonder" isSorting={isSorting} />
+      <NavbarSecond />
+      {/* <Slider /> */}
+      <CardList />
+      {/* <CardList category="pizza" type="Best Price" isSorting={isSorting} /> */}
+      {/* <CardList category="pizza" type="Heroes" isSorting={isSorting} />
+      <CardList category="pizza" type="Wonder" isSorting={isSorting} /> */}
     </div>
   );
 }

@@ -7,137 +7,145 @@ import {
 } from "@mui/icons-material";
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Footer.scss";
+import "./Footer.css";
 
 export default function Footer() {
+  const FirstColumn = [
+    "Menu",
+    "Pizzerias",
+    "Franchising",
+    "Information about the content of allergens and nutritional value",
+    "Food safety policy",
+  ];
+
   return (
     <div>
-      <span className="disclaimer">
+      <div className="disclaimer">
         * weight of just cooked product. The weight in delivery orders may
         differ due to dehydration of the product.
-      </span>
+      </div>
       <div className="footer">
-        <div className="footer-first">
-          <div className="section">
+        <div className="footer-column">
+          <div className="footer-column-title">
             <h2>Domino's Pizza</h2>
-            <Link className="link">Menu</Link>
-            <Link className="link">Pizzerias</Link>
-            <Link className="link">Franchising</Link>
-            <Link className="link">
-              Information about the content of allergens and nutritional value
-            </Link>
-            <Link className="link">Food safety policy</Link>
           </div>
-          <div className="section">
+          {FirstColumn.map((item) => (
+            <Link className="footer-item" key={item}>
+              <h3>{item}</h3>
+            </Link>
+          ))}
+        </div>
+
+        <div className="footer-column">
+          <div className="footer-column-title">
             <h2>Services</h2>
-            <Link className="link-tracker">
-              <div>
-                <SmsOutlined className="icon" /> Pizza Tracker
-              </div>
-            </Link>
           </div>
-          <div className="section">
+          <Link className="footer-item">
+            <div className="footer-icon">
+              <SmsOutlined />
+            </div>
+            <h2>Pizza Tracker</h2>
+          </Link>
+        </div>
+
+        <div className="footer-column">
+          <div className="footer-column-title">
             <h2>Contacts</h2>
-            <Link className="link">info@dominos.ua</Link>
-            <Link className="link">Send complaint</Link>
-            <Link className="link">044 222 11 11</Link>
           </div>
-          <div className="section">
-            <h2>
-              <Link className="logo" to="/">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Domino%27s_pizza_logo.svg/2036px-Domino%27s_pizza_logo.svg.png"
-                  alt=""
-                />
-                <div className="logo-text">Domino's Pizza</div>
-              </Link>
-              <span>© 2023 Domino's Pizza Ukraine</span>
-            </h2>
+          <Link className="footer-item">info@dominos.ua</Link>
+          <Link className="footer-item">Send complaint</Link>
+          <Link className="footer-item">044 222 11 11</Link>
+        </div>
+
+        <div className="footer-column">
+          <Link className="footer-item" to="/">
+            <img
+              className="logo-icon"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Domino%27s_pizza_logo.svg/2036px-Domino%27s_pizza_logo.svg.png"
+              alt=""
+            />
+            <div className="footer-column-title">
+              <h2>Domino's Pizza</h2>
+            </div>
+          </Link>
+          <h3>© 2023 Domino's Pizza Ukraine</h3>
+        </div>
+
+        <div className="footer-column">
+          <div className="footer-item">
+            <div className="footer-column-title">
+              <h2>Site developed by fitel.io</h2>
+            </div>
           </div>
         </div>
 
-        <div className="footer-second">
-          <div className="section">
-            <div className="link-creator">site developed by fitel.io</div>
+        <div className="footer-column">
+          <div className="footer-column-title">
+            <h2>Download application</h2>
           </div>
-          <div className="section-grid">
-            <span>download application</span>
-            <div className="section-app">
-              <div className="application">
-                <img
-                  src="https://www.svgrepo.com/show/473543/apple.svg"
-                  style={{ filter: "invert(1)" }}
-                  alt=""
-                  className="icon"
-                />
-                <div>
-                  <span className="application-place">Download on the</span>
-                  <span className="application-direction">App Store</span>
-                </div>
-              </div>
-              <div className="application">
-                <img
-                  src="https://www.svgrepo.com/show/475863/play-store.svg"
-                  alt=""
-                  className="icon"
-                />
-                <div>
-                  <span
-                    className="application-place"
-                    style={{ textTransform: "uppercase" }}
-                  >
-                    Get it on
-                  </span>
-                  <span className="application-direction">Google Play</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="section-grid">
-            <span>supported payments</span>
-            <div className="section-payment">
+          <div className="footer-btns">
+            <div className="footer-btn">
               <img
-                src="https://www.svgrepo.com/show/473823/visa.svg"
+                src="https://www.svgrepo.com/show/473543/apple.svg"
                 style={{ filter: "invert(1)" }}
                 alt=""
-                className="icon"
+                className="logo-icon"
               />
+              <div className="footer-store">
+                <h5>Download on the</h5>
+                <h5>App Store</h5>
+              </div>
+            </div>
+            <div className="footer-btn">
               <img
-                src="https://www.svgrepo.com/show/362011/mastercard.svg"
+                src="https://www.svgrepo.com/show/475863/play-store.svg"
                 alt=""
-                className="icon"
+                className="logo-icon"
               />
+              <div className="footer-store">
+                <h5>Get it on</h5>
+                <h5>Google Play</h5>
+              </div>
             </div>
           </div>
-          <div className="section-grid">
-            <span>follow</span>
-            <div className="section-follow">
-              <span>
-                <Facebook />
-              </span>
-              <span>
-                <YouTube />
-              </span>
-              <span>
-                <Instagram />
-              </span>
-              <span>
-                <Telegram />
-                {/* style={{
-                  width: '25px',
-                  height: '25px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  paddingRight: '1px',
-                  fontSize: '10px',
-                  color: 'black',
-                  background: '#8d8d8d',
-                  borderRadius: '20px',
-                  transition: 'all .4s ease'
-                }} */}
-              </span>
-            </div>
+        </div>
+
+        <div className="footer-column">
+          <div className="footer-column-title">
+            <h2>Supported payments</h2>
+          </div>
+          <div className="section-payment">
+            <img
+              src="https://www.svgrepo.com/show/473823/visa.svg"
+              style={{ filter: "invert(1)" }}
+              alt=""
+              className="big-logo"
+            />
+            <img
+              src="https://www.svgrepo.com/show/362011/mastercard.svg"
+              alt=""
+              className="big-logo"
+            />
+          </div>
+        </div>
+
+        <div className="footer-column">
+          <div className="footer-column-title">
+            <h2>Follow</h2>
+          </div>
+          <div className="footer-row">
+            <Link className="footer-item">
+              <Facebook />
+            </Link>
+            <Link className="footer-item">
+              <YouTube />
+            </Link>
+            <Link className="footer-item">
+              <Instagram />
+            </Link>
+            <Link className="footer-item">
+              <Telegram />
+            </Link>
           </div>
         </div>
       </div>

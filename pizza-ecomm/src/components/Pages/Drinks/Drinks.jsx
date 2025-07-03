@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarSecondPart from "../../Navbar/NavbarSecondPart";
+import NavbarSecond from "../../Navbar/NavbarSecond";
 import CardList from "../../CardList/CardList";
 import Sorting from "../../Sorting/Sorting";
 import Filter from "../../Filter/Filter";
@@ -10,7 +10,7 @@ export default function Drinks() {
 
   return (
     <div className="drinks">
-      <NavbarSecondPart />
+      <NavbarSecond />
       <div className="drinks-container">
         <Sorting setIsSorting={setIsSorting} />
         <Filter />

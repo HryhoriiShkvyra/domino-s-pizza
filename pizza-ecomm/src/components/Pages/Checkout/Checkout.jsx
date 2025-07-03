@@ -8,7 +8,7 @@ import {
   StorefrontOutlined,
 } from "@mui/icons-material";
 import React from "react";
-import NavbarSecondPart from "../../Navbar/NavbarSecondPart";
+import NavbarSecond from "../../Navbar/NavbarSecond";
 import { useSelector } from "react-redux";
 import "./Checkout.scss";
 import { makeRequest } from "../../../makeRequest";
@@ -115,7 +115,7 @@ const Checkout = React.memo(() => {
   const CheckoutPage = () => {
     return (
       <div className="checkout">
-        <NavbarSecondPart />
+        <NavbarSecond />
         <div className="checkout-wrapper">
           <div className="checkout-order">
             <div className="first-block">

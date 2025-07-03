@@ -1,149 +1,135 @@
-import { Info } from "@mui/icons-material";
 import React from "react";
+import "./CardList.css";
 import Card from "../Card/Card";
-import "./CardList.scss";
-import useFetch from "../Hooks/useFetch";
-import { useSelector } from "react-redux";
-// import { useSelector } from 'react-redux';
 
-const CardList = React.memo(({ type, category, isSorting }) => {
-  const [requestData, setRequestData] = React.useState();
-  const { data, loading, error } = useFetch(
-    `products?populate=*&[filters][types][sub_title][$eq]=${type}`
-    // `products?populate=*&`
-    // `types?populate=*&[filters][sub_title][$eq]=new`
-  );
+const DataSheet = [
+  {
+    title: "Pizza Margherita",
+    about: "tomatoes (red), mozzarella (white), and basil (green)",
+    img: "",
+    alt: "pizza margherita",
+  },
+  {
+    title: "Pizza Margherita",
+    about: "tomatoes (red), mozzarella (white), and basil (green)",
+    img: "",
+    alt: "pizza margherita",
+  },
+  {
+    title: "Pizza Margherita",
+    about: "tomatoes (red), mozzarella (white), and basil (green)",
+    img: "",
+    alt: "pizza margherita",
+  },
+  {
+    title: "Pizza Margherita",
+    about: "tomatoes (red), mozzarella (white), and basil (green)",
+    img: "",
+    alt: "pizza margherita",
+  },
+  {
+    title: "Pizza Margherita",
+    about: "tomatoes (red), mozzarella (white), and basil (green)",
+    img: "",
+    alt: "pizza margherita",
+  },
+];
 
-  // console.log(data);
+// const PizzaCardSize = () => {
+//   return (
+//     <div className="card-size">
+//       <div className="card-block-size">
+//         <button
+//           onClick={() => setIsSize("standard-size")}
+//           className={
+//             isSize === "standard-size"
+//               ? "card-size-btn-active"
+//               : "card-size-btn"
+//           }
+//         >
+//           Standard size
+//         </button>
+//         <div className="span"></div>
+//         <button
+//           onClick={() => setIsSize("large")}
+//           className={
+//             isSize === "large" ? "card-size-btn-active" : "card-size-btn"
+//           }
+//         >
+//           Large
+//         </button>
+//         <div className="span"></div>
+//         <button
+//           onClick={() => setIsSize("extra")}
+//           className={
+//             isSize === "extra" ? "card-size-btn-active" : "card-size-btn"
+//           }
+//         >
+//           ExtraLarge
+//         </button>
+//         <div className="span"></div>
+//         <button
+//           onClick={() => setIsSize("xxl")}
+//           className={
+//             isSize === "xxl" ? "card-size-btn-active" : "card-size-btn"
+//           }
+//         >
+//           XXLarge
+//         </button>
+//       </div>
+//       <div className="card-block-size-crust">
+//         <button
+//           onClick={() => setIsCrust("thick")}
+//           className={
+//             isCrust === "thick" ? "card-size-btn-active" : "card-size-btn"
+//           }
+//         >
+//           Thick crust
+//         </button>
+//         <button
+//           onClick={() => setIsCrust("thin")}
+//           className={
+//             isCrust === "thin" ? "card-size-btn-active" : "card-size-btn"
+//           }
+//         >
+//           Thin
+//         </button>
+//         <button
+//           onClick={() => setIsCrust("philadelphia")}
+//           className={
+//             isCrust === "philadelphia"
+//               ? "card-size-btn-active"
+//               : "card-size-btn"
+//           }
+//         >
+//           Philadelphia
+//         </button>
+//         <button
+//           onClick={() => setIsCrust("hot-dog")}
+//           className={
+//             isCrust === "hot-dog" ? "card-size-btn-active" : "card-size-btn"
+//           }
+//         >
+//           Hot-Dog crust
+//         </button>
+//       </div>
+//     </div>
+//   );
+// };
 
-  const productsInCart = useSelector((state) => state.cart.cartItems);
-
-  React.useEffect(() => {
-    // console.log(`products?populate=*&[filters][type][$eq]=${type}`);
-    // if (loading) {
-    //   return console.log("error");
-    // } else return console.log(data);
-  }, [data]);
-
-  const pizzaTitleArray = [
-    { title: "Sweet Pizza" },
-    { title: "Pizza with pear and blue cheese" },
-    { title: "Pizza with turkey" },
-    { title: "Pizza Diablo" },
-    { title: "Pizza Beef and Crispy" },
-    { title: "Pizza with dried tomatoes and chicken" },
-  ];
-
-  // React.useEffect(() => {
-  //   const titleOrderMap = pizzaTitleArray.reduce((acc, item, index) => {
-  //     acc[item.title] = index;
-  //     return acc;
-  //   }, {});
-
-  //   const reorderedSecondArray = data.sort((a, b) => {
-  //     return titleOrderMap[a.title] - titleOrderMap[b.title];
-  //   });
-
-  //   console.log(reorderedSecondArray);
-  // }, [data]);
-
-  // const sortedItems = [...data].sort
-
-  // React.useEffect(() => {
-  //   if (data) {
-  //     data.forEach((product) => {
-  //       setRequestData((prev) => [...prev, product]);
-  //     });
-  //   }
-  //   console.log(requestData);
-  // }, []);
-
+const CardList = () => {
   return (
-    <div className="card-list">
-      <div className="container">
-        {/* {type === "Dessert" ? (
-          <div className="list-title-hidden"></div>
-        ) : ( */}
-        <div className="list-title">
-          {type}
-          <div className="list-icon-wrapper">
-            <div className="list-about">
-              Here are the most affordable pizzas
-            </div>
-            <Info className="icon" />
-          </div>
-        </div>
-        {/* )} */}
-        <div className="card-list-block">
-          {error
-            ? "something went wrong"
-            : loading
-              ? "loading"
-              : isSorting === "#"
-                ? data?.map((item) => (
-                    <Card
-                      key={item.id + " " + item.title}
-                      item={item}
-                      // cardType={cardListTypeState}
-                      // category={category}
-                      // productsInCart={productsInCart}
-                    />
-                  ))
-                : data?.map((item) => (
-                    <Card
-                      key={item.id + " " + item.title}
-                      item={item}
-                      // cardType={cardListTypeState}
-                      // category={category}
-                      // productsInCart={productsInCart}
-                    />
-                  ))}
-
-          {/* {error
-            ? "something went wrong"
-            : loading
-            ? "loading"
-            : isSorting === "#"
-            ? requestData?.map((item) => (
-                <Card
-                  key={item.id + " " + item.title}
-                  item={item}
-                  type={type}
-                  category={category}
-                  productsInCart={productsInCart}
-                />
-              ))
-            : isSorting === "high"
-            ? data
-                ?.sort((a, b) =>
-                  a.attributes.price_1 > b.attributes.price_1 ? -1 : 1
-                )
-                .map((item) => (
-                  <Card
-                    key={item.id}
-                    item={item}
-                    type={type}
-                    category={category}
-                    productsInCart={productsInCart}
-                  />
-                ))
-            : data
-                ?.sort((a, b) =>
-                  a.attributes.price_1 > b.attributes.price_1 ? 1 : -1
-                )
-                .map((item) => (
-                  <Card
-                    key={item.id}
-                    item={item}
-                    type={type}
-                    category={category}
-                    productsInCart={productsInCart}
-                  />
-                ))} */}
-        </div>
+    <div className="container">
+      <div className="card-list-title">
+        <h1>Best Price</h1>
+      </div>
+      <div className="card-list">
+        {DataSheet.map((item, index) => (
+          <Card item={item} key={item + "_" + index} />
+        ))}
       </div>
     </div>
   );
-});
+};
 
 export default CardList;
