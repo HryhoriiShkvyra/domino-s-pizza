@@ -117,17 +117,34 @@ const DataSheet = [
 //   );
 // };
 
-const CardList = () => {
+const CardList = ({ pageState, listTitle }) => {
+  const CardListState = () => {
+    // if (pageState) {
+    //   return console.log(pageState);
+    // }
+
+    if (pageState === "pizza") {
+      return (
+        <div className="card-list">
+          {DataSheet.map((item, index) => (
+            <Card item={item} key={item + "_" + index} />
+          ))}
+        </div>
+      );
+    } else return console.log("not ok");
+  };
+
   return (
     <div className="container">
       <div className="card-list-title">
-        <h1>Best Price</h1>
+        <h1>{listTitle}</h1>
       </div>
-      <div className="card-list">
+      {/* <div className="card-list">
         {DataSheet.map((item, index) => (
           <Card item={item} key={item + "_" + index} />
         ))}
-      </div>
+      </div> */}
+      <CardListState />
     </div>
   );
 };

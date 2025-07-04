@@ -1,32 +1,15 @@
-import React from "react";
-import NavbarSecond from "../../Navbar/NavbarSecond";
+import "./Drinks.css";
 import CardList from "../../CardList/CardList";
-import Sorting from "../../Sorting/Sorting";
-import Filter from "../../Filter/Filter";
-import "./Drinks.scss";
+import NavbarSecond from "../../Navbar/NavbarSecond";
 
 export default function Drinks() {
-  const [isSorting, setIsSorting] = React.useState("#");
+  const pageState = "drinks";
 
   return (
     <div className="drinks">
-      <NavbarSecond />
-      <div className="drinks-container">
-        <Sorting setIsSorting={setIsSorting} />
-        <Filter />
-        <CardList
-          category="drinks"
-          type="Water and drinks"
-          isSorting={isSorting}
-        />
-        <CardList category="drinks" type="Juice" isSorting={isSorting} />
-        <CardList category="drinks" type="Beer" isSorting={isSorting} />
-        <CardList
-          category="drinks"
-          type="Coffee and tea"
-          isSorting={isSorting}
-        />
-      </div>
+      <NavbarSecond pageState={pageState} />
+      <CardList pageState={pageState} listTitle="Water and drinks" />
+      <CardList pageState={pageState} listTitle="Juice" />
     </div>
   );
 }

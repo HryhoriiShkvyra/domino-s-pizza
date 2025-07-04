@@ -28,8 +28,6 @@ export const SideMenu = ({ sideBarActive }) => {
     },
   ];
 
-  console.log(SidebarTopBtns);
-
   const SidebarBottomBtns = [
     "pizza constructor",
     "pizza tracker",

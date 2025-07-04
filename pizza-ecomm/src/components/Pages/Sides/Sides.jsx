@@ -1,20 +1,16 @@
-import React from "react";
-import NavbarSecond from "../../Navbar/NavbarSecond";
+import "./Sides.css";
 import CardList from "../../CardList/CardList";
-import Sorting from "../../Sorting/Sorting";
-import "./Sides.scss";
+import NavbarSecond from "../../Navbar/NavbarSecond";
 
 export default function Sides() {
-  const [isSorting, setIsSorting] = React.useState("#");
+  const pageState = "sides";
 
   return (
     <div className="sides">
-      <NavbarSecond />
-      <div className="sides-container">
-        <Sorting setIsSorting={setIsSorting} />
-        <CardList category="sides" type="Combo-boxes" isSorting={isSorting} />
-        <CardList category="sides" type="Bread" isSorting={isSorting} />
-      </div>
+      <NavbarSecond pageState={pageState} />
+      <CardList pageState={pageState} listTitle="Chicken and ribs" />
+      <CardList pageState={pageState} listTitle="Salads" />
+      <CardList pageState={pageState} listTitle="Mini rolls" />
     </div>
   );
 }

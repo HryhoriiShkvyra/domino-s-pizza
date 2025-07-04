@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import "./NavbarSecond.css";
 import { SideMenu } from "../SideMenu/SideMenu";
 
-export default function NavbarSecond() {
+export default function NavbarSecond({ pageState }) {
   const [sideBarActive, setSideBarActive] = React.useState(false);
-  const [navBarActive, setNavBarActive] = React.useState("pizza");
+  const [navbarActive, setNavbarActive] = React.useState(pageState);
 
   //   const productsInCart = useSelector((state) => state.cart.cartItems);
 
@@ -29,7 +29,7 @@ export default function NavbarSecond() {
       <div className="second">
         <div className="secondIn">
           <Link
-            onClick={() => setNavBarActive("pizza")}
+            onClick={() => setNavbarActive("pizza")}
             className="logo"
             to="/"
           >
@@ -44,16 +44,16 @@ export default function NavbarSecond() {
           </Link>
           <nav className="nav">
             {NavbarLinks.map((item, index) => (
-              <div
-                onClick={() => setNavBarActive("pizza")}
+              <Link
+                onClick={() => setNavbarActive(`${item}`)}
                 className={
-                  navBarActive === item ? "nav-link-active" : "nav-link"
+                  navbarActive === item ? "nav-link-active" : "nav-link"
                 }
-                to={`/${item}/`}
+                to={`/${item}`}
                 key={item + "_" + index}
               >
                 <h3>{item}</h3>
-              </div>
+              </Link>
             ))}
           </nav>
 
@@ -93,7 +93,7 @@ export default function NavbarSecond() {
             </div>
             <Link
               className="checkout"
-              onClick={() => setNavBarActive("checkout")}
+              onClick={() => setNavbarActive("checkout")}
               to="/checkout/"
             >
               checkout
