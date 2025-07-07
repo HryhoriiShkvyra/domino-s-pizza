@@ -1,28 +1,14 @@
-import React from "react";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
-import Home from "./components/Pages/Home/Home";
-import Pizza from "./components/Pages/Pizza/Pizza";
-import Drinks from "./components/Pages/Drinks/Drinks";
-import Sides from "./components/Pages/Sides/Sides";
-import Dessert from "./components/Pages/Dessert/Dessert";
-import Checkout from "./components/Pages/Checkout/Checkout";
-import PizzaConstructor from "./components/Pages/PizzaConstructor/PizzaConstructor";
-import "./App.css";
-import CardIngredients from "./components/CardIngredient/CardIngredients";
-import UserProfile from "./components/User/UserProfile/UserProfile";
-import UserBankCards from "./components/User/UserBankCards/UserBankCards";
-import UserLeaveFeedback from "./components/User/UserLeaveFeedback/UserLeaveFeedback";
-import UserMessages from "./components/User/UserMessages/UserMessages";
-import UserOrders from "./components/User/UserOrders/UserOrders";
-import UserAddresses from "./components/User/UserAddresses/UserAddresses";
-import UserGroups from "./components/User/UserGroups/UserGroups";
-import UserContainer from "./components/User/UserContainer/UserContainer";
-import IndexPage from "./components/Pages/IndexPage/IndexPage";
-// import CheckoutForm from "./components/CheckoutForm/CheckoutForm";
+import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
+import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
+import IndexPage from "./Components/IndexPage/IndexPage";
+import "./index.css";
+import Pizza from "./Components/Pages/Pizza/Pizza";
+import Drinks from "./Components/Pages/Drinks/Drinks";
+import Sides from "./Components/Pages/Sides/Sides";
+import Desserts from "./Components/Pages/Desserts/Desserts";
 
-export default function App() {
+function App() {
   const Layout = () => {
     return (
       <div className="app">
@@ -38,77 +24,31 @@ export default function App() {
       path: "/",
       element: <Layout />,
       children: [
-        { path: "/", element: <IndexPage /> },
         {
-          path: "/pizza/",
+          path: "/",
+          element: <IndexPage />,
+        },
+        {
+          path: "/pizza",
           element: <Pizza />,
         },
         {
-          path: "/drinks/",
+          path: "/drinks",
           element: <Drinks />,
         },
         {
-          path: "/sides/",
+          path: "/sides",
           element: <Sides />,
         },
         {
-          path: "/dessert/",
-          element: <Dessert />,
-        },
-        {
-          path: "/checkout/",
-          element: <Checkout />,
-        },
-        // {
-        //   path: "/checkout/payment-info",
-        //   element: <CheckoutForm />,
-        // },
-        {
-          path: "/product/:id",
-          element: <CardIngredients />,
-        },
-        {
-          path: "/pizza-constructor/:id",
-          element: <PizzaConstructor />,
-        },
-        {
-          path: "/profile/",
-          element: <UserProfile />,
-        },
-        {
-          path: "/bankcard/",
-          element: <UserBankCards />,
-        },
-        {
-          path: "/addresses/",
-          element: <UserAddresses />,
-        },
-        {
-          path: "/groups/",
-          element: <UserGroups />,
-        },
-        {
-          path: "/leave-feedback/",
-          element: <UserLeaveFeedback />,
-        },
-        {
-          path: "/messages/",
-          element: <UserMessages />,
-        },
-        {
-          path: "/orders/",
-          element: <UserOrders />,
-        },
-        {
-          path: "/user-container/",
-          element: <UserContainer />,
+          path: "/desserts",
+          element: <Desserts />,
         },
       ],
     },
   ]);
-  return (
-    <div className="app">
-      <RouterProvider router={router} />
-    </div>
-  );
+
+  return <RouterProvider router={router} />;
 }
+
+export default App;

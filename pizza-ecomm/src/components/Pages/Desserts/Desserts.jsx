@@ -3,7 +3,7 @@ import CardList from "../../CardList/CardList";
 import NavbarSecond from "../../Navbar/NavbarSecond";
 
 export default function Desserts() {
-  const pageState = "sides";
+  const pageState = "desserts";
 
   return (
     <div className="desserts">

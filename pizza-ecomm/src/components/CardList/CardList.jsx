@@ -1,6 +1,7 @@
 import React from "react";
 import "./CardList.css";
 import Card from "../Card/Card";
+import UseFetch from "../Hooks/useFetch";
 
 const DataSheet = [
   {
@@ -118,20 +119,63 @@ const DataSheet = [
 // };
 
 const CardList = ({ pageState, listTitle }) => {
+  const { data, loading, error } = UseFetch(
+    `products?populate=*`
+    // `products?populate=*&`
+    // `types?populate=*&[filters][sub_title][$eq]=new`
+  );
+
+  React.useEffect(() => {
+    console.log(data);
+  }, [data]);
   const CardListState = () => {
     // if (pageState) {
     //   return console.log(pageState);
     // }
 
-    if (pageState === "pizza") {
-      return (
-        <div className="card-list">
-          {DataSheet.map((item, index) => (
-            <Card item={item} key={item + "_" + index} />
-          ))}
-        </div>
-      );
-    } else return console.log("not ok");
+    return (
+      <div className="card-list">
+        {error
+          ? "error"
+          : loading
+            ? "loading"
+            : data?.map((item) => <Card item={item} />)}
+      </div>
+    );
+
+    // if (pageState === "pizza") {
+    //   return (
+    //     <div className="card-list">
+    //       {DataSheet.slice(0, 5).map((item, index) => (
+    //         <Card item={item} key={item + "_" + index} />
+    //       ))}
+    //     </div>
+    //   );
+    // } else if (pageState === "drinks") {
+    //   return (
+    //     <div className="card-list">
+    //       {DataSheet.slice(0, 4).map((item, index) => (
+    //         <Card item={item} key={item + "_" + index} />
+    //       ))}
+    //     </div>
+    //   );
+    // } else if (pageState === "sides") {
+    //   return (
+    //     <div className="card-list">
+    //       {DataSheet.slice(0, 3).map((item, index) => (
+    //         <Card item={item} key={item + "_" + index} />
+    //       ))}
+    //     </div>
+    //   );
+    // } else if (pageState === "desserts") {
+    //   return (
+    //     <div className="card-list">
+    //       {DataSheet.slice(0, 2).map((item, index) => (
+    //         <Card item={item} key={item + "_" + index} />
+    //       ))}
+    //     </div>
+    //   );
+    // } else return console.log("not ok");
   };
 
   return (
