@@ -8,7 +8,6 @@ export default function IndexPage() {
     <div className="index">
       <NavbarSecond pageState={pageState} />
       <CardList pageState={pageState} category="best price" />
-      {/* <CardList pageState={pageState} listTitle="News" /> */}
     </div>
   );
 }

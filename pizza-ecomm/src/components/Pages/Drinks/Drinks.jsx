@@ -8,8 +8,8 @@ export default function Drinks() {
   return (
     <div className="drinks">
       <NavbarSecond pageState={pageState} />
-      <CardList pageState={pageState} listTitle="Water and drinks" />
-      <CardList pageState={pageState} listTitle="Juice" />
+      <CardList pageState={pageState} category="water" />
+      <CardList pageState={pageState} category="Juice" />
     </div>
   );
 }

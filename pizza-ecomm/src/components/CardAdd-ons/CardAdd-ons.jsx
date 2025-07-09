@@ -1,5 +1,4 @@
-const CardWeightLogic = ({ card, priceValue }) => {
-  console.log(card);
+export const CardWeightLogic = ({ card, priceValue }) => {
   if (card) {
     if (`${priceValue}` === "standard,thick") {
       return card.weight_1;
@@ -39,10 +38,8 @@ const CardWeightLogic = ({ card, priceValue }) => {
   }
 };
 
-export default CardWeightLogic;
-
-export const CardPriceLogic = ({ card, priceValue }) => {
-  if (card) {
+export const CardPriceLogic = ({ card, priceValue, category }) => {
+  if (category) {
     if (`${priceValue}` === "standard,thick") {
       return card?.price_1;
     } else if (`${priceValue}` === "standard,thin") {
@@ -78,5 +75,51 @@ export const CardPriceLogic = ({ card, priceValue }) => {
     } else if (`${priceValue}` === "xxl,hot-dog") {
       return card?.price_16;
     }
+  }
+};
+
+export const CardSizeLogic = ({
+  card,
+  pizzaSize,
+  pizzaDough,
+  cardSize,
+  cardDough,
+  setCardSize,
+  setCardDough,
+}) => {
+  if (card) {
+    return (
+      <>
+        <div className="card-size">
+          {pizzaSize.map((size) => (
+            <div className="card-size-state-wrapper" key={size}>
+              <div
+                onClick={(e) => setCardSize(`${size}`)}
+                className={`card-size-state ${
+                  cardSize === `${size}` ? "active" : ""
+                }`}
+              >
+                <h5>{size}</h5>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="card-size">
+          {pizzaDough.map((dough) => (
+            <div className="card-size-state-wrapper" key={dough}>
+              <div
+                onClick={(e) => setCardDough(`${dough}`)}
+                className={`card-size-state ${
+                  cardDough === `${dough}` ? "active" : ""
+                }`}
+              >
+                <h5>{dough}</h5>
+              </div>
+            </div>
+          ))}
+        </div>
+      </>
+    );
   }
 };

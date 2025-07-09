@@ -1,8 +1,12 @@
 import React from "react";
 import "./Card.css";
-import CardWeightLogic, { CardPriceLogic } from "../CardAdd-ons/CardAdd-ons";
+import {
+  CardWeightLogic,
+  CardPriceLogic,
+  CardSizeLogic,
+} from "../CardAdd-ons/CardAdd-ons";
 
-const Card = ({ card }) => {
+const Card = ({ card, category }) => {
   const [cardSize, setCardSize] = React.useState("standard");
   const [cardDough, setCardDough] = React.useState("thick");
 
@@ -10,23 +14,41 @@ const Card = ({ card }) => {
   const pizzaDough = ["thick", "thin", "cheesy", "hot-dog"];
   const priceValue = [`${cardSize},${cardDough}`];
 
-  return (
-    <div className="card-wrapper">
-      <div className="card">
-        <div className="card-placeholder-img">
+  const CardImgLogic = () => {
+    if (card.img) {
+      return (
+        <div className="img">
           <img
             className="card-img"
             src={process.env.REACT_APP_UPLOAD_URL + card?.img?.url}
             alt=""
           />
-          {/* <div className="img">
-            <div className="card-weight">
-              <h4>
-                <CardWeightLogic card={card} priceValue={priceValue} />
-              </h4>
-              <h4>g</h4>
-            </div>
-          </div> */}
+          <div className="card-weight">
+            <h4>
+              <CardWeightLogic card={card} priceValue={priceValue} />
+            </h4>
+            <h4>g*</h4>
+          </div>
+        </div>
+      );
+    } else
+      return (
+        <div className="img">
+          <div className="card-weight">
+            <h4>
+              <CardWeightLogic card={card} priceValue={priceValue} />
+            </h4>
+            <h4>g*</h4>
+          </div>
+        </div>
+      );
+  };
+
+  return (
+    <div className="card-wrapper">
+      <div className="card">
+        <div className="card-placeholder-img">
+          <CardImgLogic />
         </div>
         <div className="card-title">
           <h3>{card.title}</h3>
@@ -34,7 +56,17 @@ const Card = ({ card }) => {
         <div className="card-description">
           <h5>{card.description}</h5>
         </div>
-
+        <CardSizeLogic
+          card={card}
+          pizzaSize={pizzaSize}
+          pizzaDough={pizzaDough}
+          cardSize={cardSize}
+          cardDough={cardDough}
+          setCardSize={setCardSize}
+          setCardDough={setCardDough}
+          category={category}
+        />
+        {/* 
         <div className="card-size">
           {pizzaSize.map((size) => (
             <div className="card-size-state-wrapper" key={size}>
@@ -63,7 +95,7 @@ const Card = ({ card }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         <div className="card-additional-info">
           <div className="card-price">
