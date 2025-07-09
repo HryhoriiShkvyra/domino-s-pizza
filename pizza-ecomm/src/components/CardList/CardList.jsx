@@ -118,9 +118,13 @@ const DataSheet = [
 //   );
 // };
 
-const CardList = ({ pageState, listTitle }) => {
+const CardList = ({ pageState, category }) => {
   const { data, loading, error } = UseFetch(
-    `products?populate=*`
+    // `products?populate=*`
+    `products?populate=*[filters][categories][title][$eq]="tea"&populate[0]-fields=img`
+
+    // `products?populate=*[filters][categories][title][$eq]=${category}&populate[0]-fields=img`
+
     // `products?populate=*&`
     // `types?populate=*&[filters][sub_title][$eq]=new`
   );
@@ -139,7 +143,7 @@ const CardList = ({ pageState, listTitle }) => {
           ? "error"
           : loading
             ? "loading"
-            : data?.map((item) => <Card item={item} />)}
+            : data?.map((card) => <Card card={card} key={card.title} />)}
       </div>
     );
 
@@ -181,7 +185,7 @@ const CardList = ({ pageState, listTitle }) => {
   return (
     <div className="container">
       <div className="card-list-title">
-        <h1>{listTitle}</h1>
+        <h1>{category}</h1>
       </div>
       {/* <div className="card-list">
         {DataSheet.map((item, index) => (
