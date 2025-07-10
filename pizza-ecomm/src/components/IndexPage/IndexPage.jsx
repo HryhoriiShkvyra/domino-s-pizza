@@ -1,5 +1,6 @@
 import CardList from "../CardList/CardList";
 import NavbarSecond from "../Navbar/NavbarSecond";
+import { create } from "zustand";
 
 export default function IndexPage() {
   const pageState = "pizza";

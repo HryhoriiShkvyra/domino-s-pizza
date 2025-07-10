@@ -5,9 +5,10 @@ import {
   CardPriceLogic,
   CardSizeLogic,
 } from "../CardAdd-ons/CardAdd-ons";
+import { getCardSize } from "../CardStore/CardStore";
 
 const Card = ({ card, category }) => {
-  const [cardSize, setCardSize] = React.useState("standard");
+  const [cardSize, setCardSize] = React.useState(getCardSize || "standard");
   const [cardDough, setCardDough] = React.useState("thick");
 
   const pizzaSize = ["standard", "large", "extra", "xxl"];
@@ -50,12 +51,15 @@ const Card = ({ card, category }) => {
         <div className="card-placeholder-img">
           <CardImgLogic />
         </div>
+
         <div className="card-title">
           <h3>{card.title}</h3>
         </div>
+
         <div className="card-description">
           <h5>{card.description}</h5>
         </div>
+
         <CardSizeLogic
           card={card}
           pizzaSize={pizzaSize}
@@ -66,6 +70,7 @@ const Card = ({ card, category }) => {
           setCardDough={setCardDough}
           category={category}
         />
+
         {/* 
         <div className="card-size">
           {pizzaSize.map((size) => (

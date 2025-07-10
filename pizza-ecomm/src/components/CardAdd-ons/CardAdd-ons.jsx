@@ -1,3 +1,5 @@
+import { setCardSize, getCardSize } from "../CardStore/CardStore";
+
 export const CardWeightLogic = ({ card, priceValue }) => {
   if (card) {
     if (`${priceValue}` === "standard,thick") {
@@ -84,42 +86,116 @@ export const CardSizeLogic = ({
   pizzaDough,
   cardSize,
   cardDough,
-  setCardSize,
+  // setCardSize,
   setCardDough,
 }) => {
-  if (card) {
-    return (
-      <>
-        <div className="card-size">
-          {pizzaSize.map((size) => (
-            <div className="card-size-state-wrapper" key={size}>
-              <div
-                onClick={(e) => setCardSize(`${size}`)}
-                className={`card-size-state ${
-                  cardSize === `${size}` ? "active" : ""
-                }`}
-              >
-                <h5>{size}</h5>
-              </div>
-            </div>
-          ))}
-        </div>
+  // if (card.type === "pizza") {
+  //   return (
+  //     <>
+  //       <div className="card-size">
+  //         {pizzaSize.map((size) => (
+  //           <div className="card-size-state-wrapper" key={size}>
+  //             <div
+  //               onClick={(e) => setCardSize(`${size}`)}
+  //               className={`card-size-state ${
+  //                 cardSize === `${size}` ? "active" : ""
+  //               }`}
+  //             >
+  //               <h5>{size}</h5>
+  //             </div>
+  //           </div>
+  //         ))}
+  //       </div>
 
-        <div className="card-size">
-          {pizzaDough.map((dough) => (
-            <div className="card-size-state-wrapper" key={dough}>
-              <div
-                onClick={(e) => setCardDough(`${dough}`)}
-                className={`card-size-state ${
-                  cardDough === `${dough}` ? "active" : ""
-                }`}
-              >
-                <h5>{dough}</h5>
-              </div>
-            </div>
-          ))}
-        </div>
-      </>
-    );
+  //       <div className="card-size">
+  //         {pizzaDough.map((dough) => (
+  //           <div className="card-size-state-wrapper" key={dough}>
+  //             <div
+  //               onClick={(e) => setCardDough(`${dough}`)}
+  //               className={`card-size-state ${
+  //                 cardDough === `${dough}` ? "active" : ""
+  //               }`}
+  //             >
+  //               <h5>{dough}</h5>
+  //             </div>
+  //           </div>
+  //         ))}
+  //       </div>
+  //     </>
+  //   );
+  // } else
+
+  if (card.type === "drinks") {
+    const cardSizing = [];
+    if (card.size_1) {
+      cardSizing.push(card.size_1);
+      setCardSize(cardSizing[0]);
+      return (
+        <>
+          <div className="card-size">
+            {cardSizing.map((size) => {
+              return (
+                <div className="card-size-state-wrapper one" key={size}>
+                  <div
+                    onClick={(e) => setCardSize(`${size}`)}
+                    className={`card-size-state ${
+                      cardSize === `${size}` ? "active" : ""
+                    }`}
+                  >
+                    <h5>{size}</h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    } else if (card.size_2) {
+      cardSizing.push(card.size_1, card.size_2);
+      setCardSize(cardSizing[0]);
+      return (
+        <>
+          <div className="card-size">
+            {cardSizing.map((size) => {
+              return (
+                <div className="card-size-state-wrapper two" key={size}>
+                  <div
+                    onClick={(e) => setCardSize(`${size}`)}
+                    className={`card-size-state ${
+                      cardSize === `${size}` ? "active" : ""
+                    }`}
+                  >
+                    <h5>{size}</h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    } else if (card.size_3) {
+      cardSizing.push(card.size_1, card.size_2, card.size_3);
+      setCardSize(cardSizing[0]);
+      return (
+        <>
+          <div className="card-size">
+            {cardSizing.map((size) => {
+              return (
+                <div className="card-size-state-wrapper three" key={size}>
+                  <div
+                    onClick={(e) => setCardSize(`${size}`)}
+                    className={`card-size-state ${
+                      cardSize === `${size}` ? "active" : ""
+                    }`}
+                  >
+                    <h5>{size}</h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    }
   }
 };

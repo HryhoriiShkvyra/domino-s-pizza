@@ -1,0 +1,178 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "product"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "img": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "isNew": {
+      "type": "boolean",
+      "default": false
+    },
+    "isAdult": {
+      "type": "boolean",
+      "default": false
+    },
+    "isSpicy": {
+      "type": "boolean",
+      "default": false
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "size_2": {
+      "type": "string"
+    },
+    "size_3": {
+      "type": "string"
+    },
+    "size_4": {
+      "type": "string"
+    },
+    "dough_1": {
+      "type": "string"
+    },
+    "dough_2": {
+      "type": "string"
+    },
+    "dough_3": {
+      "type": "string"
+    },
+    "dough_4": {
+      "type": "string"
+    },
+    "price_1": {
+      "type": "string"
+    },
+    "price_2": {
+      "type": "string"
+    },
+    "price_3": {
+      "type": "string"
+    },
+    "price_4": {
+      "type": "string"
+    },
+    "price_5": {
+      "type": "string"
+    },
+    "price_6": {
+      "type": "string"
+    },
+    "price_7": {
+      "type": "string"
+    },
+    "price_8": {
+      "type": "string"
+    },
+    "price_9": {
+      "type": "string"
+    },
+    "price_10": {
+      "type": "string"
+    },
+    "price_11": {
+      "type": "string"
+    },
+    "price_12": {
+      "type": "string"
+    },
+    "price_13": {
+      "type": "string"
+    },
+    "price_14": {
+      "type": "string"
+    },
+    "price_15": {
+      "type": "string"
+    },
+    "price_16": {
+      "type": "string"
+    },
+    "size_1": {
+      "type": "string"
+    },
+    "weight_1": {
+      "type": "string"
+    },
+    "weight_2": {
+      "type": "string"
+    },
+    "weight_3": {
+      "type": "string"
+    },
+    "weight_4": {
+      "type": "string"
+    },
+    "weight_5": {
+      "type": "string"
+    },
+    "weight_6": {
+      "type": "string"
+    },
+    "weight_7": {
+      "type": "string"
+    },
+    "weight_8": {
+      "type": "string"
+    },
+    "weight_9": {
+      "type": "string"
+    },
+    "weight_10": {
+      "type": "string"
+    },
+    "weight_11": {
+      "type": "string"
+    },
+    "weight_12": {
+      "type": "string"
+    },
+    "weight_13": {
+      "type": "string"
+    },
+    "weight_14": {
+      "type": "string"
+    },
+    "weight_15": {
+      "type": "string"
+    },
+    "weight_16": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "pizza",
+        "drinks",
+        "sides",
+        "desserts"
+      ]
+    }
+  }
+}
