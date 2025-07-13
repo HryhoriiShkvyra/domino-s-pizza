@@ -101,17 +101,17 @@
 
 .card-size-state-wrapper.one {
   width: 100%;
-  /* padding: 3px; */
+  padding: 3px;
 }
 
 .card-size-state-wrapper.two {
   width: 50%;
-  /* padding: 3px; */
+  padding: 3px;
 }
 
 .card-size-state-wrapper.three {
   width: 33%;
-  /* padding: 3px; */
+  padding: 3px;
 }
 
 .card-size-state {
@@ -122,6 +122,17 @@
 
   border: 1px solid;
   border-radius: 12px;
+  cursor: pointer;
+}
+
+.card-size-state-lower {
+  width: 100%;
+  padding: 7px 0;
+  text-align: center;
+  text-transform: lowercase;
+  border: 1px solid;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 .card-size-state.active {
@@ -133,6 +144,19 @@
   border-radius: 12px;
   color: white;
   background-color: #444;
+  cursor: pointer;
+}
+
+.card-size-state-lower.active {
+  width: 100%;
+  padding: 7px 0;
+  text-align: center;
+  text-transform: lowercase;
+  border: 1px solid;
+  border-radius: 12px;
+  color: white;
+  background-color: #444;
+  cursor: pointer;
 }
 
 /* ========================================= */

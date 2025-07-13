@@ -27,7 +27,8 @@
     "sass": "^1.57.1",
     "scss": "^0.2.4",
     "stripe": "^11.18.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^5.0.6"
   },
   "scripts": {
     "start": "react-scripts start",

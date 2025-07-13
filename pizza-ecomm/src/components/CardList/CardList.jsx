@@ -5,9 +5,7 @@ import UseFetch from "../Hooks/useFetch";
 
 const CardList = ({ category }) => {
   const { data, loading, error } = UseFetch(
-    // `products?populate=*`
-    // `products?filters[category][title][$eq]=${category}&populate[0]=img&populate[1]=type`
-    `/products?filters[category][title][$eq]=${category}&populate=*` // `products?filters[category][title][$eq]=${category}&fields[0]=img&fields[1]=type`
+    `/products?filters[category][title][$eq]=${category}&populate=*`
   );
 
   React.useEffect(() => {
