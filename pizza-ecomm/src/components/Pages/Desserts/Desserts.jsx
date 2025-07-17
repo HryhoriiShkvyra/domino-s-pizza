@@ -8,7 +8,7 @@ export default function Desserts() {
   return (
     <div className="desserts">
       <NavbarSecond pageState={pageState} />
-      <CardList pageState={pageState} listTitle="Desserts" />
+      <CardList pageState={pageState} category="Desserts" />
     </div>
   );
 }

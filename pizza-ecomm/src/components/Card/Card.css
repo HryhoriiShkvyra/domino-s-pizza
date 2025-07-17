@@ -19,7 +19,9 @@
 }
 
 .img {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  /* text-align: center; */
   position: relative;
   height: 100%;
   border-radius: 16px;
@@ -27,6 +29,7 @@
 }
 
 .card-img {
+  text-align: center;
   width: fit-content;
   height: 100%;
   border-radius: 16px;

@@ -2,31 +2,29 @@ import React from "react";
 import { useCardStore } from "../CardStore/CardStore";
 
 export const CardWeightLogic = ({ card, cardSize, priceValue }) => {
-  console.log(cardSize);
+  if (card.type === "drinks") {
+    if (cardSize === card.size_1) {
+      return card.weight_1;
+    } else if (cardSize === card.size_2) {
+      return card?.weight_2;
+    } else if (cardSize === card.size_3) {
+      return card?.weight_3;
+    } else if (cardSize === card.size_4) {
+      return card?.weight_4;
+    }
+  }
 
-  // if (card.type === "drinks") {
-  //   if (cardSize === card.size_1) {
-  //     return card.weight_1;
-  //   } else if (cardSize === card.size_2) {
-  //     return card?.weight_2;
-  //   } else if (cardSize === card.size_3) {
-  //     return card?.weight_3;
-  //   } else if (cardSize === card.size_4) {
-  //     return card?.weight_4;
-  //   }
-  // }
-
-  // if (card.type === "drinks") {
-  //   if (cardSize === card.size_1) {
-  //     return card?.price_1;
-  //   } else if (cardSize === card.size_2) {
-  //     return card?.price_2;
-  //   } else if (cardSize === card.size_3) {
-  //     return card?.price_3;
-  //   } else if (cardSize === card.size_4) {
-  //     return card?.price_4;
-  //   }
-  // }
+  if (card.type === "sides" || card.type === "desserts") {
+    if (cardSize === card.size_1) {
+      return card?.weight_1;
+    } else if (cardSize === card.size_2) {
+      return card?.weight_2;
+    } else if (cardSize === card.size_3) {
+      return card?.weight_3;
+    } else if (cardSize === card.size_4) {
+      return card?.weight_4;
+    }
+  }
 
   if (card.type === "pizza") {
     if (`${priceValue}` === "standard,thick") {
@@ -68,19 +66,29 @@ export const CardWeightLogic = ({ card, cardSize, priceValue }) => {
 };
 
 export const CardPriceLogic = ({ card, priceValue, cardSize }) => {
-  // console.log(cardSize);
+  // if (card.type === "sides") {
+  //   if (cardSize === card.size_1) {
+  //     return card?.price_1;
+  //   } else if (cardSize === card.size_2) {
+  //     return card?.price_2;
+  //   } else if (cardSize === card.size_3) {
+  //     return card?.price_3;
+  //   } else if (cardSize === card.size_4) {
+  //     return card?.price_4;
+  //   }
+  // }
 
-  if (card.type === "drinks") {
-    if (cardSize === card.size_1) {
-      return card?.price_1;
-    } else if (cardSize === card.size_2) {
-      return card?.price_2;
-    } else if (cardSize === card.size_3) {
-      return card?.price_3;
-    } else if (cardSize === card.size_4) {
-      return card?.price_4;
-    }
-  }
+  // if (card.type === "drinks") {
+  //   if (cardSize === card.size_1) {
+  //     return card?.price_1;
+  //   } else if (cardSize === card.size_2) {
+  //     return card?.price_2;
+  //   } else if (cardSize === card.size_3) {
+  //     return card?.price_3;
+  //   } else if (cardSize === card.size_4) {
+  //     return card?.price_4;
+  //   }
+  // }
 
   if (card.type === "pizza") {
     if (`${priceValue}` === "standard,thick") {
@@ -118,37 +126,24 @@ export const CardPriceLogic = ({ card, priceValue, cardSize }) => {
     } else if (`${priceValue}` === "xxl,hot-dog") {
       return card?.price_16;
     }
+  } else {
+    if (cardSize === card.size_1) {
+      return card?.price_1;
+    } else if (cardSize === card.size_2) {
+      return card?.price_2;
+    } else if (cardSize === card.size_3) {
+      return card?.price_3;
+    } else if (cardSize === card.size_4) {
+      return card?.price_4;
+    }
   }
 };
 
 export const CardSizeLogic = ({ card, setCardSize, setCardDough }) => {
-  // const setCardSize = useCardStore((state) => state.setCardSize);
-  // const setPizzaDough = useCardStore((state) => state.setCardDough);
-  // const getCardSize = useCardStore((state) => state.cardSize);
-  // const getCardDough = useCardStore((state) => state.cardDough);
   const [cardSizeState, setCardSizeState] = React.useState("");
   const [cardDoughState, setCardDoughState] = React.useState("");
   const cardSizing = [];
   const cardDough = [];
-
-  // React.useState(() => {
-  //   setCardSize(cardSizeState);
-  //   console.log(getCardSize);
-  // }, [cardSizeState]);
-
-  // React.useEffect(() => {
-  //   setPizzaDough(cardDoughState);
-
-  //   if (getCardDough) {
-  //     console.log(getCardDough);
-  //   }
-
-  //   if (cardDoughState) {
-  //     console.log(cardDoughState);
-  //   }
-  // }, [cardDoughState]);
-
-  // React.useEffect(() => {}, [cardSizeState, pizzaDoughState]);
 
   React.useEffect(() => {
     setCardSize(cardSizeState);
@@ -174,10 +169,6 @@ export const CardSizeLogic = ({ card, setCardSize, setCardDough }) => {
       setCardSize(cardSizeState);
     }
   }, [cardSizeState]);
-
-  // React.useEffect(() => {
-  //   setCardState(cardSizing);
-  // }, [cardSizeState]);
 
   if (card.type === "pizza") {
     if (card.size_3) {
@@ -289,6 +280,160 @@ export const CardSizeLogic = ({ card, setCardSize, setCardDough }) => {
                       setCardSizeState(size);
                     }}
                     className={`card-size-state-lower ${
+                      cardSizeState === size ? "active" : ""
+                    }`}
+                  >
+                    <h5>{size}</h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    }
+  }
+
+  if (card.type === "sides") {
+    if (card.size_3) {
+      cardSizing.push(card.size_1, card.size_2, card.size_3);
+      return (
+        <>
+          <div className="card-size">
+            {cardSizing.map((size) => {
+              return (
+                <div className="card-size-state-wrapper three" key={size}>
+                  <div
+                    onClick={() => {
+                      setCardSizeState(size);
+                    }}
+                    className={`card-size-state ${
+                      cardSizeState === size ? "active" : ""
+                    }`}
+                  >
+                    <h5>{size}</h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    } else if (card.size_2) {
+      cardSizing.push(card.size_1, card.size_2);
+
+      return (
+        <>
+          <div className="card-size">
+            {cardSizing.map((size) => {
+              return (
+                <div className="card-size-state-wrapper two" key={size}>
+                  <div
+                    onClick={() => {
+                      setCardSizeState(size);
+                    }}
+                    className={`card-size-state ${
+                      cardSizeState === size ? "active" : ""
+                    }`}
+                  >
+                    <h5>{size}</h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    } else if (card.size_1) {
+      cardSizing.push(card.size_1);
+      return (
+        <>
+          <div className="card-size">
+            {cardSizing.map((size) => {
+              return (
+                <div className="card-size-state-wrapper one" key={size}>
+                  <div
+                    onClick={() => {
+                      setCardSizeState(size);
+                    }}
+                    className={`card-size-state ${
+                      cardSizeState === size ? "active" : ""
+                    }`}
+                  >
+                    <h5>{size}</h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    }
+  }
+
+  if (card.type === "desserts") {
+    if (card.size_3) {
+      cardSizing.push(card.size_1, card.size_2, card.size_3);
+      return (
+        <>
+          <div className="card-size">
+            {cardSizing.map((size) => {
+              return (
+                <div className="card-size-state-wrapper three" key={size}>
+                  <div
+                    onClick={() => {
+                      setCardSizeState(size);
+                    }}
+                    className={`card-size-state ${
+                      cardSizeState === size ? "active" : ""
+                    }`}
+                  >
+                    <h5>{size}</h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    } else if (card.size_2) {
+      cardSizing.push(card.size_1, card.size_2);
+
+      return (
+        <>
+          <div className="card-size">
+            {cardSizing.map((size) => {
+              return (
+                <div className="card-size-state-wrapper two" key={size}>
+                  <div
+                    onClick={() => {
+                      setCardSizeState(size);
+                    }}
+                    className={`card-size-state ${
+                      cardSizeState === size ? "active" : ""
+                    }`}
+                  >
+                    <h5>{size}</h5>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    } else if (card.size_1) {
+      cardSizing.push(card.size_1);
+      return (
+        <>
+          <div className="card-size">
+            {cardSizing.map((size) => {
+              return (
+                <div className="card-size-state-wrapper one" key={size}>
+                  <div
+                    onClick={() => {
+                      setCardSizeState(size);
+                    }}
+                    className={`card-size-state ${
                       cardSizeState === size ? "active" : ""
                     }`}
                   >

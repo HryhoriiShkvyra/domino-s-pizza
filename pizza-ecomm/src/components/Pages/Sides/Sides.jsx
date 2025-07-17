@@ -8,9 +8,10 @@ export default function Sides() {
   return (
     <div className="sides">
       <NavbarSecond pageState={pageState} />
-      <CardList pageState={pageState} listTitle="Chicken and ribs" />
-      <CardList pageState={pageState} listTitle="Salads" />
-      <CardList pageState={pageState} listTitle="Mini rolls" />
+      <CardList pageState={pageState} category="Burrito's" />
+      <CardList pageState={pageState} category="Chicken and ribs" />
+      {/* <CardList pageState={pageState} listTitle="Salads" /> */}
+      {/* <CardList pageState={pageState} listTitle="Mini rolls" /> */}
     </div>
   );
 }
