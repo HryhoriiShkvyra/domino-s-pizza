@@ -1,5 +1,5 @@
 .card-list-title {
-  padding: 25px 0;
+  padding: 25px 0 5px;
   text-align: center;
   font-weight: 600;
 }
@@ -9,6 +9,7 @@
   grid-template-columns: repeat(4, 25%);
 
   /* max-width: fit-content; */
+  padding: 20px;
   margin: 0 auto;
 
   overflow: hidden;

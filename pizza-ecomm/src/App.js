@@ -7,6 +7,7 @@ import Pizza from "./Components/Pages/Pizza/Pizza";
 import Drinks from "./Components/Pages/Drinks/Drinks";
 import Sides from "./Components/Pages/Sides/Sides";
 import Desserts from "./Components/Pages/Desserts/Desserts";
+import { Checkout } from "./Components/Checkout/Checkout";
 
 function App() {
   const Layout = () => {
@@ -43,6 +44,10 @@ function App() {
         {
           path: "/desserts",
           element: <Desserts />,
+        },
+        {
+          path: "/checkout",
+          element: <Checkout />,
         },
       ],
     },

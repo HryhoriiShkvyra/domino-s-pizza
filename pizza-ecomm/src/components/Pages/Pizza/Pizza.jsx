@@ -8,8 +8,13 @@ export default function Pizza() {
   return (
     <div className="pizza">
       <NavbarSecond pageState={pageState} />
+
+      <CardList pageState={pageState} category="Bestsellers and novelties" />
       <CardList pageState={pageState} category="Best price" />
-      {/* <CardList pageState={pageState} listTitle="News" /> */}
+      <CardList pageState={pageState} category="Heroes" />
+      <CardList pageState={pageState} category="Wonder" />
+      <CardList pageState={pageState} category="Finest" />
+      <CardList pageState={pageState} category="Gourmet" />
     </div>
   );
 }

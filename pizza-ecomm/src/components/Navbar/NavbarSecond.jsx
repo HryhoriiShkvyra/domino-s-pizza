@@ -92,9 +92,9 @@ export default function NavbarSecond({ pageState }) {
               <ShoppingCart className="icon" />
             </div>
             <Link
-              className="checkout"
+              className="checkout-btn"
               onClick={() => setNavbarActive("checkout")}
-              to="/checkout/"
+              to="/checkout"
             >
               checkout
             </Link>

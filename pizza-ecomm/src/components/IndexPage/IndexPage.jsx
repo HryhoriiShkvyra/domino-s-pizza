@@ -7,7 +7,12 @@ export default function IndexPage() {
   return (
     <div className="index">
       <NavbarSecond pageState={pageState} />
+      <CardList pageState={pageState} category="Bestsellers and novelties" />
       <CardList pageState={pageState} category="Best price" />
+      <CardList pageState={pageState} category="Heroes" />
+      <CardList pageState={pageState} category="Wonder" />
+      <CardList pageState={pageState} category="Finest" />
+      <CardList pageState={pageState} category="Gourmet" />
     </div>
   );
 }

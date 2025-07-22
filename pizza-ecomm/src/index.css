@@ -92,14 +92,14 @@ video {
 
 .app {
   font-family: "Roboto", sans-serif;
-  background-color: #f8f9fc;
+  background-color: var(--grey-60);
 }
 
 .container {
-  max-width: 1300px;
+  max-width: 1350px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 25px;
+  padding: 0 5px;
 }
 
 html {
@@ -133,8 +133,10 @@ html {
   --grey-900: #191919;
   --black: #000000;
 
-  --red: #ff0000;
-  --light-red: #dc3545;
+  --red-100: #ff0000;
+  --red-200: #e31837;
+  --red-300: #d51a1e;
+  --red-400: #dc3545;
 }
 
 h1 {

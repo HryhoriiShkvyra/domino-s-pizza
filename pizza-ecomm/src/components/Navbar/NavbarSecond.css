@@ -82,7 +82,7 @@
   cursor: pointer;
 }
 
-.cart-wrapper:hover > .checkout {
+.cart-wrapper:hover > .checkout-btn {
   cursor: pointer;
 }
 
@@ -97,7 +97,7 @@
   background-color: #444;
 }
 
-.checkout {
+.checkout-btn {
   width: 150px;
   height: 46px;
   display: flex;
@@ -127,7 +127,7 @@
   cursor: not-allowed;
 }
 
-.cart-wrapper-not-allowed:hover > .checkout {
+.cart-wrapper-not-allowed:hover > .checkout-btn {
   cursor: not-allowed;
 }
 
