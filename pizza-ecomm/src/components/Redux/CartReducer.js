@@ -12,7 +12,6 @@ const cartSlice = createSlice({
 
   reducers: {
     handleAddToCartAndIncreaseQuantity: (state, action) => {
-      console.log(action);
       const existingItem = state.cartItems.find(
         (item) =>
           item.id === action.payload.id && item.size === action.payload.size
@@ -25,10 +24,17 @@ const cartSlice = createSlice({
 
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
+        state.cartTotalAmount += action.payload.price;
+
+        state.cartTotalQuantity++;
       } else if (sameIdDifferentSize) {
         state.cartItems.push(action.payload);
+        state.cartTotalAmount += action.payload.price;
+        state.cartTotalQuantity++;
       } else {
         state.cartItems.push(action.payload);
+        state.cartTotalAmount += action.payload.price;
+        state.cartTotalQuantity++;
       }
     },
 
@@ -40,34 +46,40 @@ const cartSlice = createSlice({
 
       if (findItemInCart) {
         findItemInCart.quantity++;
-      } else return console.log("err");
+        state.cartTotalAmount += action.payload.price;
+        state.cartTotalQuantity++;
+      }
     },
 
     decreaseQuantity: (state, action) => {
-      const itemInCart = state.cartItems.find(
+      const findItemInCart = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
 
-      if (!itemInCart) {
+      if (!findItemInCart) {
         return;
       }
 
-      if (itemInCart.quantity === 1) {
-        const itemIndex = state.cartItems.find(
+      if (findItemInCart.quantity === 1) {
+        const findItemInCart = state.cartItems.find(
           (item) => item.id === action.payload.id
         );
-        state.cartItems.splice(itemIndex, 1);
+        state.cartTotalQuantity--;
+        state.cartItems.splice(findItemInCart, 1);
       } else {
-        itemInCart.quantity--;
+        state.cartTotalQuantity--;
+        findItemInCart.quantity--;
       }
     },
 
     removeItem: (state, action) => {
-      const itemIndex = state.cartItems.findIndex(
+      const findItemInCart = state.cartItems.find(
         (item) => item.id === action.payload.id
       );
-      if (itemIndex > -1) {
-        state.cartItems.splice(itemIndex, 1);
+
+      if (findItemInCart) {
+        state.cartTotalQuantity -= action.payload.quantity;
+        state.cartItems.splice(findItemInCart, 1);
       }
     },
   },

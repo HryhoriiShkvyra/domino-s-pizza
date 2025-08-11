@@ -7,12 +7,118 @@ import {
   Add,
   Remove,
 } from "@mui/icons-material";
+import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import RoomIcon from "@mui/icons-material/Room";
-import UseFetch from "../Hooks/useFetch";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increaseQuantity,
+  decreaseQuantity,
+  removeItem,
+} from "../Redux/CartReducer";
 
 export const Checkout = () => {
-  const { data, loading, error } = UseFetch(`products?populate=*`);
+  const StoreCart = useSelector((state) => state.cart.cartItems);
 
+  const dispatch = useDispatch();
+
+  function IncreaseQuantity(item) {
+    dispatch(increaseQuantity(item));
+  }
+
+  function DecreaseQuantity(item) {
+    dispatch(decreaseQuantity(item));
+  }
+
+  function RemoveItem(item) {
+    dispatch(removeItem(item));
+  }
+
+  const RenderStoreCart = () => {
+    if (StoreCart) {
+      return (
+        <div
+          className={
+            StoreCart?.length > 4 ? "checkout-items extended" : "checkout-items"
+          }
+        >
+          {StoreCart.map((item, index) => (
+            <div className="checkout-item" key={item.id + "_" + index}>
+              <div className="checkout-item-image-wrapper">
+                <img
+                  className="checkout-item-image"
+                  src={process.env.REACT_APP_UPLOAD_URL + item.img}
+                  alt={item.title}
+                />
+              </div>
+              <div className="checkout-item-info">
+                <div className="checkout-item-row">
+                  <div className="checkout-item-column top">
+                    <span className="checkout-item-title">
+                      <h3> {item.title}</h3>
+                    </span>
+
+                    {item.description ? (
+                      <span className="checkout-item-text">
+                        <h5>{item.description}</h5>
+                      </span>
+                    ) : null}
+                  </div>
+                  <button
+                    onClick={(e) => RemoveItem(item)}
+                    className="checkout-item-btn top"
+                  >
+                    <DeleteForeverRoundedIcon />
+                  </button>
+                </div>
+
+                <div className="checkout-item-row">
+                  <div className="checkout-item-column bottom">
+                    <div className="checkout-item-text-wrapper">
+                      <span className="checkout-item-text-bold">
+                        <h5> {item.size_1}</h5>
+                      </span>
+                      {item.dough_1 ? (
+                        <span className="checkout-item-text-bold">
+                          <h5> {item.dough_1}</h5>
+                        </span>
+                      ) : null}
+                    </div>
+                    <div className="checkout-item-text-wrapper">
+                      <span className="checkout-item-text-bold">
+                        <h5> {item.price_1}</h5>
+                      </span>
+                      <span className="checkout-item-text-bold">
+                        <h5>uah</h5>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="checkout-item-btns">
+                    <button
+                      className="checkout-item-btn left"
+                      onClick={(e) => DecreaseQuantity(item)}
+                    >
+                      <Remove />
+                    </button>
+                    <div className="checkout-item-count">0 </div>
+                    <button
+                      className="checkout-item-btn right"
+                      onClick={(e) => IncreaseQuantity(item)}
+                    >
+                      <Add />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    } else return;
+  };
+
+  React.useEffect(() => {
+    console.log(StoreCart);
+  }, [StoreCart]);
   return (
     <div className="checkout">
       <NavbarSecond />
@@ -143,93 +249,16 @@ export const Checkout = () => {
               <div className="checkout-row-title">
                 <h2> Your order</h2>
               </div>
-              <div
+              <RenderStoreCart />
+              {/* <div
                 className={
                   data?.length > 4
                     ? "checkout-items extended"
                     : "checkout-items"
                 }
               >
-                {error
-                  ? "error"
-                  : loading
-                    ? "loading"
-                    : data?.map((item, index) => (
-                        <div
-                          className="checkout-item"
-                          key={item.id + "_" + index}
-                        >
-                          <div className="checkout-item-image-wrapper">
-                            <img
-                              className="checkout-item-image"
-                              src={
-                                process.env.REACT_APP_UPLOAD_URL + item.img.url
-                              }
-                              alt="#"
-                            />
-                          </div>
-                          <div className="checkout-item-info">
-                            <div className="checkout-item-row">
-                              <div className="checkout-item-column top">
-                                <span className="checkout-item-title">
-                                  <h3> {item.title}</h3>
-                                </span>
-
-                                {item.description ? (
-                                  <span className="checkout-item-text">
-                                    <h5>{item.description}</h5>
-                                  </span>
-                                ) : null}
-                              </div>
-                              <button
-                                className="checkout-item-btn top"
-                                // onClick={() => handleRemoveFromCart()}
-                              >
-                                <Add />
-                              </button>
-                            </div>
-
-                            <div className="checkout-item-row">
-                              <div className="checkout-item-column bottom">
-                                <div className="checkout-item-text-wrapper">
-                                  <span className="checkout-item-text-bold">
-                                    <h5> {item.size_1}</h5>
-                                  </span>
-                                  {item.dough_1 ? (
-                                    <span className="checkout-item-text-bold">
-                                      <h5> {item.dough_1}</h5>
-                                    </span>
-                                  ) : null}
-                                </div>
-                                <div className="checkout-item-text-wrapper">
-                                  <span className="checkout-item-text-bold">
-                                    <h5> {item.price_1}</h5>
-                                  </span>
-                                  <span className="checkout-item-text-bold">
-                                    <h5>uah</h5>
-                                  </span>
-                                </div>
-                              </div>
-                              <div className="checkout-item-btns">
-                                <button
-                                  className="checkout-item-btn left"
-                                  // onClick={() => handleDecreaseQuantity()}
-                                >
-                                  <Remove />
-                                </button>
-                                <div className="checkout-item-count">0 </div>
-                                <button
-                                  className="checkout-item-btn right"
-                                  // onClick={() => handleIncreaseQuantity()}
-                                >
-                                  <Add />
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-              </div>
+               
+              </div> */}
             </div>
           </div>
         </div>
@@ -237,3 +266,83 @@ export const Checkout = () => {
     </div>
   );
 };
+
+//  {error
+//                   ? "error"
+//                   : loading
+//                     ? "loading"
+//                     : data?.map((item, index) => (
+//                         <div
+//                           className="checkout-item"
+//                           key={item.id + "_" + index}
+//                         >
+//                           <div className="checkout-item-image-wrapper">
+//                             <img
+//                               className="checkout-item-image"
+//                               src={
+//                                 process.env.REACT_APP_UPLOAD_URL + item.img.url
+//                               }
+//                               alt="#"
+//                             />
+//                           </div>
+//                           <div className="checkout-item-info">
+//                             <div className="checkout-item-row">
+//                               <div className="checkout-item-column top">
+//                                 <span className="checkout-item-title">
+//                                   <h3> {item.title}</h3>
+//                                 </span>
+
+//                                 {item.description ? (
+//                                   <span className="checkout-item-text">
+//                                     <h5>{item.description}</h5>
+//                                   </span>
+//                                 ) : null}
+//                               </div>
+//                               <button
+//                                 className="checkout-item-btn top"
+//                                 // onClick={() => handleRemoveFromCart()}
+//                               >
+//                                 <Add />
+//                               </button>
+//                             </div>
+
+//                             <div className="checkout-item-row">
+//                               <div className="checkout-item-column bottom">
+//                                 <div className="checkout-item-text-wrapper">
+//                                   <span className="checkout-item-text-bold">
+//                                     <h5> {item.size_1}</h5>
+//                                   </span>
+//                                   {item.dough_1 ? (
+//                                     <span className="checkout-item-text-bold">
+//                                       <h5> {item.dough_1}</h5>
+//                                     </span>
+//                                   ) : null}
+//                                 </div>
+//                                 <div className="checkout-item-text-wrapper">
+//                                   <span className="checkout-item-text-bold">
+//                                     <h5> {item.price_1}</h5>
+//                                   </span>
+//                                   <span className="checkout-item-text-bold">
+//                                     <h5>uah</h5>
+//                                   </span>
+//                                 </div>
+//                               </div>
+//                               <div className="checkout-item-btns">
+//                                 <button
+//                                   className="checkout-item-btn left"
+//                                   // onClick={() => handleDecreaseQuantity()}
+//                                 >
+//                                   <Remove />
+//                                 </button>
+//                                 <div className="checkout-item-count">0 </div>
+//                                 <button
+//                                   className="checkout-item-btn right"
+//                                   // onClick={() => handleIncreaseQuantity()}
+//                                 >
+//                                   <Add />
+//                                 </button>
+//                               </div>
+//                             </div>
+//                           </div>
+//                         </div>
+//                       ))}

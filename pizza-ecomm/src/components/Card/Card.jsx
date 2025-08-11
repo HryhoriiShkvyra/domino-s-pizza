@@ -14,11 +14,8 @@ import {
 } from "../Redux/CartReducer";
 
 const Card = ({ card, category }) => {
-  const [cardQuantity, setCardQuantity] = React.useState(0);
   const [cardSize, setCardSize] = React.useState(card?.size_1);
   const [cardDough, setCardDough] = React.useState(card?.dough_1);
-  const [cardPrice, setCardPrice] = React.useState();
-  const [cardArray, setCardArray] = React.useState([]);
 
   const priceValue = `${cardSize},${cardDough}`;
 
@@ -26,9 +23,12 @@ const Card = ({ card, category }) => {
   const CurrentSize = CardSizeLogic({ card, setCardSize, setCardDough });
 
   const CartState = useSelector((state) => state.cart.cartItems);
+  const CartAmount = useSelector((state) => state.cart.cartTotalAmount);
   const dispatch = useDispatch();
 
-  console.log(CartState);
+  React.useState(() => {
+    console.log(CartAmount);
+  }, [CartState]);
 
   const CardWeight = () => {
     if (card.type === "drinks") {
@@ -120,6 +120,7 @@ const Card = ({ card, category }) => {
     const newItem = {
       id: card.id,
       title: card.title,
+      img: card.img.url,
       description: card.description,
       size: priceValue,
       // dough: cardDough,

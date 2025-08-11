@@ -3,26 +3,45 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NavbarSecond.css";
 import { SideMenu } from "../SideMenu/SideMenu";
+import { useSelector } from "react-redux";
 
 export default function NavbarSecond({ pageState }) {
   const [sideBarActive, setSideBarActive] = React.useState(false);
   const [navbarActive, setNavbarActive] = React.useState(pageState);
 
-  //   const productsInCart = useSelector((state) => state.cart.cartItems);
-
-  // function totalCount () {
-  //   if (productsInCart.length < 10) {
-  //     return('0'+ productsInCart.length)
-  //   } else {
-  //     return(
-  //       productsInCart.length
-  //     )
-  //   }
-  // }
-
-  //   console.log(productsInCart.length);
-
   const NavbarLinks = ["pizza", "drinks", "sides", "desserts"];
+
+  const ItemsQuantityInCart = useSelector(
+    (state) => state.cart.cartTotalQuantity
+  );
+
+  function CartTotalQuantity() {
+    if (ItemsQuantityInCart) {
+      return (
+        <>
+          <div className="cart-wrapper">
+            <div className="cart">
+              <h4>{ItemsQuantityInCart}</h4>
+              <ShoppingCart className="icon-quantity" />
+            </div>
+            <Link className="checkout-btn" to="/checkout">
+              checkout
+            </Link>
+          </div>
+        </>
+      );
+    } else
+      return (
+        <div className="cart-wrapper-not-allowed">
+          <div className="cart-not-allowed">
+            <ShoppingCart className="icon" />
+          </div>
+          <Link className="checkout-btn" to="/checkout">
+            checkout
+          </Link>
+        </div>
+      );
+  }
 
   return (
     <>
@@ -57,48 +76,7 @@ export default function NavbarSecond({ pageState }) {
             ))}
           </nav>
 
-          {/* {productsInCart.length > 0 ? (
-                 <div className="cart-wrapper">
-                   <div className="cart">
-                     <span>{totalCount()}</span>
-                     <ShoppingCart className="icon" />
-                   </div>
-                   <Link
-                     className="checkout"
-                     onClick={() => setNavBarActive("checkout")}
-                     to="/checkout/"
-                   >
-                     checkout
-                   </Link>
-                 </div>
-               ) : (
-                 <div className="cart-wrapper-not-allowed">
-                   <div className="cart">
-                     <span>{totalCount()}</span>
-                     <ShoppingCart className="icon" />
-                   </div>
-                   <Link
-                     className="checkout"
-                     onClick={() => setNavBarActive("checkout")}
-                     to="/checkout/"
-                   >
-                     checkout
-                   </Link>
-                 </div>
-               )} */}
-          <div className="cart-wrapper-not-allowed">
-            <div className="cart">
-              {/* <span>{totalCount()}</span> */}
-              <ShoppingCart className="icon" />
-            </div>
-            <Link
-              className="checkout-btn"
-              onClick={() => setNavbarActive("checkout")}
-              to="/checkout"
-            >
-              checkout
-            </Link>
-          </div>
+          <CartTotalQuantity />
 
           <div
             onClick={() => setSideBarActive((prev) => !prev)}
