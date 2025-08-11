@@ -1,5 +1,4 @@
 import React from "react";
-import { useCardStore } from "../CardStore/CardStore";
 
 export const CardWeightLogic = ({ card, cardSize, priceValue }) => {
   if (card.type === "drinks") {
@@ -91,52 +90,29 @@ export const CardPriceLogic = ({ card, priceValue, cardSize }) => {
   // }
 
   if (card.type === "pizza") {
-    if (`${priceValue}` === "standard,thick") {
-      return card?.price_1;
-    } else if (`${priceValue}` === "standard,thin") {
-      return card?.price_2;
-    } else if (`${priceValue}` === "standard,cheesy") {
-      return card?.price_3;
-    } else if (`${priceValue}` === "standard,hot-dog") {
-      return card?.price_4;
-    } else if (`${priceValue}` === "large,thick") {
-      return card?.price_5;
-    } else if (`${priceValue}` === "large,thin") {
-      return card?.price_6;
-    } else if (`${priceValue}` === "large,cheesy") {
-      return card?.price_7;
-    } else if (`${priceValue}` === "large,hot-dog") {
-      return card?.price_8;
-    } else if (`${priceValue}` === "extra,thick") {
-      return card?.price_9;
-    } else if (`${priceValue}` === "extra,thin") {
-      return card?.price_10;
-    } else if (`${priceValue}` === "extra,cheesy") {
-      return card?.price_11;
-    } else if (`${priceValue}` === "extra,hot-dog") {
-      return card?.price_12;
-      // } else if (`${priceValue}` === 'xxl,thick') {
-      //     return(
-      //         (card?.price_13)
-      //     )
-    } else if (`${priceValue}` === "xxl,thin") {
-      return card?.price_14;
-    } else if (`${priceValue}` === "xxl,cheesy") {
-      return card?.price_15;
-    } else if (`${priceValue}` === "xxl,hot-dog") {
-      return card?.price_16;
-    }
+    if (`${priceValue}` === "standard,thick") return card?.price_1;
+    if (`${priceValue}` === "standard,thin") return card?.price_2;
+    if (`${priceValue}` === "standard,cheesy") return card?.price_3;
+    if (`${priceValue}` === "standard,hot-dog") return card?.price_4;
+    if (`${priceValue}` === "large,thick") return card?.price_5;
+    if (`${priceValue}` === "large,thin") return card?.price_6;
+    if (`${priceValue}` === "large,cheesy") return card?.price_7;
+    if (`${priceValue}` === "large,hot-dog") return card?.price_8;
+    if (`${priceValue}` === "extra,thick") return card?.price_9;
+    if (`${priceValue}` === "extra,thin") return card?.price_10;
+    if (`${priceValue}` === "extra,cheesy") return card?.price_11;
+    if (`${priceValue}` === "extra,hot-dog") return card?.price_12;
+    if (`${priceValue}` === "xxl,thick") return card?.price_13;
+    if (`${priceValue}` === "xxl,thin") return card?.price_14;
+    if (`${priceValue}` === "xxl,cheesy") return card?.price_15;
+    if (`${priceValue}` === "xxl,hot-dog") return card?.price_16;
   } else {
-    if (cardSize === card.size_1) {
-      return card?.price_1;
-    } else if (cardSize === card.size_2) {
-      return card?.price_2;
-    } else if (cardSize === card.size_3) {
-      return card?.price_3;
-    } else if (cardSize === card.size_4) {
-      return card?.price_4;
-    }
+    if (cardSize === card.size_1) return card?.price_1;
+    if (cardSize === card.size_2) return card?.price_2;
+    if (cardSize === card.size_3) return card?.price_3;
+    if (cardSize === card.size_4) return card?.price_4;
   }
+  // return 0;
 };
 
 export const CardSizeLogic = ({ card, setCardSize, setCardDough }) => {

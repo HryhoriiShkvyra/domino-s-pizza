@@ -5,15 +5,30 @@ import {
   CardPriceLogic,
   CardSizeLogic,
 } from "../CardAdd-ons/CardAdd-ons";
-// import { getCardSize } from "../CardStore/CardStore";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  decreaseQuantity,
+  handleAddToCartAndIncreaseQuantity,
+  increaseQuantity,
+} from "../Redux/CartReducer";
 
 const Card = ({ card, category }) => {
-  const [cardSize, setCardSize] = React.useState("standard");
-  const [cardDough, setCardDough] = React.useState("thick");
+  const [cardQuantity, setCardQuantity] = React.useState(0);
+  const [cardSize, setCardSize] = React.useState(card?.size_1);
+  const [cardDough, setCardDough] = React.useState(card?.dough_1);
+  const [cardPrice, setCardPrice] = React.useState();
+  const [cardArray, setCardArray] = React.useState([]);
 
-  const pizzaSize = ["standard", "large", "extra", "xxl"];
-  const pizzaDough = ["thick", "thin", "cheesy", "hot-dog"];
-  const priceValue = [`${cardSize},${cardDough}`];
+  const priceValue = `${cardSize},${cardDough}`;
+
+  const CurrentPrice = CardPriceLogic({ card, priceValue, cardSize });
+  const CurrentSize = CardSizeLogic({ card, setCardSize, setCardDough });
+
+  const CartState = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch();
+
+  console.log(CartState);
 
   const CardWeight = () => {
     if (card.type === "drinks") {
@@ -62,6 +77,79 @@ const Card = ({ card, category }) => {
       );
   };
 
+  const QuantityLogic = () => {
+    const findCard = CartState.find(
+      (item) => item.id === card.id && item.size === priceValue
+    );
+
+    if (findCard) {
+      return (
+        <div className="card-quantity-number">
+          <div
+            onClick={(e) => HandleIncreaseQuantity(e)}
+            className="card-quantity-btn"
+          >
+            <h2>+</h2>
+          </div>
+          <div className="card-quantity">
+            <h3>{findCard.quantity}</h3>
+          </div>
+          <div
+            onClick={(e) => HandleDecreaseQuantity(e)}
+            className="card-quantity-btn"
+          >
+            <h2>-</h2>
+          </div>
+        </div>
+      );
+    } else
+      return (
+        <div
+          onClick={(e) => HandleAddingToCart()}
+          className="card-quantity-zero"
+        >
+          <div className="card-quantity-icon">
+            <ShoppingCartIcon />
+          </div>
+          <h2>Add</h2>
+        </div>
+      );
+  };
+
+  const HandleAddingToCart = (e) => {
+    const newItem = {
+      id: card.id,
+      title: card.title,
+      description: card.description,
+      size: priceValue,
+      // dough: cardDough,
+      price: CurrentPrice,
+      quantity: 1,
+    };
+
+    dispatch(handleAddToCartAndIncreaseQuantity(newItem));
+  };
+
+  const HandleIncreaseQuantity = (e) => {
+    const item = {
+      id: card.id,
+      size: priceValue,
+    };
+
+    dispatch(increaseQuantity(item));
+  };
+
+  const HandleDecreaseQuantity = (e) => {
+    e.preventDefault();
+
+    const item = {
+      id: card.id,
+      size: priceValue,
+    };
+
+    dispatch(decreaseQuantity(item));
+  };
+
   return (
     <div className="card-wrapper">
       <div className="card">
@@ -77,33 +165,14 @@ const Card = ({ card, category }) => {
           <h5>{card.description}</h5>
         </div>
 
-        <CardSizeLogic
-          card={card}
-          setCardSize={setCardSize}
-          setCardDough={setCardDough}
-        />
+        {CurrentSize}
 
         <div className="card-additional-info">
           <div className="card-price">
-            <CardPriceLogic
-              card={card}
-              cardSize={cardSize}
-              priceValue={priceValue}
-            />
-            {/* <h3>{card.price_1}</h3> */}
+            {CurrentPrice}
             <h3>uah</h3>
           </div>
-          <div className="card-quantity-number">
-            <div className="card-quantity-btn">
-              <h2>+</h2>
-            </div>
-            <div className="card-quantity">
-              <h3>0</h3>
-            </div>
-            <div className="card-quantity-btn">
-              <h2>-</h2>
-            </div>
-          </div>
+          <QuantityLogic />
         </div>
       </div>
     </div>

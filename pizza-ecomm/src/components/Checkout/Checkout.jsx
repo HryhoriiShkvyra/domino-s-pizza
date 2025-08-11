@@ -154,8 +154,11 @@ export const Checkout = () => {
                   ? "error"
                   : loading
                     ? "loading"
-                    : data?.map((item) => (
-                        <div className="checkout-item">
+                    : data?.map((item, index) => (
+                        <div
+                          className="checkout-item"
+                          key={item.id + "_" + index}
+                        >
                           <div className="checkout-item-image-wrapper">
                             <img
                               className="checkout-item-image"
