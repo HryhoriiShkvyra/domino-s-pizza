@@ -15,6 +15,7 @@ import {
   decreaseQuantity,
   removeItem,
 } from "../Redux/CartReducer";
+import { selectCartTotal } from "../Redux/CartSelector";
 
 export const Checkout = () => {
   const StoreCart = useSelector((state) => state.cart.cartItems);
@@ -32,6 +33,12 @@ export const Checkout = () => {
   function RemoveItem(item) {
     dispatch(removeItem(item));
   }
+
+  const CartTotal = useSelector(selectCartTotal);
+
+  React.useEffect(() => {
+    console.log(CartTotal);
+  }, [CartTotal]);
 
   const RenderStoreCart = () => {
     if (StoreCart) {
@@ -85,7 +92,7 @@ export const Checkout = () => {
                     </div>
                     <div className="checkout-item-text-wrapper">
                       <span className="checkout-item-text-bold">
-                        <h5> {item.price_1}</h5>
+                        <h5> {item.price}</h5>
                       </span>
                       <span className="checkout-item-text-bold">
                         <h5>uah</h5>
@@ -99,7 +106,7 @@ export const Checkout = () => {
                     >
                       <Remove />
                     </button>
-                    <div className="checkout-item-count">0 </div>
+                    <div className="checkout-item-count">{item.quantity}</div>
                     <button
                       className="checkout-item-btn right"
                       onClick={(e) => IncreaseQuantity(item)}
@@ -116,9 +123,6 @@ export const Checkout = () => {
     } else return;
   };
 
-  React.useEffect(() => {
-    console.log(StoreCart);
-  }, [StoreCart]);
   return (
     <div className="checkout">
       <NavbarSecond />
@@ -229,14 +233,15 @@ export const Checkout = () => {
               </div>
 
               <div className="checkout-payment-info">
-                <div className="checkout-row-title">
-                  <h2>Total</h2>
+                <div className="checkout-total">
+                  <div className="checkout-row-title">
+                    <h2>Total</h2>
+                  </div>
+                  <div className="checkout-row-title">
+                    <h2>{CartTotal}.00 uah</h2>
+                  </div>
                 </div>
-                <div className="checkout-row-title">
-                  <h2>0.00 uah</h2>
-                </div>
-                {/* <div className="checkout-payment-title"></div>
-              <div className="checkout-payment-title"></div> */}
+
                 <button className="checkout-payment-btn">
                   <h2>Checkout</h2>
                 </button>
@@ -250,15 +255,6 @@ export const Checkout = () => {
                 <h2> Your order</h2>
               </div>
               <RenderStoreCart />
-              {/* <div
-                className={
-                  data?.length > 4
-                    ? "checkout-items extended"
-                    : "checkout-items"
-                }
-              >
-               
-              </div> */}
             </div>
           </div>
         </div>
@@ -266,83 +262,3 @@ export const Checkout = () => {
     </div>
   );
 };
-
-//  {error
-//                   ? "error"
-//                   : loading
-//                     ? "loading"
-//                     : data?.map((item, index) => (
-//                         <div
-//                           className="checkout-item"
-//                           key={item.id + "_" + index}
-//                         >
-//                           <div className="checkout-item-image-wrapper">
-//                             <img
-//                               className="checkout-item-image"
-//                               src={
-//                                 process.env.REACT_APP_UPLOAD_URL + item.img.url
-//                               }
-//                               alt="#"
-//                             />
-//                           </div>
-//                           <div className="checkout-item-info">
-//                             <div className="checkout-item-row">
-//                               <div className="checkout-item-column top">
-//                                 <span className="checkout-item-title">
-//                                   <h3> {item.title}</h3>
-//                                 </span>
-
-//                                 {item.description ? (
-//                                   <span className="checkout-item-text">
-//                                     <h5>{item.description}</h5>
-//                                   </span>
-//                                 ) : null}
-//                               </div>
-//                               <button
-//                                 className="checkout-item-btn top"
-//                                 // onClick={() => handleRemoveFromCart()}
-//                               >
-//                                 <Add />
-//                               </button>
-//                             </div>
-
-//                             <div className="checkout-item-row">
-//                               <div className="checkout-item-column bottom">
-//                                 <div className="checkout-item-text-wrapper">
-//                                   <span className="checkout-item-text-bold">
-//                                     <h5> {item.size_1}</h5>
-//                                   </span>
-//                                   {item.dough_1 ? (
-//                                     <span className="checkout-item-text-bold">
-//                                       <h5> {item.dough_1}</h5>
-//                                     </span>
-//                                   ) : null}
-//                                 </div>
-//                                 <div className="checkout-item-text-wrapper">
-//                                   <span className="checkout-item-text-bold">
-//                                     <h5> {item.price_1}</h5>
-//                                   </span>
-//                                   <span className="checkout-item-text-bold">
-//                                     <h5>uah</h5>
-//                                   </span>
-//                                 </div>
-//                               </div>
-//                               <div className="checkout-item-btns">
-//                                 <button
-//                                   className="checkout-item-btn left"
-//                                   // onClick={() => handleDecreaseQuantity()}
-//                                 >
-//                                   <Remove />
-//                                 </button>
-//                                 <div className="checkout-item-count">0 </div>
-//                                 <button
-//                                   className="checkout-item-btn right"
-//                                   // onClick={() => handleIncreaseQuantity()}
-//                                 >
-//                                   <Add />
-//                                 </button>
-//                               </div>
-//                             </div>
-//                           </div>
-//                         </div>
-//                       ))}

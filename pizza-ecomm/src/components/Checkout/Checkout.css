@@ -110,6 +110,12 @@
   gap: 15px;
 }
 
+.checkout-total {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
 .checkout-payment-btn {
   padding: 12px 80px;
   color: var(--white);

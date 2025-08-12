@@ -26,10 +26,6 @@ const Card = ({ card, category }) => {
   const CartAmount = useSelector((state) => state.cart.cartTotalAmount);
   const dispatch = useDispatch();
 
-  React.useState(() => {
-    console.log(CartAmount);
-  }, [CartState]);
-
   const CardWeight = () => {
     if (card.type === "drinks") {
       return null;
