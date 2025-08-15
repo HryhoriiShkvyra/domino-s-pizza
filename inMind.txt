@@ -1,5 +1,0 @@
-
-
-
-firstly, need add event.stopPropagation to sort block or something what work like that. 
-

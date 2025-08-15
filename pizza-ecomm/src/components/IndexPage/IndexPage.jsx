@@ -1,5 +1,6 @@
 import CardList from "../CardList/CardList";
 import NavbarSecond from "../Navbar/NavbarSecond";
+import Slider from "../Slider/Slider";
 
 export default function IndexPage() {
   const pageState = "pizza";
@@ -7,6 +8,7 @@ export default function IndexPage() {
   return (
     <div className="index">
       <NavbarSecond pageState={pageState} />
+      <Slider />
       <CardList pageState={pageState} category="Bestsellers and novelties" />
       <CardList pageState={pageState} category="Best price" />
       <CardList pageState={pageState} category="Heroes" />

@@ -82,13 +82,8 @@ export const Checkout = () => {
                   <div className="checkout-item-column bottom">
                     <div className="checkout-item-text-wrapper">
                       <span className="checkout-item-text-bold">
-                        <h5> {item.size_1}</h5>
+                        <h5> {item.size}</h5>
                       </span>
-                      {item.dough_1 ? (
-                        <span className="checkout-item-text-bold">
-                          <h5> {item.dough_1}</h5>
-                        </span>
-                      ) : null}
                     </div>
                     <div className="checkout-item-text-wrapper">
                       <span className="checkout-item-text-bold">

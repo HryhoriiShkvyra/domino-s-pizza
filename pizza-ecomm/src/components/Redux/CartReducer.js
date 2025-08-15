@@ -24,7 +24,6 @@ const cartSlice = createSlice({
 
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
-
         state.cartTotalQuantity++;
       } else if (sameIdDifferentSize) {
         state.cartItems.push(action.payload);
@@ -48,31 +47,32 @@ const cartSlice = createSlice({
     },
 
     decreaseQuantity: (state, action) => {
-      const findItemInCart = state.cartItems.find(
+      const itemIndex = state.cartItems.findIndex(
         (item) =>
-          item.id === action.payload.id && item.size === action.payload.size
+          item.id === action.payload.id &&
+          item.size === action.payload.size &&
+          item.price === action.payload.price
       );
 
-      if (!findItemInCart) {
+      if (itemIndex === -1) {
         return;
       }
 
+      const findItemInCart = state.cartItems[itemIndex];
+
       if (findItemInCart.quantity === 1) {
-        const findItemInCart = state.cartItems.find(
-          (item) =>
-            item.id === action.payload.id && item.size === action.payload.size
-        );
+        state.cartItems.splice(itemIndex, 1);
         state.cartTotalQuantity--;
-        state.cartItems.splice(findItemInCart, 1);
       } else {
+        findItemInCart.quantity -= 1;
         state.cartTotalQuantity--;
-        findItemInCart.quantity--;
       }
     },
 
     removeItem: (state, action) => {
       const findItemInCart = state.cartItems.find(
-        (item) => item.id === action.payload.id
+        (item) =>
+          item.id === action.payload.id && item.size === action.payload.size
       );
 
       if (findItemInCart) {

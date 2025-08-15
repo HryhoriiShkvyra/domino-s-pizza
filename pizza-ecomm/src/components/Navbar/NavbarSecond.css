@@ -90,27 +90,31 @@
 .cart {
   display: flex;
   flex-direction: column;
-  padding: 0.5px 10px;
+  width: 44px;
+  height: 44px;
+  padding-top: 2px;
   align-items: center;
   font-weight: 700;
   background-color: #444;
-  border: 1px solid #e5e5e5;
-  border-radius: 190px;
+  border-radius: 50px;
 }
 
 .cart-not-allowed {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  /* padding: 10px; */
   align-items: center;
   font-weight: 700;
   background-color: #444;
-  border: 1px solid #e5e5e5;
   border-radius: 190px;
 }
 
 .checkout-btn {
-  width: 150px;
+  width: 140px;
   height: 46px;
   display: flex;
   justify-content: center;

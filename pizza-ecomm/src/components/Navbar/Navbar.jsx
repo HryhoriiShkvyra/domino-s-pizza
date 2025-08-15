@@ -13,7 +13,7 @@ export default function Navbar() {
           <div className="phone">
             <Phone className="icon" />
             <span className="number">
-              <h3>044 222 11 11</h3>
+              <h3>000 000 00 00</h3>
             </span>
           </div>
           <div className="geolocation">

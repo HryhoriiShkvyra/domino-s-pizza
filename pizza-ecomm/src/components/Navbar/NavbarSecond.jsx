@@ -36,9 +36,9 @@ export default function NavbarSecond({ pageState }) {
           <div className="cart-not-allowed">
             <ShoppingCart className="icon" />
           </div>
-          <Link className="checkout-btn" to="/checkout">
+          <div className="checkout-btn" to="/checkout">
             checkout
-          </Link>
+          </div>
         </div>
       );
   }

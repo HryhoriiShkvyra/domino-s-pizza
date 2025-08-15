@@ -142,7 +142,12 @@ const Card = ({ card, category }) => {
     const item = {
       id: card.id,
       size: priceValue,
+      price: CurrentPrice,
     };
+
+    console.log(CartState);
+
+    // console.log(item);
 
     dispatch(decreaseQuantity(item));
   };
