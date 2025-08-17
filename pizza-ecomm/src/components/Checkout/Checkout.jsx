@@ -21,24 +21,142 @@ export const Checkout = () => {
   const StoreCart = useSelector((state) => state.cart.cartItems);
 
   const dispatch = useDispatch();
-
-  function IncreaseQuantity(item) {
-    dispatch(increaseQuantity(item));
-  }
-
-  function DecreaseQuantity(item) {
-    dispatch(decreaseQuantity(item));
-  }
-
-  function RemoveItem(item) {
-    dispatch(removeItem(item));
-  }
-
+  const [postProcessingPayment, setPostProcessingPayment] =
+    React.useState(false);
+  const [paymentTypeBtn, setPaymentTypeBtn] = React.useState(false);
+  const [paymentType, setPaymentType] = React.useState("");
+  const [deliveryType, setDeliveryType] = React.useState("delivery");
   const CartTotal = useSelector(selectCartTotal);
 
   React.useEffect(() => {
-    console.log(CartTotal);
-  }, [CartTotal]);
+    console.log(paymentType);
+  }, [paymentType]);
+
+  function DeliveryBtns() {
+    return (
+      <div className="checkout-btns">
+        <div
+          onClick={() => setDeliveryType("delivery")}
+          className={`checkout-btn-white ${deliveryType === "delivery" ? "active" : ""}`}
+        >
+          <div className="checkout-btn-icon">
+            <DeliveryDiningOutlined style={{ fontSize: "40px" }} />
+          </div>
+          <h3>Delivery</h3>
+        </div>
+        <div
+          onClick={() => setDeliveryType("carry out")}
+          className={`checkout-btn-white ${deliveryType === "carry out" ? "active" : ""} `}
+        >
+          <div className="checkout-btn-icon">
+            <StorefrontOutlined style={{ fontSize: "40px" }} />
+          </div>
+          <h3>Carry out</h3>
+        </div>
+      </div>
+    );
+  }
+
+  function StoreOrCarryOut() {
+    if (deliveryType === "delivery") {
+      return (
+        <div className="checkout-row">
+          <div className="checkout-row-title">
+            <h2>Store</h2>
+          </div>
+          <div className="checkout-row-content">
+            <RoomIcon />
+            <div className="checkout-text-bold">
+              <h3>Kyiv</h3>
+            </div>
+          </div>
+          <div className="checkout-row-content">
+            <div className="checkout-text">
+              <h3>Mykhaila Drahomanova St, 44A, Kyiv, 02000</h3>
+              {/* <h3>Mykhaila Drahomanova St, 44A, Kyiv, 02000</h3> */}
+            </div>
+          </div>
+        </div>
+      );
+    } else
+      return (
+        <div className="checkout-row">
+          <div className="checkout-row-title">
+            <h2>Address</h2>
+          </div>
+          <div className="checkout-row-content">
+            <RoomIcon />
+            <div className="checkout-text-bold">
+              <h3>Kyiv</h3>
+            </div>
+          </div>
+          <div className="checkout-row-content">
+            <div className="checkout-text">
+              <input
+                className="checkout-input"
+                type="text"
+                placeholder="enter you address"
+              />
+              {/* <h3>Mykhaila Drahomanova St, 44A, Kyiv, 02000</h3> */}
+            </div>
+          </div>
+        </div>
+      );
+  }
+
+  const SetPaymentMethod = () => {
+    return (
+      <div className="checkout-input-wrapper">
+        <input
+          className="checkout-input"
+          type="text"
+          placeholder="use coupon"
+        />
+        <div className="checkout-select">
+          {paymentType ? (
+            <div
+              onClick={() => setPaymentTypeBtn((prev) => !prev)}
+              className="checkout-select-title"
+            >
+              {paymentType.newState}
+            </div>
+          ) : (
+            <div
+              onClick={() => setPaymentTypeBtn((prev) => !prev)}
+              className="checkout-select-title"
+            >
+              payment type
+            </div>
+          )}
+
+          <div className={`checkout-options ${paymentTypeBtn ? "active" : ""}`}>
+            <div
+              onClick={() => HandlePaymentType("card")}
+              className="checkout-option"
+            >
+              card
+            </div>
+            <div
+              onClick={() => HandlePaymentType("cash")}
+              className="checkout-option"
+            >
+              cash
+            </div>
+          </div>
+        </div>
+        {paymentType.newState === "card" ? (
+          <input
+            className="checkout-input-disabled"
+            disabled
+            type="text"
+            placeholder="change"
+          />
+        ) : (
+          <input className="checkout-input" type="text" placeholder="change" />
+        )}
+      </div>
+    );
+  };
 
   const RenderStoreCart = () => {
     if (StoreCart) {
@@ -118,6 +236,29 @@ export const Checkout = () => {
     } else return;
   };
 
+  function IncreaseQuantity(item) {
+    dispatch(increaseQuantity(item));
+  }
+
+  function DecreaseQuantity(item) {
+    dispatch(decreaseQuantity(item));
+  }
+
+  function RemoveItem(item) {
+    dispatch(removeItem(item));
+  }
+
+  function HandlePaymentType(type) {
+    setPaymentTypeBtn(false);
+    setPaymentType((prev) => {
+      return { ...prev, newState: type };
+    });
+  }
+
+  React.useEffect(() => {
+    console.log(paymentType);
+  }, [paymentType]);
+
   return (
     <div className="checkout">
       <NavbarSecond />
@@ -128,21 +269,7 @@ export const Checkout = () => {
               <div className="checkout-row-top-title">
                 <h2>Checkout order</h2>
               </div>
-
-              <div className="checkout-btns">
-                <div className="checkout-btn-white active">
-                  <div className="checkout-btn-icon">
-                    <DeliveryDiningOutlined style={{ fontSize: "40px" }} />
-                  </div>
-                  <h3>Delivery</h3>
-                </div>
-                <div className="checkout-btn-white">
-                  <div className="checkout-btn-icon">
-                    <StorefrontOutlined style={{ fontSize: "40px" }} />
-                  </div>
-                  <h3>Carry out</h3>
-                </div>
-              </div>
+              <DeliveryBtns />
             </div>
             <div className="checkout-form-main">
               <div className="checkout-row">
@@ -172,22 +299,7 @@ export const Checkout = () => {
                 {/* </div> */}
               </div>
 
-              <div className="checkout-row">
-                <div className="checkout-row-title">
-                  <h2>Store</h2>
-                </div>
-                <div className="checkout-row-content">
-                  <RoomIcon />
-                  <div className="checkout-text-bold">
-                    <h3>Kyiv</h3>
-                  </div>
-                </div>
-                <div className="checkout-row-content">
-                  <div className="checkout-text">
-                    <h3>Mykhaila Drahomanova St, 44A, Kyiv, 02000</h3>
-                  </div>
-                </div>
-              </div>
+              <StoreOrCarryOut />
 
               <div className="checkout-row">
                 <div className="checkout-row-title">
@@ -202,29 +314,9 @@ export const Checkout = () => {
 
               <div className="checkout-row">
                 <div className="checkout-row-title">
-                  <h2>Checkout order</h2>
+                  <h2>Payment</h2>
                 </div>
-
-                {/* <div className="checkout-input"> */}
-
-                <div className="checkout-input-wrapper">
-                  <input
-                    className="checkout-input"
-                    type="text"
-                    placeholder="name"
-                  />
-                  <input
-                    className="checkout-input"
-                    type="text"
-                    placeholder="name"
-                  />
-                  <input
-                    className="checkout-input"
-                    type="text"
-                    placeholder="name"
-                  />
-                </div>
-                {/* </div> */}
+                <SetPaymentMethod />
               </div>
 
               <div className="checkout-payment-info">
