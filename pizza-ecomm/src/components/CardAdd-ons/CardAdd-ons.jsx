@@ -65,30 +65,6 @@ export const CardWeightLogic = ({ card, cardSize, priceValue }) => {
 };
 
 export const CardPriceLogic = ({ card, priceValue, cardSize }) => {
-  // if (card.type === "sides") {
-  //   if (cardSize === card.size_1) {
-  //     return card?.price_1;
-  //   } else if (cardSize === card.size_2) {
-  //     return card?.price_2;
-  //   } else if (cardSize === card.size_3) {
-  //     return card?.price_3;
-  //   } else if (cardSize === card.size_4) {
-  //     return card?.price_4;
-  //   }
-  // }
-
-  // if (card.type === "drinks") {
-  //   if (cardSize === card.size_1) {
-  //     return card?.price_1;
-  //   } else if (cardSize === card.size_2) {
-  //     return card?.price_2;
-  //   } else if (cardSize === card.size_3) {
-  //     return card?.price_3;
-  //   } else if (cardSize === card.size_4) {
-  //     return card?.price_4;
-  //   }
-  // }
-
   if (card.type === "pizza") {
     if (`${priceValue}` === "standard,thick") return card?.price_1;
     if (`${priceValue}` === "standard,thin") return card?.price_2;
@@ -112,7 +88,6 @@ export const CardPriceLogic = ({ card, priceValue, cardSize }) => {
     if (cardSize === card.size_3) return card?.price_3;
     if (cardSize === card.size_4) return card?.price_4;
   }
-  // return 0;
 };
 
 export const CardSizeLogic = ({ card, setCardSize, setCardDough }) => {

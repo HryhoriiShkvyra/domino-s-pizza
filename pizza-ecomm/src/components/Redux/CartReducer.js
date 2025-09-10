@@ -4,6 +4,8 @@ const initialState = {
   cartItems: [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
+  city: "Kyiv",
+  modalWindow: false,
 };
 
 const cartSlice = createSlice({
@@ -80,6 +82,19 @@ const cartSlice = createSlice({
         state.cartItems.splice(findItemInCart, 1);
       }
     },
+
+    updateCity: (state, action) => {
+      if (action.payload) {
+        state.city = action.payload;
+      }
+    },
+
+    modalWindowActive: (state) => {
+      console.log(state);
+      // console.log(action);
+
+      state.modalWindow = !state.modalWindow;
+    },
   },
 });
 
@@ -88,5 +103,7 @@ export const {
   removeItem,
   increaseQuantity,
   decreaseQuantity,
+  updateCity,
+  modalWindowActive,
 } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -28,7 +28,7 @@
 
 .navbar .geolocation {
   display: flex;
-  gap: 17px;
+  gap: 10px;
   align-items: center;
   color: rgb(175, 175, 175);
   cursor: pointer;
@@ -196,6 +196,10 @@
   top: 25px;
   right: -10px;
   cursor: pointer;
+}
+
+.navbar {
+  position: relative;
 }
 
 /* ========================================= */

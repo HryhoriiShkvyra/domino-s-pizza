@@ -14,23 +14,47 @@ import {
   increaseQuantity,
   decreaseQuantity,
   removeItem,
+  modalWindowActive,
 } from "../Redux/CartReducer";
 import { selectCartTotal } from "../Redux/CartSelector";
+import { loadStripe } from "@stripe/stripe-js";
+import { makeRequest } from "../../makeRequest";
 
 export const Checkout = () => {
   const StoreCart = useSelector((state) => state.cart.cartItems);
+  const StoreCartCity = useSelector((state) => state.cart.city);
+  const StoreCartModalWindow = useSelector((state) => state.cart.modalWindow);
 
   const dispatch = useDispatch();
-  const [postProcessingPayment, setPostProcessingPayment] =
-    React.useState(false);
+
   const [paymentTypeBtn, setPaymentTypeBtn] = React.useState(false);
   const [paymentType, setPaymentType] = React.useState("");
   const [deliveryType, setDeliveryType] = React.useState("delivery");
+  const [formData, setFormData] = React.useState({});
   const CartTotal = useSelector(selectCartTotal);
 
-  React.useEffect(() => {
-    console.log(paymentType);
-  }, [paymentType]);
+  const stripePromise = loadStripe(
+    "pk_test_51MboeJJnoHW1zmgYv34JTHBK2VKAApu7IyeYnFs5vxVPpb4Ch6h0V01OPRKXU56n1UhQoq5ilr13NhIEKzEMu95Q00hZ3jCIYF"
+  );
+
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const stripe = await stripePromise;
+
+      console.log("Sending StoreCart:", StoreCart);
+
+      const res = await makeRequest.post("/orders", { StoreCart });
+
+      console.log("Backend response:", res.data);
+
+      await stripe.redirectToCheckout({
+        sessionId: res.data.stripeSession,
+      });
+    } catch (err) {
+      console.error("HandleSubmit error:", err);
+    }
+  };
 
   function DeliveryBtns() {
     return (
@@ -57,6 +81,12 @@ export const Checkout = () => {
     );
   }
 
+  function handleCityUpdate() {
+    const modalState = StoreCartModalWindow;
+    console.log(modalState);
+    dispatch(modalWindowActive());
+  }
+
   function StoreOrCarryOut() {
     if (deliveryType === "delivery") {
       return (
@@ -64,16 +94,18 @@ export const Checkout = () => {
           <div className="checkout-row-title">
             <h2>Store</h2>
           </div>
-          <div className="checkout-row-content">
+          <div
+            onClick={() => handleCityUpdate()}
+            className="checkout-row-content"
+          >
             <RoomIcon />
             <div className="checkout-text-bold">
-              <h3>Kyiv</h3>
+              <h3>{StoreCartCity}</h3>
             </div>
           </div>
           <div className="checkout-row-content">
             <div className="checkout-text">
               <h3>Mykhaila Drahomanova St, 44A, Kyiv, 02000</h3>
-              {/* <h3>Mykhaila Drahomanova St, 44A, Kyiv, 02000</h3> */}
             </div>
           </div>
         </div>
@@ -84,7 +116,10 @@ export const Checkout = () => {
           <div className="checkout-row-title">
             <h2>Address</h2>
           </div>
-          <div className="checkout-row-content">
+          <div
+            onClick={() => handleCityUpdate()}
+            className="checkout-row-content"
+          >
             <RoomIcon />
             <div className="checkout-text-bold">
               <h3>Kyiv</h3>
@@ -115,14 +150,14 @@ export const Checkout = () => {
         <div className="checkout-select">
           {paymentType ? (
             <div
-              onClick={() => setPaymentTypeBtn((prev) => !prev)}
+              onClick={() => setPaymentTypeBtn(true)}
               className="checkout-select-title"
             >
               {paymentType.newState}
             </div>
           ) : (
             <div
-              onClick={() => setPaymentTypeBtn((prev) => !prev)}
+              onClick={() => setPaymentTypeBtn(true)}
               className="checkout-select-title"
             >
               payment type
@@ -157,6 +192,19 @@ export const Checkout = () => {
       </div>
     );
   };
+
+  function HandlePaymentType(type) {
+    setPaymentTypeBtn(false);
+    setPaymentType((prev) => {
+      return { ...prev, newState: type };
+    });
+  }
+
+  function HandleCollapsePaymentTypeBtn() {
+    if (paymentTypeBtn) {
+      return setPaymentTypeBtn(false);
+    }
+  }
 
   const RenderStoreCart = () => {
     if (StoreCart) {
@@ -248,19 +296,26 @@ export const Checkout = () => {
     dispatch(removeItem(item));
   }
 
-  function HandlePaymentType(type) {
-    setPaymentTypeBtn(false);
-    setPaymentType((prev) => {
-      return { ...prev, newState: type };
-    });
-  }
+  const HandleInputsValues = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // const isConfirmed = window.confirm(
+  //   `Excuse me, but this functionality is not available yet. Press "ok" to redirect further`
+  // );
+
+  // return isConfirmed;
 
   React.useEffect(() => {
-    console.log(paymentType);
-  }, [paymentType]);
+    console.log(formData);
+  }, [formData]);
 
   return (
-    <div className="checkout">
+    <form onClick={() => HandleCollapsePaymentTypeBtn()} className="checkout">
       <NavbarSecond />
       <div className="container">
         <div className="checkout-wrapper">
@@ -277,26 +332,32 @@ export const Checkout = () => {
                   <h2>Contacts</h2>
                 </div>
 
-                {/* <div className="checkout-input"> */}
-
                 <div className="checkout-input-wrapper">
                   <input
                     className="checkout-input"
                     type="text"
                     placeholder="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={HandleInputsValues}
                   />
                   <input
                     className="checkout-input"
                     type="text"
                     placeholder="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={HandleInputsValues}
                   />
                   <input
                     className="checkout-input"
                     type="text"
                     placeholder="mail"
+                    name="mail"
+                    value={formData.mail}
+                    onChange={HandleInputsValues}
                   />
                 </div>
-                {/* </div> */}
               </div>
 
               <StoreOrCarryOut />
@@ -329,7 +390,10 @@ export const Checkout = () => {
                   </div>
                 </div>
 
-                <button className="checkout-payment-btn">
+                <button
+                  onClick={(e) => HandleSubmit(e)}
+                  className="checkout-payment-btn"
+                >
                   <h2>Checkout</h2>
                 </button>
               </div>
@@ -346,6 +410,6 @@ export const Checkout = () => {
           </div>
         </div>
       </div>
-    </div>
+    </form>
   );
 };

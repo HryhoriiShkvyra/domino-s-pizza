@@ -23,7 +23,6 @@ const Card = ({ card, category }) => {
   const CurrentSize = CardSizeLogic({ card, setCardSize, setCardDough });
 
   const CartState = useSelector((state) => state.cart.cartItems);
-  const CartAmount = useSelector((state) => state.cart.cartTotalAmount);
   const dispatch = useDispatch();
 
   const CardWeight = () => {
@@ -116,16 +115,18 @@ const Card = ({ card, category }) => {
     const newItem = {
       id: card.id,
       title: card.title,
+      type: card.type,
       img: card.img.url,
       description: card.description,
       size: priceValue,
-      // dough: cardDough,
       price: CurrentPrice,
       quantity: 1,
     };
 
     dispatch(handleAddToCartAndIncreaseQuantity(newItem));
   };
+
+  console.log(card.type);
 
   const HandleIncreaseQuantity = (e) => {
     const item = {
@@ -147,7 +148,7 @@ const Card = ({ card, category }) => {
 
     console.log(CartState);
 
-    // console.log(item);
+    console.log(category);
 
     dispatch(decreaseQuantity(item));
   };
